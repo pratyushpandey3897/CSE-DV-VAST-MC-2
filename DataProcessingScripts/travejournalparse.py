@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 
 buildingdata = {}
 
-with open('Datasets/Attributes/Restaurants.csv') as f:
+with open('../Datasets/Attributes/Restaurants.csv') as f:
     reader = csv.reader(f)
     next(reader) # skip header
     
@@ -24,7 +24,7 @@ json_data = json.dumps(buildingdata, indent=4)
 # print(json_data)
 
 masterTravelData = []
-with open('Datasets/Journals/TravelJournal.csv') as f:
+with open('../Datasets/Journals/TravelJournal.csv') as f:
     reader = csv.DictReader(f)
     for row in reader:
         # row = next(reader)
