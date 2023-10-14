@@ -1,11 +1,11 @@
 import csv
+import os
 import json
 from datetime import datetime, timezone
 
-
 buildingdata = {}
 
-with open('Datasets/Attributes/Restaurants.csv') as f:
+with open(os.getenv('RESTAURANTS_DATA_PATH')) as f:
     reader = csv.reader(f)
     next(reader) # skip header
     
@@ -24,11 +24,11 @@ json_data = json.dumps(buildingdata, indent=4)
 # print(json_data)
 
 masterTravelData = []
-with open('Datasets/Journals/TravelJournal.csv') as f:
+with open(os.getenv('TRAVEL_JOURNAL_DATA_PATH')) as f:
     reader = csv.DictReader(f)
     for row in reader:
         # row = next(reader)
-        startdate = datetime.fromisoformat(row['travelStartTime']).replace(tzinfo=timezone.utc)
+        startdate = datetime.fromisoformat(row['travelStartTime'].replace('Z', '')).replace(tzinfo=timezone.utc)
         enddate = datetime.fromisoformat(row['travelEndTime'].replace('Z', '')).replace(tzinfo=timezone.utc)
         checkintime = datetime.fromisoformat(row['checkInTime'].replace('Z', '')).replace(tzinfo=timezone.utc)
         checkouttime = datetime.fromisoformat(row['checkOutTime'].replace('Z', '')).replace(tzinfo=timezone.utc)
@@ -79,5 +79,5 @@ for d in masterTravelData:
     purpose = tod.setdefault(d['purpose'], {'locations': []})
     purpose['locations'].append(d['locations'])
     
-json_data = json.dumps(grouped, indent=4)
-print(json_data)
+with open('output.json', 'w') as json_file:
+    json.dump(grouped, json_file, indent=4)
