@@ -1,9 +1,13 @@
+body{
+    background-color: rgb(247, 247, 228);
+}
 svg {
-  width: 100%;
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin-top: 20px;
-  border-radius: 10px;
+    background-color: rgb(247, 251, 228);
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 10px;
 }
 .right-side-banner {
   display: flex;
@@ -12,12 +16,12 @@ svg {
 }
 .jumbotron {
     background-image: linear-gradient(
-        rgba(128, 128, 128, 0.4),
-        rgba(128, 128, 128, 0.3)
+        rgba(128, 128, 128, 0.1),
+        rgba(128, 128, 128, 0.4)
       ),
       url("images/banner4.jpeg");
     background-size: cover;
-    background-position: bottom;
+    background-position: right;
     color: white;
     height: 40vh;
     display: flex;

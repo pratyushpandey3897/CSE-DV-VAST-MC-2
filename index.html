@@ -1,85 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vast Challenge MC2</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="jumbotron mb-1">
-        <div class = "text-center">
-          <h1 class="display-4">VAST 2022 Challenge</h1>
-        </div>
-        <div class = "lead right-side-banner">
-            <h3>Mini Challenge 2</h3>
-            <p>Patterns Of Life</p>
-        </div>
-        
+      <div class="text-center">
+        <h1 class="display-4">VAST 2022 Challenge</h1>
       </div>
-    <div class="container-fluid d-flex flex-column">
-        <!-- Travels by month + Map filtering (maybe) -->
-        <div class="row mt-1 mb-3">
-          <div class="col-md-8">
-            Travels by month
-            <div class="line-graph">
-              <svg height="500"></svg>
-            </div>
-          </div>
-          <div class="col-md-4">
-            Base map filter
-            <div class="map-filter-graph">
-              <svg height="500"></svg>
-            </div>
+      <div class="lead right-side-banner">
+        <h3>Mini Challenge 2</h3>
+        <p>Patterns Of Life</p>
+      </div>
+    </div>    
+    <div class="container-fluid d-flex flex-column text-center">
+      <!-- ROW 1 -->
+      <div class="row mt-1 mb-3">
+        <div class="col-md-8">
+          <div>Travels by month</div>
+          <div class="line-graph">
+            <svg height="500"></svg>
           </div>
         </div>
-      
-        <!-- Grouped Bar + Bubble-->
-        <div class="row mt-1 mb-3">
-          <div class="col-md-6">
-            Grouped Bar chart
-            <div class="grouped-bar-chart">
-              <svg height="500"></svg>
-            </div>
-          </div>
-          <div class="col-md-6">
-            Bubble Chart
-            <div class="bubble-chart">
-              <svg height="500"></svg>
-            </div>
+        <div class="col-md-4">
+          <div>Base map filter</div>
+          <div class="map-filter-graph">
+            <svg height="500"></svg>
           </div>
         </div>
-      
-        <!-- Bar_Line chart + Base-Map -->
-        <div class="row mt-1 mb-3">
-          <div class="col-md-6">
-            Bar + Line chart
-            <div class="bar-line-chart">
-              <svg height="500"></svg>
-            </div>
-          </div>
-          <div class="col-md-6">
-            Base map
-            <div class="base-map-traffic">
-              <svg height="500"></svg>
-            </div>
+      </div>
+
+      <!-- ROW 2-->
+      <div class="row mt-1 mb-3">
+        <div class="col-md-6">
+          <div>Grouped Bar chart</div>
+          <div class="grouped-bar-chart">
+            <svg height="500"></svg>
           </div>
         </div>
-    
-        <!-- People comparisons -->
-        <div class="row mt-1 mb-3">
-            <div class="col-md-12">
-              Compare lives of people
-              <div class="comparison-chart">
-                <svg height="500"></svg>
-              </div>
-            </div>
+        <div class="col-md-6">
+          <div>Bubble Chart</div>
+          <div class="bubble-chart">
+            <svg height="500"></svg>
           </div>
+        </div>
+      </div>
+
+      <!-- ROW 3 -->
+      <div class="row mt-1 mb-3">
+        <div class="col-md-6">
+          <div>Bar + Line chart</div>
+          <div class="bar-line-chart">
+            <svg height="500"></svg>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div>Base map</div>
+          <div class="base-map-traffic">
+            <svg height="500"></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROW 4 -->
+      <div class="row mt-1 mb-3">
+        <div class="col-md-12">
+          <div>Compare lives of people</div>
+          <div class="comparison-chart">
+            <svg height="500"></svg>
+          </div>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
