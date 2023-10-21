@@ -13,6 +13,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="/js/prasidh.js"></script>
   </head>
   <body>
     <div class="jumbotron mb-1">
@@ -29,13 +31,13 @@
       <div class="row mt-1 mb-3">
         <div class="col-md-8">
           <div>Travels by month</div>
-          <div class="line-graph">
+          <div class="chart-div">
             <svg height="500"></svg>
           </div>
         </div>
         <div class="col-md-4">
           <div>Base map filter</div>
-          <div class="map-filter-graph">
+          <div class="chart-div">
             <svg id="map-svg-filter" height="500"></svg>
           </div>
         </div>
@@ -45,13 +47,13 @@
       <div class="row mt-1 mb-3">
         <div class="col-md-6">
           <div>Grouped Bar chart</div>
-          <div class="grouped-bar-chart">
-            <svg height="500"></svg>
+          <div class="chart-div">
+            <svg id="grouped-bar-chart" width="650" height="500"></svg>
           </div>
         </div>
         <div class="col-md-6">
           <div>Bubble Chart</div>
-          <div class="bubble-chart">
+          <div class="chart-div">
             <svg height="500"></svg>
           </div>
         </div>
@@ -61,13 +63,13 @@
       <div class="row mt-1 mb-3">
         <div class="col-md-8">
           <div>Bar + Line chart</div>
-          <div class="bar-line-chart">
+          <div class="chart-div">
             <svg height="500"></svg>
           </div>
         </div>
         <div class="col-md-4">
           <div>Base map</div>
-          <div class="base-map-traffic">
+          <div class="chart-div">
             <svg id="map-svg-traffic" height="500"></svg>
           </div>
         </div>
@@ -77,7 +79,7 @@
       <div class="row mt-1 mb-3">
         <div class="col-md-12">
           <div>Compare lives of people</div>
-          <div class="comparison-chart">
+          <div class="chart-div">
             <svg height="500"></svg>
           </div>
         </div>
