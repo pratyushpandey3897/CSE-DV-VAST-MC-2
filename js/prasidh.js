@@ -95,7 +95,7 @@ function create_grouped_bar_chart() {
         .transition()
         .duration(200)
         .style("opacity", 0.6);
-      d3.select(this).transition().duration(200).style("opacity", 1);
+      d3.select(this).transition().duration(300).style("opacity", 1);
     })
     .on("mouseout", function () {
       // Restore the default opacity of all bars on mouseout

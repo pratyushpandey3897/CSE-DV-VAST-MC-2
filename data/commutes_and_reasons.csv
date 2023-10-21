@@ -1,805 +1,800 @@
 Month,Day of Week,Portion of Day,Purpose,Start Location Type,End Location Type,Total Commutes
 March,Tuesday,Morning,Eating,Unknown,Restaurant,102
-March,Tuesday,Morning,Eating,Pub,Restaurant,14
-March,Tuesday,Morning,Eating,Home,Restaurant,219
-March,Tuesday,Morning,Eating,Work,Restaurant,1278
-March,Tuesday,Morning,Coming Back From Restaurant,Restaurant,Home,210
-March,Tuesday,Morning,Coming Back From Restaurant,Restaurant,Pub,16
+March,Tuesday,Morning,Eating,Pub,Restaurant,10
+March,Tuesday,Morning,Eating,Home,Restaurant,117
+March,Tuesday,Morning,Eating,Work,Restaurant,849
+March,Tuesday,Morning,Coming Back From Restaurant,Restaurant,Home,112
+March,Tuesday,Morning,Coming Back From Restaurant,Restaurant,Pub,7
 March,Tuesday,Morning,Coming Back From Restaurant,Restaurant,Unknown,10
-March,Tuesday,Morning,Coming Back From Restaurant,Restaurant,Work,775
-March,Tuesday,Morning,Work/Home Commute,Home,Work,7504
+March,Tuesday,Morning,Coming Back From Restaurant,Restaurant,Work,562
+March,Tuesday,Morning,Work/Home Commute,Home,Work,4164
 March,Tuesday,Morning,Work/Home Commute,Unknown,Work,40
 March,Tuesday,Morning,Work/Home Commute,Restaurant,Work,91
-March,Tuesday,Morning,Recreation (Social Gathering),Home,Pub,352
-March,Tuesday,Morning,Going Back to Home,Pub,Home,603
-March,Tuesday,Morning,Going Back to Home,Restaurant,Home,23
-March,Tuesday,Afternoon,Eating,Work,Restaurant,3042
+March,Tuesday,Morning,Recreation (Social Gathering),Home,Pub,276
+March,Tuesday,Morning,Going Back to Home,Pub,Home,417
+March,Tuesday,Morning,Going Back to Home,Restaurant,Home,13
+March,Tuesday,Afternoon,Eating,Work,Restaurant,1703
 March,Tuesday,Afternoon,Eating,Unknown,Restaurant,5
-March,Tuesday,Afternoon,Eating,Pub,Restaurant,20
-March,Tuesday,Afternoon,Eating,Home,Restaurant,26
-March,Tuesday,Afternoon,Going Back to Home,Pub,Home,114
-March,Tuesday,Afternoon,Coming Back From Restaurant,Restaurant,Home,23
-March,Tuesday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,19
-March,Tuesday,Afternoon,Coming Back From Restaurant,Restaurant,Work,3033
+March,Tuesday,Afternoon,Eating,Pub,Restaurant,14
+March,Tuesday,Afternoon,Eating,Home,Restaurant,13
+March,Tuesday,Afternoon,Going Back to Home,Pub,Home,90
+March,Tuesday,Afternoon,Coming Back From Restaurant,Restaurant,Home,12
+March,Tuesday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,13
+March,Tuesday,Afternoon,Coming Back From Restaurant,Restaurant,Work,1706
 March,Tuesday,Afternoon,Coming Back From Restaurant,Restaurant,Unknown,6
-March,Tuesday,Afternoon,Recreation (Social Gathering),Home,Pub,108
-March,Tuesday,Evening,Eating,Work,Restaurant,2010
-March,Tuesday,Evening,Eating,Pub,Restaurant,173
-March,Tuesday,Evening,Eating,Home,Restaurant,690
+March,Tuesday,Afternoon,Recreation (Social Gathering),Home,Pub,86
+March,Tuesday,Evening,Eating,Work,Restaurant,1125
+March,Tuesday,Evening,Eating,Pub,Restaurant,140
+March,Tuesday,Evening,Eating,Home,Restaurant,323
 March,Tuesday,Evening,Eating,Unknown,Restaurant,30
-March,Tuesday,Evening,Going Back to Home,Pub,Home,350
-March,Tuesday,Evening,Coming Back From Restaurant,Restaurant,Pub,97
-March,Tuesday,Evening,Coming Back From Restaurant,Restaurant,Work,2518
-March,Tuesday,Evening,Coming Back From Restaurant,Restaurant,Home,471
+March,Tuesday,Evening,Going Back to Home,Pub,Home,279
+March,Tuesday,Evening,Coming Back From Restaurant,Restaurant,Pub,83
+March,Tuesday,Evening,Coming Back From Restaurant,Restaurant,Work,1408
+March,Tuesday,Evening,Coming Back From Restaurant,Restaurant,Home,216
 March,Tuesday,Evening,Coming Back From Restaurant,Restaurant,Unknown,14
-March,Tuesday,Evening,Recreation (Social Gathering),Home,Pub,2343
-March,Tuesday,Evening,Work/Home Commute,Work,Home,7480
+March,Tuesday,Evening,Recreation (Social Gathering),Home,Pub,1887
+March,Tuesday,Evening,Work/Home Commute,Work,Home,4151
 March,Tuesday,Evening,Work/Home Commute,Work,Unknown,131
-March,Tuesday,Night,Going Back to Home,Pub,Home,5563
-March,Tuesday,Night,Going Back to Home,Restaurant,Home,117
+March,Tuesday,Night,Going Back to Home,Pub,Home,4502
+March,Tuesday,Night,Going Back to Home,Restaurant,Home,56
 March,Tuesday,Night,Going Back to Home,Restaurant,Unknown,9
-March,Tuesday,Night,Coming Back From Restaurant,Restaurant,Home,1102
-March,Tuesday,Night,Coming Back From Restaurant,Restaurant,Pub,731
+March,Tuesday,Night,Coming Back From Restaurant,Restaurant,Home,470
+March,Tuesday,Night,Coming Back From Restaurant,Restaurant,Pub,609
 March,Tuesday,Night,Coming Back From Restaurant,Restaurant,Unknown,101
-March,Tuesday,Night,Coming Back From Restaurant,Restaurant,Work,4
-March,Tuesday,Night,Recreation (Social Gathering),Home,Pub,4034
-March,Tuesday,Night,Eating,Pub,Restaurant,705
+March,Tuesday,Night,Coming Back From Restaurant,Restaurant,Work,1
+March,Tuesday,Night,Recreation (Social Gathering),Home,Pub,3283
+March,Tuesday,Night,Eating,Pub,Restaurant,595
 March,Tuesday,Night,Eating,Unknown,Restaurant,99
-March,Tuesday,Night,Eating,Home,Restaurant,965
-March,Tuesday,Night,Work/Home Commute,Work,Home,24
+March,Tuesday,Night,Eating,Home,Restaurant,389
+March,Tuesday,Night,Work/Home Commute,Work,Home,13
 March,Wednesday,Morning,Eating,Unknown,Restaurant,140
-March,Wednesday,Morning,Eating,Pub,Restaurant,22
-March,Wednesday,Morning,Eating,Home,Restaurant,251
-March,Wednesday,Morning,Eating,Work,Restaurant,1076
-March,Wednesday,Morning,Going Back to Home,Pub,Home,824
+March,Wednesday,Morning,Eating,Pub,Restaurant,16
+March,Wednesday,Morning,Eating,Home,Restaurant,121
+March,Wednesday,Morning,Eating,Work,Restaurant,564
+March,Wednesday,Morning,Going Back to Home,Pub,Home,624
 March,Wednesday,Morning,Going Back to Home,Restaurant,Unknown,4
-March,Wednesday,Morning,Going Back to Home,Restaurant,Home,16
-March,Wednesday,Morning,Coming Back From Restaurant,Restaurant,Pub,15
-March,Wednesday,Morning,Coming Back From Restaurant,Restaurant,Home,251
+March,Wednesday,Morning,Going Back to Home,Restaurant,Home,10
+March,Wednesday,Morning,Coming Back From Restaurant,Restaurant,Pub,14
+March,Wednesday,Morning,Coming Back From Restaurant,Restaurant,Home,120
 March,Wednesday,Morning,Coming Back From Restaurant,Restaurant,Unknown,20
-March,Wednesday,Morning,Coming Back From Restaurant,Restaurant,Work,530
-March,Wednesday,Morning,Recreation (Social Gathering),Home,Pub,437
-March,Wednesday,Morning,Work/Home Commute,Home,Work,8320
+March,Wednesday,Morning,Coming Back From Restaurant,Restaurant,Work,290
+March,Wednesday,Morning,Recreation (Social Gathering),Home,Pub,294
+March,Wednesday,Morning,Work/Home Commute,Home,Work,4155
 March,Wednesday,Morning,Work/Home Commute,Unknown,Work,9
 March,Wednesday,Morning,Work/Home Commute,Restaurant,Work,120
-March,Wednesday,Afternoon,Eating,Work,Restaurant,3391
-March,Wednesday,Afternoon,Eating,Pub,Restaurant,25
+March,Wednesday,Afternoon,Eating,Work,Restaurant,1715
+March,Wednesday,Afternoon,Eating,Pub,Restaurant,15
 March,Wednesday,Afternoon,Eating,Unknown,Restaurant,2
-March,Wednesday,Afternoon,Eating,Home,Restaurant,36
-March,Wednesday,Afternoon,Going Back to Home,Pub,Home,162
-March,Wednesday,Afternoon,Recreation (Social Gathering),Home,Pub,137
-March,Wednesday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,35
-March,Wednesday,Afternoon,Coming Back From Restaurant,Restaurant,Work,3331
+March,Wednesday,Afternoon,Eating,Home,Restaurant,15
+March,Wednesday,Afternoon,Going Back to Home,Pub,Home,112
+March,Wednesday,Afternoon,Recreation (Social Gathering),Home,Pub,100
+March,Wednesday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,21
+March,Wednesday,Afternoon,Coming Back From Restaurant,Restaurant,Work,1683
 March,Wednesday,Afternoon,Coming Back From Restaurant,Restaurant,Unknown,2
-March,Wednesday,Afternoon,Coming Back From Restaurant,Restaurant,Home,38
-March,Wednesday,Evening,Eating,Work,Restaurant,2273
-March,Wednesday,Evening,Eating,Pub,Restaurant,221
+March,Wednesday,Afternoon,Coming Back From Restaurant,Restaurant,Home,13
+March,Wednesday,Evening,Eating,Work,Restaurant,1154
+March,Wednesday,Evening,Eating,Pub,Restaurant,169
 March,Wednesday,Evening,Eating,Unknown,Restaurant,33
-March,Wednesday,Evening,Eating,Home,Restaurant,730
-March,Wednesday,Evening,Going Back to Home,Pub,Home,434
-March,Wednesday,Evening,Coming Back From Restaurant,Restaurant,Pub,127
-March,Wednesday,Evening,Coming Back From Restaurant,Restaurant,Work,2874
-March,Wednesday,Evening,Coming Back From Restaurant,Restaurant,Home,504
+March,Wednesday,Evening,Eating,Home,Restaurant,295
+March,Wednesday,Evening,Going Back to Home,Pub,Home,320
+March,Wednesday,Evening,Coming Back From Restaurant,Restaurant,Pub,98
+March,Wednesday,Evening,Coming Back From Restaurant,Restaurant,Work,1456
+March,Wednesday,Evening,Coming Back From Restaurant,Restaurant,Home,202
 March,Wednesday,Evening,Coming Back From Restaurant,Restaurant,Unknown,21
-March,Wednesday,Evening,Work/Home Commute,Work,Home,8294
+March,Wednesday,Evening,Work/Home Commute,Work,Home,4140
 March,Wednesday,Evening,Work/Home Commute,Work,Unknown,129
-March,Wednesday,Evening,Recreation (Social Gathering),Home,Pub,2654
-March,Wednesday,Night,Going Back to Home,Pub,Home,6310
+March,Wednesday,Evening,Recreation (Social Gathering),Home,Pub,2009
+March,Wednesday,Night,Going Back to Home,Pub,Home,4822
 March,Wednesday,Night,Going Back to Home,Restaurant,Unknown,8
-March,Wednesday,Night,Going Back to Home,Restaurant,Home,125
-March,Wednesday,Night,Eating,Pub,Restaurant,771
+March,Wednesday,Night,Going Back to Home,Restaurant,Home,67
+March,Wednesday,Night,Eating,Pub,Restaurant,601
 March,Wednesday,Night,Eating,Unknown,Restaurant,80
-March,Wednesday,Night,Eating,Home,Restaurant,1072
-March,Wednesday,Night,Coming Back From Restaurant,Restaurant,Pub,804
-March,Wednesday,Night,Coming Back From Restaurant,Restaurant,Home,1222
-March,Wednesday,Night,Coming Back From Restaurant,Restaurant,Work,5
+March,Wednesday,Night,Eating,Home,Restaurant,400
+March,Wednesday,Night,Coming Back From Restaurant,Restaurant,Pub,626
+March,Wednesday,Night,Coming Back From Restaurant,Restaurant,Home,468
+March,Wednesday,Night,Coming Back From Restaurant,Restaurant,Work,4
 March,Wednesday,Night,Coming Back From Restaurant,Restaurant,Unknown,84
-March,Wednesday,Night,Recreation (Social Gathering),Home,Pub,4620
-March,Wednesday,Night,Work/Home Commute,Work,Home,26
+March,Wednesday,Night,Recreation (Social Gathering),Home,Pub,3541
+March,Wednesday,Night,Work/Home Commute,Work,Home,15
 March,Thursday,Morning,Eating,Unknown,Restaurant,127
-March,Thursday,Morning,Eating,Pub,Restaurant,35
-March,Thursday,Morning,Eating,Home,Restaurant,191
-March,Thursday,Morning,Eating,Work,Restaurant,1057
-March,Thursday,Morning,Going Back to Home,Pub,Home,847
-March,Thursday,Morning,Going Back to Home,Restaurant,Home,19
+March,Thursday,Morning,Eating,Pub,Restaurant,18
+March,Thursday,Morning,Eating,Home,Restaurant,96
+March,Thursday,Morning,Eating,Work,Restaurant,560
+March,Thursday,Morning,Going Back to Home,Pub,Home,605
+March,Thursday,Morning,Going Back to Home,Restaurant,Home,13
 March,Thursday,Morning,Going Back to Home,Restaurant,Unknown,2
-March,Thursday,Morning,Recreation (Social Gathering),Home,Pub,370
-March,Thursday,Morning,Coming Back From Restaurant,Restaurant,Pub,28
-March,Thursday,Morning,Coming Back From Restaurant,Restaurant,Home,185
+March,Thursday,Morning,Recreation (Social Gathering),Home,Pub,222
+March,Thursday,Morning,Coming Back From Restaurant,Restaurant,Pub,15
+March,Thursday,Morning,Coming Back From Restaurant,Restaurant,Home,91
 March,Thursday,Morning,Coming Back From Restaurant,Restaurant,Unknown,13
-March,Thursday,Morning,Coming Back From Restaurant,Restaurant,Work,511
+March,Thursday,Morning,Coming Back From Restaurant,Restaurant,Work,284
 March,Thursday,Morning,Work/Home Commute,Unknown,Work,20
-March,Thursday,Morning,Work/Home Commute,Home,Work,8415
+March,Thursday,Morning,Work/Home Commute,Home,Work,4205
 March,Thursday,Morning,Work/Home Commute,Restaurant,Work,113
-March,Thursday,Afternoon,Going Back to Home,Pub,Home,110
-March,Thursday,Afternoon,Eating,Work,Restaurant,3389
-March,Thursday,Afternoon,Eating,Home,Restaurant,44
-March,Thursday,Afternoon,Eating,Pub,Restaurant,26
+March,Thursday,Afternoon,Going Back to Home,Pub,Home,65
+March,Thursday,Afternoon,Eating,Work,Restaurant,1720
+March,Thursday,Afternoon,Eating,Home,Restaurant,21
+March,Thursday,Afternoon,Eating,Pub,Restaurant,14
 March,Thursday,Afternoon,Eating,Unknown,Restaurant,2
-March,Thursday,Afternoon,Recreation (Social Gathering),Home,Pub,117
-March,Thursday,Afternoon,Coming Back From Restaurant,Restaurant,Home,44
-March,Thursday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,24
-March,Thursday,Afternoon,Coming Back From Restaurant,Restaurant,Work,3329
+March,Thursday,Afternoon,Recreation (Social Gathering),Home,Pub,71
+March,Thursday,Afternoon,Coming Back From Restaurant,Restaurant,Home,21
+March,Thursday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,12
+March,Thursday,Afternoon,Coming Back From Restaurant,Restaurant,Work,1685
 March,Thursday,Afternoon,Coming Back From Restaurant,Restaurant,Unknown,2
-March,Thursday,Evening,Going Back to Home,Pub,Home,398
-March,Thursday,Evening,Eating,Work,Restaurant,2290
-March,Thursday,Evening,Eating,Home,Restaurant,768
+March,Thursday,Evening,Going Back to Home,Pub,Home,256
+March,Thursday,Evening,Eating,Work,Restaurant,1163
+March,Thursday,Evening,Eating,Home,Restaurant,325
 March,Thursday,Evening,Eating,Unknown,Restaurant,28
-March,Thursday,Evening,Eating,Pub,Restaurant,196
-March,Thursday,Evening,Coming Back From Restaurant,Restaurant,Pub,105
-March,Thursday,Evening,Coming Back From Restaurant,Restaurant,Work,2893
-March,Thursday,Evening,Coming Back From Restaurant,Restaurant,Home,526
+March,Thursday,Evening,Eating,Pub,Restaurant,139
+March,Thursday,Evening,Coming Back From Restaurant,Restaurant,Pub,69
+March,Thursday,Evening,Coming Back From Restaurant,Restaurant,Work,1474
+March,Thursday,Evening,Coming Back From Restaurant,Restaurant,Home,231
 March,Thursday,Evening,Coming Back From Restaurant,Restaurant,Unknown,15
-March,Thursday,Evening,Work/Home Commute,Work,Home,8401
+March,Thursday,Evening,Work/Home Commute,Work,Home,4205
 March,Thursday,Evening,Work/Home Commute,Work,Unknown,119
-March,Thursday,Evening,Recreation (Social Gathering),Home,Pub,2691
-March,Thursday,Night,Going Back to Home,Pub,Home,6440
-March,Thursday,Night,Going Back to Home,Restaurant,Home,115
+March,Thursday,Evening,Recreation (Social Gathering),Home,Pub,1919
+March,Thursday,Night,Going Back to Home,Pub,Home,4635
+March,Thursday,Night,Going Back to Home,Restaurant,Home,58
 March,Thursday,Night,Going Back to Home,Restaurant,Unknown,5
-March,Thursday,Night,Eating,Pub,Restaurant,793
+March,Thursday,Night,Eating,Pub,Restaurant,578
 March,Thursday,Night,Eating,Unknown,Restaurant,82
-March,Thursday,Night,Eating,Home,Restaurant,1090
-March,Thursday,Night,Coming Back From Restaurant,Restaurant,Home,1263
-March,Thursday,Night,Coming Back From Restaurant,Restaurant,Pub,833
+March,Thursday,Night,Eating,Home,Restaurant,402
+March,Thursday,Night,Coming Back From Restaurant,Restaurant,Home,477
+March,Thursday,Night,Coming Back From Restaurant,Restaurant,Pub,607
 March,Thursday,Night,Coming Back From Restaurant,Restaurant,Unknown,87
-March,Thursday,Night,Coming Back From Restaurant,Restaurant,Work,3
-March,Thursday,Night,Recreation (Social Gathering),Home,Pub,4686
-March,Thursday,Night,Work/Home Commute,Work,Home,25
+March,Thursday,Night,Recreation (Social Gathering),Home,Pub,3376
+March,Thursday,Night,Work/Home Commute,Work,Home,11
 March,Thursday,Night,Work/Home Commute,Work,Unknown,3
-March,Friday,Morning,Eating,Home,Restaurant,172
+March,Friday,Morning,Eating,Home,Restaurant,86
 March,Friday,Morning,Eating,Unknown,Restaurant,131
-March,Friday,Morning,Eating,Work,Restaurant,958
-March,Friday,Morning,Eating,Pub,Restaurant,14
-March,Friday,Morning,Coming Back From Restaurant,Restaurant,Pub,11
-March,Friday,Morning,Coming Back From Restaurant,Restaurant,Home,174
+March,Friday,Morning,Eating,Work,Restaurant,447
+March,Friday,Morning,Eating,Pub,Restaurant,6
+March,Friday,Morning,Coming Back From Restaurant,Restaurant,Pub,6
+March,Friday,Morning,Coming Back From Restaurant,Restaurant,Home,82
 March,Friday,Morning,Coming Back From Restaurant,Restaurant,Unknown,8
-March,Friday,Morning,Coming Back From Restaurant,Restaurant,Work,465
-March,Friday,Morning,Recreation (Social Gathering),Home,Pub,288
-March,Friday,Morning,Going Back to Home,Pub,Home,735
+March,Friday,Morning,Coming Back From Restaurant,Restaurant,Work,224
+March,Friday,Morning,Recreation (Social Gathering),Home,Pub,183
+March,Friday,Morning,Going Back to Home,Pub,Home,497
 March,Friday,Morning,Going Back to Home,Restaurant,Unknown,4
-March,Friday,Morning,Going Back to Home,Restaurant,Home,12
-March,Friday,Morning,Work/Home Commute,Home,Work,7605
+March,Friday,Morning,Going Back to Home,Restaurant,Home,6
+March,Friday,Morning,Work/Home Commute,Home,Work,3380
 March,Friday,Morning,Work/Home Commute,Unknown,Work,4
 March,Friday,Morning,Work/Home Commute,Restaurant,Work,122
-March,Friday,Afternoon,Eating,Work,Restaurant,3031
-March,Friday,Afternoon,Eating,Pub,Restaurant,25
-March,Friday,Afternoon,Eating,Home,Restaurant,39
+March,Friday,Afternoon,Eating,Work,Restaurant,1373
+March,Friday,Afternoon,Eating,Pub,Restaurant,17
+March,Friday,Afternoon,Eating,Home,Restaurant,14
 March,Friday,Afternoon,Eating,Unknown,Restaurant,1
-March,Friday,Afternoon,Going Back to Home,Pub,Home,90
-March,Friday,Afternoon,Recreation (Social Gathering),Home,Pub,82
-March,Friday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,19
-March,Friday,Afternoon,Coming Back From Restaurant,Restaurant,Work,2952
-March,Friday,Afternoon,Coming Back From Restaurant,Restaurant,Home,31
+March,Friday,Afternoon,Going Back to Home,Pub,Home,58
+March,Friday,Afternoon,Recreation (Social Gathering),Home,Pub,51
+March,Friday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,14
+March,Friday,Afternoon,Coming Back From Restaurant,Restaurant,Work,1334
+March,Friday,Afternoon,Coming Back From Restaurant,Restaurant,Home,14
 March,Friday,Afternoon,Coming Back From Restaurant,Restaurant,Unknown,1
-March,Friday,Evening,Going Back to Home,Pub,Home,345
-March,Friday,Evening,Eating,Work,Restaurant,2106
-March,Friday,Evening,Eating,Pub,Restaurant,181
-March,Friday,Evening,Eating,Home,Restaurant,637
+March,Friday,Evening,Going Back to Home,Pub,Home,221
+March,Friday,Evening,Eating,Work,Restaurant,952
+March,Friday,Evening,Eating,Pub,Restaurant,115
+March,Friday,Evening,Eating,Home,Restaurant,224
 March,Friday,Evening,Eating,Unknown,Restaurant,21
-March,Friday,Evening,Coming Back From Restaurant,Restaurant,Home,432
-March,Friday,Evening,Coming Back From Restaurant,Restaurant,Pub,99
-March,Friday,Evening,Coming Back From Restaurant,Restaurant,Work,2674
+March,Friday,Evening,Coming Back From Restaurant,Restaurant,Home,160
+March,Friday,Evening,Coming Back From Restaurant,Restaurant,Pub,65
+March,Friday,Evening,Coming Back From Restaurant,Restaurant,Work,1211
 March,Friday,Evening,Coming Back From Restaurant,Restaurant,Unknown,11
-March,Friday,Evening,Work/Home Commute,Work,Home,7582
+March,Friday,Evening,Work/Home Commute,Work,Home,3368
 March,Friday,Evening,Work/Home Commute,Work,Unknown,124
-March,Friday,Evening,Recreation (Social Gathering),Home,Pub,2345
-March,Friday,Night,Going Back to Home,Pub,Home,5583
+March,Friday,Evening,Recreation (Social Gathering),Home,Pub,1556
+March,Friday,Night,Going Back to Home,Pub,Home,3706
 March,Friday,Night,Going Back to Home,Restaurant,Unknown,5
-March,Friday,Night,Going Back to Home,Restaurant,Home,114
-March,Friday,Night,Work/Home Commute,Work,Home,23
+March,Friday,Night,Going Back to Home,Restaurant,Home,45
+March,Friday,Night,Work/Home Commute,Work,Home,12
 March,Friday,Night,Work/Home Commute,Work,Unknown,1
-March,Friday,Night,Coming Back From Restaurant,Restaurant,Pub,665
-March,Friday,Night,Coming Back From Restaurant,Restaurant,Home,1171
-March,Friday,Night,Coming Back From Restaurant,Restaurant,Work,4
+March,Friday,Night,Coming Back From Restaurant,Restaurant,Pub,453
+March,Friday,Night,Coming Back From Restaurant,Restaurant,Home,393
+March,Friday,Night,Coming Back From Restaurant,Restaurant,Work,3
 March,Friday,Night,Coming Back From Restaurant,Restaurant,Unknown,51
-March,Friday,Night,Eating,Pub,Restaurant,616
-March,Friday,Night,Eating,Home,Restaurant,1042
+March,Friday,Night,Eating,Pub,Restaurant,424
+March,Friday,Night,Eating,Home,Restaurant,352
 March,Friday,Night,Eating,Unknown,Restaurant,84
-March,Friday,Night,Recreation (Social Gathering),Home,Pub,4122
+March,Friday,Night,Recreation (Social Gathering),Home,Pub,2727
 March,Saturday,Morning,Eating,Unknown,Restaurant,3
-March,Saturday,Morning,Eating,Home,Restaurant,3405
-March,Saturday,Morning,Eating,Pub,Restaurant,128
-March,Saturday,Morning,Eating,Work,Restaurant,141
-March,Saturday,Morning,Recreation (Social Gathering),Home,Pub,5401
-March,Saturday,Morning,Going Back to Home,Pub,Home,3972
-March,Saturday,Morning,Going Back to Home,Restaurant,Home,163
+March,Saturday,Morning,Eating,Home,Restaurant,1688
+March,Saturday,Morning,Eating,Pub,Restaurant,86
+March,Saturday,Morning,Eating,Work,Restaurant,70
+March,Saturday,Morning,Recreation (Social Gathering),Home,Pub,3719
+March,Saturday,Morning,Going Back to Home,Pub,Home,2726
+March,Saturday,Morning,Going Back to Home,Restaurant,Home,80
 March,Saturday,Morning,Going Back to Home,Restaurant,Unknown,4
-March,Saturday,Morning,Coming Back From Restaurant,Restaurant,Home,3176
-March,Saturday,Morning,Coming Back From Restaurant,Restaurant,Pub,58
-March,Saturday,Morning,Coming Back From Restaurant,Restaurant,Work,90
-March,Saturday,Morning,Work/Home Commute,Home,Work,852
-March,Saturday,Afternoon,Going Back to Home,Pub,Home,1748
-March,Saturday,Afternoon,Coming Back From Restaurant,Restaurant,Home,659
-March,Saturday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,341
-March,Saturday,Afternoon,Coming Back From Restaurant,Restaurant,Work,283
-March,Saturday,Afternoon,Eating,Pub,Restaurant,388
-March,Saturday,Afternoon,Eating,Home,Restaurant,797
-March,Saturday,Afternoon,Eating,Work,Restaurant,280
-March,Saturday,Afternoon,Recreation (Social Gathering),Home,Pub,1663
-March,Saturday,Evening,Going Back to Home,Pub,Home,3467
-March,Saturday,Evening,Recreation (Social Gathering),Home,Pub,3621
-March,Saturday,Evening,Coming Back From Restaurant,Restaurant,Home,1205
-March,Saturday,Evening,Coming Back From Restaurant,Restaurant,Pub,487
-March,Saturday,Evening,Coming Back From Restaurant,Restaurant,Work,259
-March,Saturday,Evening,Eating,Home,Restaurant,1152
-March,Saturday,Evening,Eating,Pub,Restaurant,439
-March,Saturday,Evening,Eating,Work,Restaurant,211
-March,Saturday,Evening,Work/Home Commute,Work,Home,852
-March,Saturday,Night,Going Back to Home,Pub,Home,5182
-March,Saturday,Night,Going Back to Home,Restaurant,Home,94
-March,Saturday,Night,Coming Back From Restaurant,Restaurant,Home,991
-March,Saturday,Night,Coming Back From Restaurant,Restaurant,Pub,537
-March,Saturday,Night,Recreation (Social Gathering),Home,Pub,3623
-March,Saturday,Night,Eating,Pub,Restaurant,514
-March,Saturday,Night,Eating,Home,Restaurant,898
-March,Sunday,Morning,Eating,Home,Restaurant,3515
-March,Sunday,Morning,Eating,Work,Restaurant,120
-March,Sunday,Morning,Eating,Pub,Restaurant,93
-March,Sunday,Morning,Recreation (Social Gathering),Home,Pub,4662
-March,Sunday,Morning,Going Back to Home,Pub,Home,3428
-March,Sunday,Morning,Going Back to Home,Restaurant,Home,162
-March,Sunday,Morning,Coming Back From Restaurant,Restaurant,Home,3267
-March,Sunday,Morning,Coming Back From Restaurant,Restaurant,Pub,47
-March,Sunday,Morning,Coming Back From Restaurant,Restaurant,Work,86
-March,Sunday,Morning,Work/Home Commute,Home,Work,832
-March,Sunday,Afternoon,Going Back to Home,Pub,Home,1484
-March,Sunday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,269
-March,Sunday,Afternoon,Coming Back From Restaurant,Restaurant,Home,740
-March,Sunday,Afternoon,Coming Back From Restaurant,Restaurant,Work,264
-March,Sunday,Afternoon,Eating,Pub,Restaurant,339
-March,Sunday,Afternoon,Eating,Work,Restaurant,302
-March,Sunday,Afternoon,Eating,Home,Restaurant,902
-March,Sunday,Afternoon,Recreation (Social Gathering),Home,Pub,1443
-March,Sunday,Evening,Going Back to Home,Pub,Home,2912
-March,Sunday,Evening,Coming Back From Restaurant,Restaurant,Home,1342
-March,Sunday,Evening,Coming Back From Restaurant,Restaurant,Pub,460
-March,Sunday,Evening,Coming Back From Restaurant,Restaurant,Work,277
-March,Sunday,Evening,Eating,Work,Restaurant,205
-March,Sunday,Evening,Eating,Home,Restaurant,1218
-March,Sunday,Evening,Eating,Pub,Restaurant,404
-March,Sunday,Evening,Recreation (Social Gathering),Home,Pub,3119
-March,Sunday,Evening,Work/Home Commute,Work,Home,824
-March,Sunday,Night,Going Back to Home,Pub,Home,4594
-March,Sunday,Night,Going Back to Home,Restaurant,Home,80
-March,Sunday,Night,Coming Back From Restaurant,Restaurant,Pub,495
-March,Sunday,Night,Coming Back From Restaurant,Restaurant,Home,1041
-March,Sunday,Night,Eating,Pub,Restaurant,472
-March,Sunday,Night,Eating,Home,Restaurant,959
-March,Sunday,Night,Recreation (Social Gathering),Home,Pub,3164
-March,Sunday,Night,Work/Home Commute,Work,Home,8
-March,Monday,Morning,Eating,Home,Restaurant,217
-March,Monday,Morning,Eating,Work,Restaurant,870
-March,Monday,Morning,Eating,Pub,Restaurant,6
-March,Monday,Morning,Coming Back From Restaurant,Restaurant,Pub,7
-March,Monday,Morning,Coming Back From Restaurant,Restaurant,Home,212
-March,Monday,Morning,Coming Back From Restaurant,Restaurant,Work,452
-March,Monday,Morning,Recreation (Social Gathering),Home,Pub,318
-March,Monday,Morning,Going Back to Home,Pub,Home,576
-March,Monday,Morning,Going Back to Home,Restaurant,Home,19
-March,Monday,Morning,Work/Home Commute,Home,Work,6672
-March,Monday,Afternoon,Eating,Work,Restaurant,2627
-March,Monday,Afternoon,Eating,Pub,Restaurant,29
-March,Monday,Afternoon,Eating,Home,Restaurant,36
-March,Monday,Afternoon,Going Back to Home,Pub,Home,109
-March,Monday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,27
-March,Monday,Afternoon,Coming Back From Restaurant,Restaurant,Work,2590
-March,Monday,Afternoon,Coming Back From Restaurant,Restaurant,Home,35
-March,Monday,Afternoon,Recreation (Social Gathering),Home,Pub,108
-March,Monday,Evening,Going Back to Home,Pub,Home,344
-March,Monday,Evening,Eating,Work,Restaurant,1781
-March,Monday,Evening,Eating,Pub,Restaurant,135
-March,Monday,Evening,Eating,Home,Restaurant,617
-March,Monday,Evening,Coming Back From Restaurant,Restaurant,Pub,91
-March,Monday,Evening,Coming Back From Restaurant,Restaurant,Work,2232
-March,Monday,Evening,Coming Back From Restaurant,Restaurant,Home,408
-March,Monday,Evening,Work/Home Commute,Work,Home,6659
-March,Monday,Evening,Recreation (Social Gathering),Home,Pub,1787
-March,Monday,Night,Going Back to Home,Pub,Home,4132
-March,Monday,Night,Going Back to Home,Restaurant,Home,92
-March,Monday,Night,Coming Back From Restaurant,Restaurant,Pub,482
-March,Monday,Night,Coming Back From Restaurant,Restaurant,Work,4
-March,Monday,Night,Coming Back From Restaurant,Restaurant,Home,1079
-March,Monday,Night,Eating,Pub,Restaurant,474
-March,Monday,Night,Eating,Home,Restaurant,934
-March,Monday,Night,Recreation (Social Gathering),Home,Pub,2978
-March,Monday,Night,Work/Home Commute,Work,Home,13
-April,Friday,Morning,Recreation (Social Gathering),Home,Pub,233
-April,Friday,Morning,Eating,Home,Restaurant,169
-April,Friday,Morning,Eating,Work,Restaurant,931
-April,Friday,Morning,Eating,Pub,Restaurant,20
-April,Friday,Morning,Coming Back From Restaurant,Restaurant,Home,166
-April,Friday,Morning,Coming Back From Restaurant,Restaurant,Work,455
-April,Friday,Morning,Coming Back From Restaurant,Restaurant,Pub,14
-April,Friday,Morning,Going Back to Home,Pub,Home,514
-April,Friday,Morning,Going Back to Home,Restaurant,Home,19
-April,Friday,Morning,Work/Home Commute,Home,Work,7605
-April,Friday,Afternoon,Eating,Work,Restaurant,2980
-April,Friday,Afternoon,Eating,Home,Restaurant,56
-April,Friday,Afternoon,Eating,Pub,Restaurant,13
-April,Friday,Afternoon,Going Back to Home,Pub,Home,75
-April,Friday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,8
-April,Friday,Afternoon,Coming Back From Restaurant,Restaurant,Home,51
-April,Friday,Afternoon,Coming Back From Restaurant,Restaurant,Work,2899
-April,Friday,Afternoon,Recreation (Social Gathering),Home,Pub,58
-April,Friday,Evening,Eating,Work,Restaurant,2068
-April,Friday,Evening,Eating,Pub,Restaurant,148
-April,Friday,Evening,Eating,Home,Restaurant,715
-April,Friday,Evening,Going Back to Home,Pub,Home,280
-April,Friday,Evening,Coming Back From Restaurant,Restaurant,Pub,75
-April,Friday,Evening,Coming Back From Restaurant,Restaurant,Work,2623
-April,Friday,Evening,Coming Back From Restaurant,Restaurant,Home,470
-April,Friday,Evening,Work/Home Commute,Work,Home,7583
-April,Friday,Evening,Recreation (Social Gathering),Home,Pub,1849
-April,Friday,Night,Going Back to Home,Pub,Home,4399
-April,Friday,Night,Going Back to Home,Restaurant,Home,115
-April,Friday,Night,Coming Back From Restaurant,Restaurant,Pub,563
-April,Friday,Night,Coming Back From Restaurant,Restaurant,Home,1284
-April,Friday,Night,Coming Back From Restaurant,Restaurant,Work,2
-April,Friday,Night,Eating,Home,Restaurant,1117
-April,Friday,Night,Eating,Pub,Restaurant,526
-April,Friday,Night,Recreation (Social Gathering),Home,Pub,3198
-April,Friday,Night,Work/Home Commute,Work,Home,22
-April,Saturday,Morning,Eating,Home,Restaurant,4312
-April,Saturday,Morning,Eating,Work,Restaurant,174
-April,Saturday,Morning,Eating,Pub,Restaurant,148
-April,Saturday,Morning,Recreation (Social Gathering),Home,Pub,5105
-April,Saturday,Morning,Coming Back From Restaurant,Restaurant,Home,4006
-April,Saturday,Morning,Coming Back From Restaurant,Restaurant,Pub,70
-April,Saturday,Morning,Coming Back From Restaurant,Restaurant,Work,111
-April,Saturday,Morning,Going Back to Home,Pub,Home,3685
-April,Saturday,Morning,Going Back to Home,Restaurant,Home,200
-April,Saturday,Morning,Work/Home Commute,Home,Work,1069
-April,Saturday,Afternoon,Going Back to Home,Pub,Home,1660
-April,Saturday,Afternoon,Coming Back From Restaurant,Restaurant,Home,899
-April,Saturday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,355
-April,Saturday,Afternoon,Coming Back From Restaurant,Restaurant,Work,353
-April,Saturday,Afternoon,Eating,Pub,Restaurant,366
-April,Saturday,Afternoon,Eating,Home,Restaurant,1160
-April,Saturday,Afternoon,Eating,Work,Restaurant,350
-April,Saturday,Afternoon,Recreation (Social Gathering),Home,Pub,1612
-April,Saturday,Evening,Going Back to Home,Pub,Home,3197
-April,Saturday,Evening,Eating,Home,Restaurant,1623
-April,Saturday,Evening,Eating,Work,Restaurant,273
-April,Saturday,Evening,Eating,Pub,Restaurant,443
-April,Saturday,Evening,Coming Back From Restaurant,Restaurant,Pub,460
-April,Saturday,Evening,Coming Back From Restaurant,Restaurant,Home,1802
-April,Saturday,Evening,Coming Back From Restaurant,Restaurant,Work,333
-April,Saturday,Evening,Recreation (Social Gathering),Home,Pub,3336
-April,Saturday,Evening,Work/Home Commute,Work,Home,1069
-April,Saturday,Night,Going Back to Home,Pub,Home,4853
-April,Saturday,Night,Going Back to Home,Restaurant,Home,115
-April,Saturday,Night,Coming Back From Restaurant,Restaurant,Home,1370
-April,Saturday,Night,Coming Back From Restaurant,Restaurant,Pub,494
-April,Saturday,Night,Eating,Home,Restaurant,1282
-April,Saturday,Night,Eating,Pub,Restaurant,455
-April,Saturday,Night,Recreation (Social Gathering),Home,Pub,3315
-April,Sunday,Morning,Eating,Home,Restaurant,4000
-April,Sunday,Morning,Eating,Work,Restaurant,133
-April,Sunday,Morning,Eating,Pub,Restaurant,69
-April,Sunday,Morning,Recreation (Social Gathering),Home,Pub,4141
-April,Sunday,Morning,Coming Back From Restaurant,Restaurant,Home,3708
-April,Sunday,Morning,Coming Back From Restaurant,Restaurant,Pub,39
-April,Sunday,Morning,Coming Back From Restaurant,Restaurant,Work,94
-April,Sunday,Morning,Going Back to Home,Pub,Home,3023
-April,Sunday,Morning,Going Back to Home,Restaurant,Home,190
-April,Sunday,Morning,Work/Home Commute,Home,Work,936
-April,Sunday,Afternoon,Going Back to Home,Pub,Home,1256
-April,Sunday,Afternoon,Eating,Pub,Restaurant,289
-April,Sunday,Afternoon,Eating,Home,Restaurant,1071
-April,Sunday,Afternoon,Eating,Work,Restaurant,341
-April,Sunday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,245
-April,Sunday,Afternoon,Coming Back From Restaurant,Restaurant,Home,905
-April,Sunday,Afternoon,Coming Back From Restaurant,Restaurant,Work,299
-April,Sunday,Afternoon,Recreation (Social Gathering),Home,Pub,1223
-April,Sunday,Evening,Going Back to Home,Pub,Home,2544
-April,Sunday,Evening,Eating,Home,Restaurant,1493
-April,Sunday,Evening,Eating,Work,Restaurant,230
-April,Sunday,Evening,Eating,Pub,Restaurant,389
-April,Sunday,Evening,Coming Back From Restaurant,Restaurant,Pub,403
-April,Sunday,Evening,Coming Back From Restaurant,Restaurant,Home,1585
-April,Sunday,Evening,Coming Back From Restaurant,Restaurant,Work,311
-April,Sunday,Evening,Recreation (Social Gathering),Home,Pub,2702
-April,Sunday,Evening,Work/Home Commute,Work,Home,926
-April,Sunday,Night,Going Back to Home,Pub,Home,3968
-April,Sunday,Night,Going Back to Home,Restaurant,Home,109
-April,Sunday,Night,Eating,Pub,Restaurant,401
-April,Sunday,Night,Eating,Home,Restaurant,1226
-April,Sunday,Night,Coming Back From Restaurant,Restaurant,Home,1327
-April,Sunday,Night,Coming Back From Restaurant,Restaurant,Pub,429
-April,Sunday,Night,Recreation (Social Gathering),Home,Pub,2739
-April,Sunday,Night,Work/Home Commute,Work,Home,10
-April,Monday,Morning,Eating,Home,Restaurant,219
-April,Monday,Morning,Eating,Work,Restaurant,866
-April,Monday,Morning,Eating,Pub,Restaurant,3
-April,Monday,Morning,Recreation (Social Gathering),Home,Pub,254
-April,Monday,Morning,Going Back to Home,Pub,Home,457
-April,Monday,Morning,Going Back to Home,Restaurant,Home,22
-April,Monday,Morning,Coming Back From Restaurant,Restaurant,Home,215
-April,Monday,Morning,Coming Back From Restaurant,Restaurant,Work,447
-April,Monday,Morning,Coming Back From Restaurant,Restaurant,Pub,6
-April,Monday,Morning,Work/Home Commute,Home,Work,6672
-April,Monday,Afternoon,Eating,Work,Restaurant,2638
-April,Monday,Afternoon,Eating,Home,Restaurant,43
-April,Monday,Afternoon,Eating,Pub,Restaurant,29
-April,Monday,Afternoon,Going Back to Home,Pub,Home,82
-April,Monday,Afternoon,Recreation (Social Gathering),Home,Pub,89
-April,Monday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,18
-April,Monday,Afternoon,Coming Back From Restaurant,Restaurant,Work,2601
-April,Monday,Afternoon,Coming Back From Restaurant,Restaurant,Home,30
-April,Monday,Evening,Going Back to Home,Pub,Home,271
-April,Monday,Evening,Eating,Work,Restaurant,1776
-April,Monday,Evening,Eating,Pub,Restaurant,116
-April,Monday,Evening,Eating,Home,Restaurant,668
-April,Monday,Evening,Coming Back From Restaurant,Restaurant,Pub,72
-April,Monday,Evening,Coming Back From Restaurant,Restaurant,Work,2230
-April,Monday,Evening,Coming Back From Restaurant,Restaurant,Home,470
-April,Monday,Evening,Work/Home Commute,Work,Home,6662
-April,Monday,Evening,Recreation (Social Gathering),Home,Pub,1420
-April,Monday,Night,Eating,Pub,Restaurant,382
-April,Monday,Night,Eating,Home,Restaurant,1035
-April,Monday,Night,Going Back to Home,Pub,Home,3264
-April,Monday,Night,Going Back to Home,Restaurant,Home,104
-April,Monday,Night,Coming Back From Restaurant,Restaurant,Pub,408
-April,Monday,Night,Coming Back From Restaurant,Restaurant,Home,1159
-April,Monday,Night,Coming Back From Restaurant,Restaurant,Work,2
-April,Monday,Night,Recreation (Social Gathering),Home,Pub,2368
-April,Monday,Night,Work/Home Commute,Work,Home,10
-April,Tuesday,Morning,Eating,Home,Restaurant,219
-April,Tuesday,Morning,Eating,Work,Restaurant,838
-April,Tuesday,Morning,Eating,Pub,Restaurant,7
-April,Tuesday,Morning,Recreation (Social Gathering),Home,Pub,227
-April,Tuesday,Morning,Coming Back From Restaurant,Restaurant,Pub,9
-April,Tuesday,Morning,Coming Back From Restaurant,Restaurant,Home,208
-April,Tuesday,Morning,Coming Back From Restaurant,Restaurant,Work,403
-April,Tuesday,Morning,Work/Home Commute,Home,Work,6680
-April,Tuesday,Morning,Going Back to Home,Pub,Home,469
-April,Tuesday,Morning,Going Back to Home,Restaurant,Home,13
-April,Tuesday,Afternoon,Going Back to Home,Pub,Home,74
-April,Tuesday,Afternoon,Eating,Work,Restaurant,2669
-April,Tuesday,Afternoon,Eating,Home,Restaurant,34
-April,Tuesday,Afternoon,Eating,Pub,Restaurant,9
-April,Tuesday,Afternoon,Coming Back From Restaurant,Restaurant,Home,32
-April,Tuesday,Afternoon,Coming Back From Restaurant,Restaurant,Work,2649
-April,Tuesday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,8
-April,Tuesday,Afternoon,Recreation (Social Gathering),Home,Pub,69
-April,Tuesday,Evening,Going Back to Home,Pub,Home,213
-April,Tuesday,Evening,Eating,Work,Restaurant,1772
-April,Tuesday,Evening,Eating,Home,Restaurant,705
-April,Tuesday,Evening,Eating,Pub,Restaurant,110
-April,Tuesday,Evening,Coming Back From Restaurant,Restaurant,Home,486
-April,Tuesday,Evening,Coming Back From Restaurant,Restaurant,Pub,58
-April,Tuesday,Evening,Coming Back From Restaurant,Restaurant,Work,2222
-April,Tuesday,Evening,Work/Home Commute,Work,Home,6658
-April,Tuesday,Evening,Recreation (Social Gathering),Home,Pub,1203
-April,Tuesday,Night,Going Back to Home,Pub,Home,2782
-April,Tuesday,Night,Going Back to Home,Restaurant,Home,102
-April,Tuesday,Night,Coming Back From Restaurant,Restaurant,Pub,354
-April,Tuesday,Night,Coming Back From Restaurant,Restaurant,Home,1209
-April,Tuesday,Night,Coming Back From Restaurant,Restaurant,Work,5
-April,Tuesday,Night,Eating,Home,Restaurant,1070
-April,Tuesday,Night,Eating,Pub,Restaurant,328
-April,Tuesday,Night,Recreation (Social Gathering),Home,Pub,2022
-April,Tuesday,Night,Work/Home Commute,Work,Home,22
-April,Wednesday,Morning,Recreation (Social Gathering),Home,Pub,230
-April,Wednesday,Morning,Eating,Home,Restaurant,209
-April,Wednesday,Morning,Eating,Work,Restaurant,803
-April,Wednesday,Morning,Eating,Pub,Restaurant,18
-April,Wednesday,Morning,Going Back to Home,Pub,Home,423
-April,Wednesday,Morning,Going Back to Home,Restaurant,Home,20
-April,Wednesday,Morning,Coming Back From Restaurant,Restaurant,Home,208
-April,Wednesday,Morning,Coming Back From Restaurant,Restaurant,Work,372
-April,Wednesday,Morning,Coming Back From Restaurant,Restaurant,Pub,5
-April,Wednesday,Morning,Work/Home Commute,Home,Work,6664
-April,Wednesday,Afternoon,Eating,Work,Restaurant,2681
-April,Wednesday,Afternoon,Eating,Home,Restaurant,38
-April,Wednesday,Afternoon,Eating,Pub,Restaurant,7
-April,Wednesday,Afternoon,Going Back to Home,Pub,Home,72
-April,Wednesday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,16
-April,Wednesday,Afternoon,Coming Back From Restaurant,Restaurant,Work,2632
-April,Wednesday,Afternoon,Coming Back From Restaurant,Restaurant,Home,35
-April,Wednesday,Afternoon,Recreation (Social Gathering),Home,Pub,65
-April,Wednesday,Evening,Eating,Work,Restaurant,1779
-April,Wednesday,Evening,Eating,Home,Restaurant,683
-April,Wednesday,Evening,Eating,Pub,Restaurant,116
-April,Wednesday,Evening,Going Back to Home,Pub,Home,216
-April,Wednesday,Evening,Coming Back From Restaurant,Restaurant,Home,472
-April,Wednesday,Evening,Coming Back From Restaurant,Restaurant,Work,2257
-April,Wednesday,Evening,Coming Back From Restaurant,Restaurant,Pub,58
-April,Wednesday,Evening,Recreation (Social Gathering),Home,Pub,1250
-April,Wednesday,Evening,Work/Home Commute,Work,Home,6644
-April,Wednesday,Night,Going Back to Home,Pub,Home,2941
-April,Wednesday,Night,Going Back to Home,Restaurant,Home,97
-April,Wednesday,Night,Coming Back From Restaurant,Restaurant,Home,1205
-April,Wednesday,Night,Coming Back From Restaurant,Restaurant,Pub,378
-April,Wednesday,Night,Coming Back From Restaurant,Restaurant,Work,2
-April,Wednesday,Night,Eating,Home,Restaurant,1076
-April,Wednesday,Night,Eating,Pub,Restaurant,349
-April,Wednesday,Night,Recreation (Social Gathering),Home,Pub,2124
-April,Wednesday,Night,Work/Home Commute,Work,Home,20
-April,Thursday,Morning,Coming Back From Restaurant,Restaurant,Pub,14
-April,Thursday,Morning,Coming Back From Restaurant,Restaurant,Home,186
-April,Thursday,Morning,Coming Back From Restaurant,Restaurant,Work,390
-April,Thursday,Morning,Recreation (Social Gathering),Home,Pub,251
-April,Thursday,Morning,Eating,Home,Restaurant,188
-April,Thursday,Morning,Eating,Work,Restaurant,818
-April,Thursday,Morning,Eating,Pub,Restaurant,18
-April,Thursday,Morning,Going Back to Home,Pub,Home,426
-April,Thursday,Morning,Going Back to Home,Restaurant,Home,14
-April,Thursday,Morning,Work/Home Commute,Home,Work,6736
-April,Thursday,Afternoon,Going Back to Home,Pub,Home,72
-April,Thursday,Afternoon,Coming Back From Restaurant,Restaurant,Home,42
-April,Thursday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,14
-April,Thursday,Afternoon,Coming Back From Restaurant,Restaurant,Work,2620
-April,Thursday,Afternoon,Eating,Work,Restaurant,2663
-April,Thursday,Afternoon,Eating,Home,Restaurant,45
-April,Thursday,Afternoon,Eating,Pub,Restaurant,16
-April,Thursday,Afternoon,Recreation (Social Gathering),Home,Pub,71
-April,Thursday,Evening,Eating,Work,Restaurant,1807
-April,Thursday,Evening,Eating,Home,Restaurant,675
-April,Thursday,Evening,Eating,Pub,Restaurant,110
-April,Thursday,Evening,Going Back to Home,Pub,Home,249
-April,Thursday,Evening,Coming Back From Restaurant,Restaurant,Pub,65
-April,Thursday,Evening,Coming Back From Restaurant,Restaurant,Home,434
-April,Thursday,Evening,Coming Back From Restaurant,Restaurant,Work,2273
-April,Thursday,Evening,Work/Home Commute,Work,Home,6714
-April,Thursday,Evening,Recreation (Social Gathering),Home,Pub,1450
-April,Thursday,Night,Work/Home Commute,Work,Home,22
-April,Thursday,Night,Going Back to Home,Pub,Home,3416
-April,Thursday,Night,Going Back to Home,Restaurant,Home,89
-April,Thursday,Night,Coming Back From Restaurant,Restaurant,Home,1193
-April,Thursday,Night,Coming Back From Restaurant,Restaurant,Pub,443
-April,Thursday,Night,Coming Back From Restaurant,Restaurant,Work,5
-April,Thursday,Night,Eating,Home,Restaurant,1013
-April,Thursday,Night,Eating,Pub,Restaurant,424
-April,Thursday,Night,Recreation (Social Gathering),Home,Pub,2473
-May,Sunday,Morning,Eating,Home,Restaurant,3576
-May,Sunday,Morning,Eating,Work,Restaurant,114
-May,Sunday,Morning,Eating,Pub,Restaurant,66
-May,Sunday,Morning,Recreation (Social Gathering),Home,Pub,3615
-May,Sunday,Morning,Coming Back From Restaurant,Restaurant,Home,3333
-May,Sunday,Morning,Coming Back From Restaurant,Restaurant,Pub,28
-May,Sunday,Morning,Coming Back From Restaurant,Restaurant,Work,79
-May,Sunday,Morning,Going Back to Home,Pub,Home,2646
-May,Sunday,Morning,Going Back to Home,Restaurant,Home,153
-May,Sunday,Morning,Work/Home Commute,Home,Work,832
-May,Sunday,Afternoon,Going Back to Home,Pub,Home,1126
-May,Sunday,Afternoon,Recreation (Social Gathering),Home,Pub,1083
-May,Sunday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,213
-May,Sunday,Afternoon,Coming Back From Restaurant,Restaurant,Home,737
-May,Sunday,Afternoon,Coming Back From Restaurant,Restaurant,Work,267
-May,Sunday,Afternoon,Eating,Work,Restaurant,304
-May,Sunday,Afternoon,Eating,Home,Restaurant,880
-May,Sunday,Afternoon,Eating,Pub,Restaurant,260
-May,Sunday,Evening,Going Back to Home,Pub,Home,2234
-May,Sunday,Evening,Recreation (Social Gathering),Home,Pub,2368
-May,Sunday,Evening,Coming Back From Restaurant,Restaurant,Home,1390
-May,Sunday,Evening,Coming Back From Restaurant,Restaurant,Pub,369
-May,Sunday,Evening,Coming Back From Restaurant,Restaurant,Work,276
-May,Sunday,Evening,Eating,Work,Restaurant,204
-May,Sunday,Evening,Eating,Home,Restaurant,1315
-May,Sunday,Evening,Eating,Pub,Restaurant,320
-May,Sunday,Evening,Work/Home Commute,Work,Home,823
-May,Sunday,Night,Going Back to Home,Pub,Home,3455
-May,Sunday,Night,Going Back to Home,Restaurant,Home,80
-May,Sunday,Night,Eating,Pub,Restaurant,357
-May,Sunday,Night,Eating,Home,Restaurant,988
-May,Sunday,Night,Coming Back From Restaurant,Restaurant,Home,1108
-May,Sunday,Night,Coming Back From Restaurant,Restaurant,Pub,363
-May,Sunday,Night,Recreation (Social Gathering),Home,Pub,2399
-May,Sunday,Night,Work/Home Commute,Work,Home,9
-May,Monday,Morning,Eating,Home,Restaurant,225
-May,Monday,Morning,Eating,Work,Restaurant,976
-May,Monday,Morning,Recreation (Social Gathering),Home,Pub,233
-May,Monday,Morning,Coming Back From Restaurant,Restaurant,Home,218
-May,Monday,Morning,Coming Back From Restaurant,Restaurant,Work,499
-May,Monday,Morning,Coming Back From Restaurant,Restaurant,Pub,6
-May,Monday,Morning,Work/Home Commute,Home,Work,7506
-May,Monday,Morning,Going Back to Home,Pub,Home,483
-May,Monday,Morning,Going Back to Home,Restaurant,Home,23
-May,Monday,Afternoon,Eating,Work,Restaurant,2965
-May,Monday,Afternoon,Eating,Home,Restaurant,50
-May,Monday,Afternoon,Eating,Pub,Restaurant,28
-May,Monday,Afternoon,Recreation (Social Gathering),Home,Pub,70
-May,Monday,Afternoon,Going Back to Home,Pub,Home,66
-May,Monday,Afternoon,Coming Back From Restaurant,Restaurant,Home,37
-May,Monday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,22
-May,Monday,Afternoon,Coming Back From Restaurant,Restaurant,Work,2929
-May,Monday,Evening,Eating,Work,Restaurant,2008
-May,Monday,Evening,Eating,Home,Restaurant,778
-May,Monday,Evening,Eating,Pub,Restaurant,106
-May,Monday,Evening,Going Back to Home,Pub,Home,265
-May,Monday,Evening,Work/Home Commute,Work,Home,7494
-May,Monday,Evening,Coming Back From Restaurant,Restaurant,Work,2519
-May,Monday,Evening,Coming Back From Restaurant,Restaurant,Home,521
-May,Monday,Evening,Coming Back From Restaurant,Restaurant,Pub,58
-May,Monday,Evening,Recreation (Social Gathering),Home,Pub,1494
-May,Monday,Night,Going Back to Home,Pub,Home,3469
-May,Monday,Night,Going Back to Home,Restaurant,Home,107
-May,Monday,Night,Eating,Home,Restaurant,1199
-May,Monday,Night,Eating,Pub,Restaurant,413
-May,Monday,Night,Recreation (Social Gathering),Home,Pub,2502
-May,Monday,Night,Coming Back From Restaurant,Restaurant,Pub,430
-May,Monday,Night,Coming Back From Restaurant,Restaurant,Home,1374
-May,Monday,Night,Coming Back From Restaurant,Restaurant,Work,2
-May,Monday,Night,Work/Home Commute,Work,Home,12
-May,Tuesday,Morning,Recreation (Social Gathering),Home,Pub,205
-May,Tuesday,Morning,Eating,Home,Restaurant,247
-May,Tuesday,Morning,Eating,Work,Restaurant,967
-May,Tuesday,Morning,Eating,Pub,Restaurant,14
-May,Tuesday,Morning,Coming Back From Restaurant,Restaurant,Home,243
-May,Tuesday,Morning,Coming Back From Restaurant,Restaurant,Work,469
-May,Tuesday,Morning,Coming Back From Restaurant,Restaurant,Pub,14
-May,Tuesday,Morning,Going Back to Home,Pub,Home,447
-May,Tuesday,Morning,Going Back to Home,Restaurant,Home,28
-May,Tuesday,Morning,Work/Home Commute,Home,Work,7515
-May,Tuesday,Afternoon,Eating,Work,Restaurant,3006
-May,Tuesday,Afternoon,Eating,Pub,Restaurant,10
-May,Tuesday,Afternoon,Eating,Home,Restaurant,33
-May,Tuesday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,11
-May,Tuesday,Afternoon,Coming Back From Restaurant,Restaurant,Work,2990
-May,Tuesday,Afternoon,Coming Back From Restaurant,Restaurant,Home,22
-May,Tuesday,Afternoon,Going Back to Home,Pub,Home,67
-May,Tuesday,Afternoon,Recreation (Social Gathering),Home,Pub,73
-May,Tuesday,Evening,Eating,Work,Restaurant,1990
-May,Tuesday,Evening,Eating,Home,Restaurant,796
-May,Tuesday,Evening,Eating,Pub,Restaurant,108
-May,Tuesday,Evening,Going Back to Home,Pub,Home,226
-May,Tuesday,Evening,Work/Home Commute,Work,Home,7483
-May,Tuesday,Evening,Coming Back From Restaurant,Restaurant,Work,2499
-May,Tuesday,Evening,Coming Back From Restaurant,Restaurant,Pub,66
-May,Tuesday,Evening,Coming Back From Restaurant,Restaurant,Home,541
-May,Tuesday,Evening,Recreation (Social Gathering),Home,Pub,1199
-May,Tuesday,Night,Going Back to Home,Pub,Home,2813
-May,Tuesday,Night,Going Back to Home,Restaurant,Home,108
-May,Tuesday,Night,Eating,Home,Restaurant,1249
-May,Tuesday,Night,Eating,Pub,Restaurant,297
-May,Tuesday,Night,Coming Back From Restaurant,Restaurant,Work,5
-May,Tuesday,Night,Coming Back From Restaurant,Restaurant,Pub,313
-May,Tuesday,Night,Coming Back From Restaurant,Restaurant,Home,1414
-May,Tuesday,Night,Recreation (Social Gathering),Home,Pub,2062
-May,Tuesday,Night,Work/Home Commute,Work,Home,27
-May,Wednesday,Morning,Recreation (Social Gathering),Home,Pub,178
-May,Wednesday,Morning,Eating,Home,Restaurant,201
-May,Wednesday,Morning,Eating,Work,Restaurant,798
-May,Wednesday,Morning,Eating,Pub,Restaurant,15
-May,Wednesday,Morning,Going Back to Home,Pub,Home,347
-May,Wednesday,Morning,Going Back to Home,Restaurant,Home,18
-May,Wednesday,Morning,Coming Back From Restaurant,Restaurant,Home,195
-May,Wednesday,Morning,Coming Back From Restaurant,Restaurant,Work,372
-May,Wednesday,Morning,Coming Back From Restaurant,Restaurant,Pub,8
-May,Wednesday,Morning,Work/Home Commute,Home,Work,6664
-May,Wednesday,Afternoon,Eating,Work,Restaurant,2681
-May,Wednesday,Afternoon,Eating,Home,Restaurant,41
-May,Wednesday,Afternoon,Eating,Pub,Restaurant,4
-May,Wednesday,Afternoon,Going Back to Home,Pub,Home,70
-May,Wednesday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,8
-May,Wednesday,Afternoon,Coming Back From Restaurant,Restaurant,Home,34
-May,Wednesday,Afternoon,Coming Back From Restaurant,Restaurant,Work,2628
-May,Wednesday,Afternoon,Recreation (Social Gathering),Home,Pub,53
-May,Wednesday,Evening,Eating,Work,Restaurant,1790
-May,Wednesday,Evening,Eating,Home,Restaurant,687
-May,Wednesday,Evening,Eating,Pub,Restaurant,96
-May,Wednesday,Evening,Going Back to Home,Pub,Home,171
-May,Wednesday,Evening,Work/Home Commute,Work,Home,6127
-May,Wednesday,Evening,Coming Back From Restaurant,Restaurant,Work,2267
-May,Wednesday,Evening,Coming Back From Restaurant,Restaurant,Home,410
-May,Wednesday,Evening,Coming Back From Restaurant,Restaurant,Pub,56
-May,Wednesday,Evening,Recreation (Social Gathering),Home,Pub,1018
-May,Wednesday,Night,Going Back to Home,Pub,Home,2330
-May,Wednesday,Night,Going Back to Home,Restaurant,Home,73
-May,Wednesday,Night,Eating,Home,Restaurant,1091
-May,Wednesday,Night,Eating,Pub,Restaurant,254
-May,Wednesday,Night,Coming Back From Restaurant,Restaurant,Pub,272
-May,Wednesday,Night,Coming Back From Restaurant,Restaurant,Home,1098
-May,Wednesday,Night,Coming Back From Restaurant,Restaurant,Work,2
-May,Wednesday,Night,Recreation (Social Gathering),Home,Pub,1742
-May,Wednesday,Night,Work/Home Commute,Work,Home,20
-May,Thursday,Morning,Eating,Home,Restaurant,147
-May,Thursday,Morning,Eating,Work,Restaurant,722
-May,Thursday,Morning,Eating,Pub,Restaurant,25
-May,Thursday,Morning,Recreation (Social Gathering),Home,Pub,227
-May,Thursday,Morning,Going Back to Home,Pub,Home,332
-May,Thursday,Morning,Going Back to Home,Restaurant,Home,15
-May,Thursday,Morning,Work/Home Commute,Home,Work,5894
-May,Thursday,Morning,Coming Back From Restaurant,Restaurant,Home,148
-May,Thursday,Morning,Coming Back From Restaurant,Restaurant,Pub,18
-May,Thursday,Morning,Coming Back From Restaurant,Restaurant,Work,346
-May,Thursday,Afternoon,Going Back to Home,Pub,Home,72
-May,Thursday,Afternoon,Eating,Work,Restaurant,2333
-May,Thursday,Afternoon,Eating,Home,Restaurant,38
-May,Thursday,Afternoon,Eating,Pub,Restaurant,13
-May,Thursday,Afternoon,Recreation (Social Gathering),Home,Pub,68
-May,Thursday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,17
-May,Thursday,Afternoon,Coming Back From Restaurant,Restaurant,Work,2297
-May,Thursday,Afternoon,Coming Back From Restaurant,Restaurant,Home,29
-May,Thursday,Evening,Eating,Work,Restaurant,1584
-May,Thursday,Evening,Eating,Home,Restaurant,565
-May,Thursday,Evening,Eating,Pub,Restaurant,72
-May,Thursday,Evening,Coming Back From Restaurant,Restaurant,Pub,36
-May,Thursday,Evening,Coming Back From Restaurant,Restaurant,Work,1993
-May,Thursday,Evening,Coming Back From Restaurant,Restaurant,Home,387
-May,Thursday,Evening,Going Back to Home,Pub,Home,208
-May,Thursday,Evening,Work/Home Commute,Work,Home,5876
-May,Thursday,Evening,Recreation (Social Gathering),Home,Pub,1118
-May,Thursday,Night,Going Back to Home,Pub,Home,2577
-May,Thursday,Night,Going Back to Home,Restaurant,Home,88
-May,Thursday,Night,Coming Back From Restaurant,Restaurant,Home,1062
+March,Saturday,Morning,Coming Back From Restaurant,Restaurant,Home,1587
+March,Saturday,Morning,Coming Back From Restaurant,Restaurant,Pub,39
+March,Saturday,Morning,Coming Back From Restaurant,Restaurant,Work,45
+March,Saturday,Morning,Work/Home Commute,Home,Work,424
+March,Saturday,Afternoon,Going Back to Home,Pub,Home,1216
+March,Saturday,Afternoon,Coming Back From Restaurant,Restaurant,Home,243
+March,Saturday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,243
+March,Saturday,Afternoon,Coming Back From Restaurant,Restaurant,Work,141
+March,Saturday,Afternoon,Eating,Pub,Restaurant,288
+March,Saturday,Afternoon,Eating,Home,Restaurant,303
+March,Saturday,Afternoon,Eating,Work,Restaurant,140
+March,Saturday,Afternoon,Recreation (Social Gathering),Home,Pub,1150
+March,Saturday,Evening,Going Back to Home,Pub,Home,2405
+March,Saturday,Evening,Recreation (Social Gathering),Home,Pub,2511
+March,Saturday,Evening,Coming Back From Restaurant,Restaurant,Home,521
+March,Saturday,Evening,Coming Back From Restaurant,Restaurant,Pub,342
+March,Saturday,Evening,Coming Back From Restaurant,Restaurant,Work,127
+March,Saturday,Evening,Eating,Home,Restaurant,493
+March,Saturday,Evening,Eating,Pub,Restaurant,302
+March,Saturday,Evening,Eating,Work,Restaurant,103
+March,Saturday,Evening,Work/Home Commute,Work,Home,424
+March,Saturday,Night,Going Back to Home,Pub,Home,3522
+March,Saturday,Night,Going Back to Home,Restaurant,Home,48
+March,Saturday,Night,Coming Back From Restaurant,Restaurant,Home,375
+March,Saturday,Night,Coming Back From Restaurant,Restaurant,Pub,384
+March,Saturday,Night,Recreation (Social Gathering),Home,Pub,2435
+March,Saturday,Night,Eating,Pub,Restaurant,368
+March,Saturday,Night,Eating,Home,Restaurant,335
+March,Sunday,Morning,Eating,Home,Restaurant,1738
+March,Sunday,Morning,Eating,Work,Restaurant,57
+March,Sunday,Morning,Eating,Pub,Restaurant,58
+March,Sunday,Morning,Recreation (Social Gathering),Home,Pub,2801
+March,Sunday,Morning,Going Back to Home,Pub,Home,2081
+March,Sunday,Morning,Going Back to Home,Restaurant,Home,77
+March,Sunday,Morning,Coming Back From Restaurant,Restaurant,Home,1620
+March,Sunday,Morning,Coming Back From Restaurant,Restaurant,Pub,32
+March,Sunday,Morning,Coming Back From Restaurant,Restaurant,Work,41
+March,Sunday,Morning,Work/Home Commute,Home,Work,416
+March,Sunday,Afternoon,Going Back to Home,Pub,Home,899
+March,Sunday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,159
+March,Sunday,Afternoon,Coming Back From Restaurant,Restaurant,Home,344
+March,Sunday,Afternoon,Coming Back From Restaurant,Restaurant,Work,131
+March,Sunday,Afternoon,Eating,Pub,Restaurant,210
+March,Sunday,Afternoon,Eating,Work,Restaurant,151
+March,Sunday,Afternoon,Eating,Home,Restaurant,424
+March,Sunday,Afternoon,Recreation (Social Gathering),Home,Pub,884
+March,Sunday,Evening,Going Back to Home,Pub,Home,1768
+March,Sunday,Evening,Coming Back From Restaurant,Restaurant,Home,620
+March,Sunday,Evening,Coming Back From Restaurant,Restaurant,Pub,299
+March,Sunday,Evening,Coming Back From Restaurant,Restaurant,Work,139
+March,Sunday,Evening,Eating,Work,Restaurant,103
+March,Sunday,Evening,Eating,Home,Restaurant,557
+March,Sunday,Evening,Eating,Pub,Restaurant,263
+March,Sunday,Evening,Recreation (Social Gathering),Home,Pub,1877
+March,Sunday,Evening,Work/Home Commute,Work,Home,412
+March,Sunday,Night,Going Back to Home,Pub,Home,2787
+March,Sunday,Night,Going Back to Home,Restaurant,Home,39
+March,Sunday,Night,Coming Back From Restaurant,Restaurant,Pub,283
+March,Sunday,Night,Coming Back From Restaurant,Restaurant,Home,477
+March,Sunday,Night,Eating,Pub,Restaurant,268
+March,Sunday,Night,Eating,Home,Restaurant,438
+March,Sunday,Night,Recreation (Social Gathering),Home,Pub,1929
+March,Sunday,Night,Work/Home Commute,Work,Home,4
+March,Monday,Morning,Eating,Home,Restaurant,109
+March,Monday,Morning,Eating,Work,Restaurant,433
+March,Monday,Morning,Eating,Pub,Restaurant,4
+March,Monday,Morning,Coming Back From Restaurant,Restaurant,Pub,4
+March,Monday,Morning,Coming Back From Restaurant,Restaurant,Home,107
+March,Monday,Morning,Coming Back From Restaurant,Restaurant,Work,225
+March,Monday,Morning,Recreation (Social Gathering),Home,Pub,195
+March,Monday,Morning,Going Back to Home,Pub,Home,349
+March,Monday,Morning,Going Back to Home,Restaurant,Home,12
+March,Monday,Morning,Work/Home Commute,Home,Work,3336
+March,Monday,Afternoon,Eating,Work,Restaurant,1313
+March,Monday,Afternoon,Eating,Pub,Restaurant,15
+March,Monday,Afternoon,Eating,Home,Restaurant,15
+March,Monday,Afternoon,Going Back to Home,Pub,Home,71
+March,Monday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,15
+March,Monday,Afternoon,Coming Back From Restaurant,Restaurant,Work,1294
+March,Monday,Afternoon,Coming Back From Restaurant,Restaurant,Home,12
+March,Monday,Afternoon,Recreation (Social Gathering),Home,Pub,69
+March,Monday,Evening,Going Back to Home,Pub,Home,208
+March,Monday,Evening,Eating,Work,Restaurant,889
+March,Monday,Evening,Eating,Pub,Restaurant,86
+March,Monday,Evening,Eating,Home,Restaurant,287
+March,Monday,Evening,Coming Back From Restaurant,Restaurant,Pub,54
+March,Monday,Evening,Coming Back From Restaurant,Restaurant,Work,1113
+March,Monday,Evening,Coming Back From Restaurant,Restaurant,Home,189
+March,Monday,Evening,Work/Home Commute,Work,Home,3328
+March,Monday,Evening,Recreation (Social Gathering),Home,Pub,1103
+March,Monday,Night,Going Back to Home,Pub,Home,2615
+March,Monday,Night,Going Back to Home,Restaurant,Home,42
+March,Monday,Night,Coming Back From Restaurant,Restaurant,Pub,307
+March,Monday,Night,Coming Back From Restaurant,Restaurant,Work,3
+March,Monday,Night,Coming Back From Restaurant,Restaurant,Home,470
+March,Monday,Night,Eating,Pub,Restaurant,294
+March,Monday,Night,Eating,Home,Restaurant,396
+March,Monday,Night,Recreation (Social Gathering),Home,Pub,1905
+March,Monday,Night,Work/Home Commute,Work,Home,8
+April,Friday,Morning,Recreation (Social Gathering),Home,Pub,154
+April,Friday,Morning,Eating,Home,Restaurant,96
+April,Friday,Morning,Eating,Work,Restaurant,520
+April,Friday,Morning,Eating,Pub,Restaurant,10
+April,Friday,Morning,Coming Back From Restaurant,Restaurant,Home,95
+April,Friday,Morning,Coming Back From Restaurant,Restaurant,Work,257
+April,Friday,Morning,Coming Back From Restaurant,Restaurant,Pub,8
+April,Friday,Morning,Going Back to Home,Pub,Home,347
+April,Friday,Morning,Going Back to Home,Restaurant,Home,11
+April,Friday,Morning,Work/Home Commute,Home,Work,4225
+April,Friday,Afternoon,Eating,Work,Restaurant,1652
+April,Friday,Afternoon,Eating,Home,Restaurant,28
+April,Friday,Afternoon,Eating,Pub,Restaurant,8
+April,Friday,Afternoon,Going Back to Home,Pub,Home,51
+April,Friday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,4
+April,Friday,Afternoon,Coming Back From Restaurant,Restaurant,Home,28
+April,Friday,Afternoon,Coming Back From Restaurant,Restaurant,Work,1606
+April,Friday,Afternoon,Recreation (Social Gathering),Home,Pub,39
+April,Friday,Evening,Eating,Work,Restaurant,1147
+April,Friday,Evening,Eating,Pub,Restaurant,86
+April,Friday,Evening,Eating,Home,Restaurant,380
+April,Friday,Evening,Going Back to Home,Pub,Home,180
+April,Friday,Evening,Coming Back From Restaurant,Restaurant,Pub,48
+April,Friday,Evening,Coming Back From Restaurant,Restaurant,Work,1455
+April,Friday,Evening,Coming Back From Restaurant,Restaurant,Home,246
+April,Friday,Evening,Work/Home Commute,Work,Home,4212
+April,Friday,Evening,Recreation (Social Gathering),Home,Pub,1209
+April,Friday,Night,Going Back to Home,Pub,Home,2879
+April,Friday,Night,Going Back to Home,Restaurant,Home,57
+April,Friday,Night,Coming Back From Restaurant,Restaurant,Pub,374
+April,Friday,Night,Coming Back From Restaurant,Restaurant,Home,691
+April,Friday,Night,Coming Back From Restaurant,Restaurant,Work,1
+April,Friday,Night,Eating,Home,Restaurant,594
+April,Friday,Night,Eating,Pub,Restaurant,360
+April,Friday,Night,Recreation (Social Gathering),Home,Pub,2083
+April,Friday,Night,Work/Home Commute,Work,Home,13
+April,Saturday,Morning,Eating,Home,Restaurant,2131
+April,Saturday,Morning,Eating,Work,Restaurant,84
+April,Saturday,Morning,Eating,Pub,Restaurant,80
+April,Saturday,Morning,Recreation (Social Gathering),Home,Pub,2948
+April,Saturday,Morning,Coming Back From Restaurant,Restaurant,Home,1995
+April,Saturday,Morning,Coming Back From Restaurant,Restaurant,Pub,37
+April,Saturday,Morning,Coming Back From Restaurant,Restaurant,Work,53
+April,Saturday,Morning,Going Back to Home,Pub,Home,2119
+April,Saturday,Morning,Going Back to Home,Restaurant,Home,99
+April,Saturday,Morning,Work/Home Commute,Home,Work,534
+April,Saturday,Afternoon,Going Back to Home,Pub,Home,960
+April,Saturday,Afternoon,Coming Back From Restaurant,Restaurant,Home,421
+April,Saturday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,214
+April,Saturday,Afternoon,Coming Back From Restaurant,Restaurant,Work,176
+April,Saturday,Afternoon,Eating,Pub,Restaurant,234
+April,Saturday,Afternoon,Eating,Home,Restaurant,533
+April,Saturday,Afternoon,Eating,Work,Restaurant,175
+April,Saturday,Afternoon,Recreation (Social Gathering),Home,Pub,937
+April,Saturday,Evening,Going Back to Home,Pub,Home,1856
+April,Saturday,Evening,Eating,Home,Restaurant,775
+April,Saturday,Evening,Eating,Work,Restaurant,136
+April,Saturday,Evening,Eating,Pub,Restaurant,254
+April,Saturday,Evening,Coming Back From Restaurant,Restaurant,Pub,288
+April,Saturday,Evening,Coming Back From Restaurant,Restaurant,Home,837
+April,Saturday,Evening,Coming Back From Restaurant,Restaurant,Work,166
+April,Saturday,Evening,Recreation (Social Gathering),Home,Pub,1922
+April,Saturday,Evening,Work/Home Commute,Work,Home,534
+April,Saturday,Night,Going Back to Home,Pub,Home,2764
+April,Saturday,Night,Going Back to Home,Restaurant,Home,57
+April,Saturday,Night,Coming Back From Restaurant,Restaurant,Home,649
+April,Saturday,Night,Coming Back From Restaurant,Restaurant,Pub,267
+April,Saturday,Night,Eating,Home,Restaurant,609
+April,Saturday,Night,Eating,Pub,Restaurant,253
+April,Saturday,Night,Recreation (Social Gathering),Home,Pub,1854
+April,Sunday,Morning,Eating,Home,Restaurant,1791
+April,Sunday,Morning,Eating,Work,Restaurant,59
+April,Sunday,Morning,Eating,Pub,Restaurant,33
+April,Sunday,Morning,Recreation (Social Gathering),Home,Pub,1834
+April,Sunday,Morning,Coming Back From Restaurant,Restaurant,Home,1662
+April,Sunday,Morning,Coming Back From Restaurant,Restaurant,Pub,20
+April,Sunday,Morning,Coming Back From Restaurant,Restaurant,Work,41
+April,Sunday,Morning,Going Back to Home,Pub,Home,1346
+April,Sunday,Morning,Going Back to Home,Restaurant,Home,84
+April,Sunday,Morning,Work/Home Commute,Home,Work,416
+April,Sunday,Afternoon,Going Back to Home,Pub,Home,568
+April,Sunday,Afternoon,Eating,Pub,Restaurant,138
+April,Sunday,Afternoon,Eating,Home,Restaurant,469
+April,Sunday,Afternoon,Eating,Work,Restaurant,151
+April,Sunday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,120
+April,Sunday,Afternoon,Coming Back From Restaurant,Restaurant,Home,399
+April,Sunday,Afternoon,Coming Back From Restaurant,Restaurant,Work,133
+April,Sunday,Afternoon,Recreation (Social Gathering),Home,Pub,549
+April,Sunday,Evening,Going Back to Home,Pub,Home,1139
+April,Sunday,Evening,Eating,Home,Restaurant,682
+April,Sunday,Evening,Eating,Work,Restaurant,102
+April,Sunday,Evening,Eating,Pub,Restaurant,178
+April,Sunday,Evening,Coming Back From Restaurant,Restaurant,Pub,187
+April,Sunday,Evening,Coming Back From Restaurant,Restaurant,Home,705
+April,Sunday,Evening,Coming Back From Restaurant,Restaurant,Work,138
+April,Sunday,Evening,Recreation (Social Gathering),Home,Pub,1206
+April,Sunday,Evening,Work/Home Commute,Work,Home,412
+April,Sunday,Night,Going Back to Home,Pub,Home,1726
+April,Sunday,Night,Going Back to Home,Restaurant,Home,52
+April,Sunday,Night,Eating,Pub,Restaurant,176
+April,Sunday,Night,Eating,Home,Restaurant,539
+April,Sunday,Night,Coming Back From Restaurant,Restaurant,Home,593
+April,Sunday,Night,Coming Back From Restaurant,Restaurant,Pub,184
+April,Sunday,Night,Recreation (Social Gathering),Home,Pub,1172
+April,Sunday,Night,Work/Home Commute,Work,Home,4
+April,Monday,Morning,Eating,Home,Restaurant,119
+April,Monday,Morning,Eating,Work,Restaurant,433
+April,Monday,Morning,Recreation (Social Gathering),Home,Pub,124
+April,Monday,Morning,Going Back to Home,Pub,Home,210
+April,Monday,Morning,Going Back to Home,Restaurant,Home,12
+April,Monday,Morning,Coming Back From Restaurant,Restaurant,Home,116
+April,Monday,Morning,Coming Back From Restaurant,Restaurant,Work,227
+April,Monday,Morning,Coming Back From Restaurant,Restaurant,Pub,1
+April,Monday,Morning,Work/Home Commute,Home,Work,3336
+April,Monday,Afternoon,Eating,Work,Restaurant,1316
+April,Monday,Afternoon,Eating,Home,Restaurant,23
+April,Monday,Afternoon,Eating,Pub,Restaurant,14
+April,Monday,Afternoon,Going Back to Home,Pub,Home,42
+April,Monday,Afternoon,Recreation (Social Gathering),Home,Pub,41
+April,Monday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,7
+April,Monday,Afternoon,Coming Back From Restaurant,Restaurant,Work,1294
+April,Monday,Afternoon,Coming Back From Restaurant,Restaurant,Home,15
+April,Monday,Evening,Going Back to Home,Pub,Home,137
+April,Monday,Evening,Eating,Work,Restaurant,888
+April,Monday,Evening,Eating,Pub,Restaurant,54
+April,Monday,Evening,Eating,Home,Restaurant,326
+April,Monday,Evening,Coming Back From Restaurant,Restaurant,Pub,33
+April,Monday,Evening,Coming Back From Restaurant,Restaurant,Work,1115
+April,Monday,Evening,Coming Back From Restaurant,Restaurant,Home,228
+April,Monday,Evening,Work/Home Commute,Work,Home,3331
+April,Monday,Evening,Recreation (Social Gathering),Home,Pub,730
+April,Monday,Night,Eating,Pub,Restaurant,202
+April,Monday,Night,Eating,Home,Restaurant,504
+April,Monday,Night,Going Back to Home,Pub,Home,1672
+April,Monday,Night,Going Back to Home,Restaurant,Home,52
+April,Monday,Night,Coming Back From Restaurant,Restaurant,Pub,210
+April,Monday,Night,Coming Back From Restaurant,Restaurant,Home,572
+April,Monday,Night,Coming Back From Restaurant,Restaurant,Work,1
+April,Monday,Night,Recreation (Social Gathering),Home,Pub,1210
+April,Monday,Night,Work/Home Commute,Work,Home,5
+April,Tuesday,Morning,Eating,Home,Restaurant,117
+April,Tuesday,Morning,Eating,Work,Restaurant,420
+April,Tuesday,Morning,Eating,Pub,Restaurant,3
+April,Tuesday,Morning,Recreation (Social Gathering),Home,Pub,133
+April,Tuesday,Morning,Coming Back From Restaurant,Restaurant,Pub,5
+April,Tuesday,Morning,Coming Back From Restaurant,Restaurant,Home,112
+April,Tuesday,Morning,Coming Back From Restaurant,Restaurant,Work,204
+April,Tuesday,Morning,Work/Home Commute,Home,Work,3340
+April,Tuesday,Morning,Going Back to Home,Pub,Home,242
+April,Tuesday,Morning,Going Back to Home,Restaurant,Home,7
+April,Tuesday,Afternoon,Going Back to Home,Pub,Home,45
+April,Tuesday,Afternoon,Eating,Work,Restaurant,1330
+April,Tuesday,Afternoon,Eating,Home,Restaurant,18
+April,Tuesday,Afternoon,Eating,Pub,Restaurant,5
+April,Tuesday,Afternoon,Coming Back From Restaurant,Restaurant,Home,16
+April,Tuesday,Afternoon,Coming Back From Restaurant,Restaurant,Work,1319
+April,Tuesday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,4
+April,Tuesday,Afternoon,Recreation (Social Gathering),Home,Pub,42
+April,Tuesday,Evening,Going Back to Home,Pub,Home,117
+April,Tuesday,Evening,Eating,Work,Restaurant,886
+April,Tuesday,Evening,Eating,Home,Restaurant,343
+April,Tuesday,Evening,Eating,Pub,Restaurant,63
+April,Tuesday,Evening,Coming Back From Restaurant,Restaurant,Home,238
+April,Tuesday,Evening,Coming Back From Restaurant,Restaurant,Pub,29
+April,Tuesday,Evening,Coming Back From Restaurant,Restaurant,Work,1110
+April,Tuesday,Evening,Work/Home Commute,Work,Home,3329
+April,Tuesday,Evening,Recreation (Social Gathering),Home,Pub,730
+April,Tuesday,Night,Going Back to Home,Pub,Home,1729
+April,Tuesday,Night,Going Back to Home,Restaurant,Home,49
+April,Tuesday,Night,Coming Back From Restaurant,Restaurant,Pub,233
+April,Tuesday,Night,Coming Back From Restaurant,Restaurant,Home,589
+April,Tuesday,Night,Coming Back From Restaurant,Restaurant,Work,3
+April,Tuesday,Night,Eating,Home,Restaurant,515
+April,Tuesday,Night,Eating,Pub,Restaurant,218
+April,Tuesday,Night,Recreation (Social Gathering),Home,Pub,1263
+April,Tuesday,Night,Work/Home Commute,Work,Home,11
+April,Wednesday,Morning,Recreation (Social Gathering),Home,Pub,145
+April,Wednesday,Morning,Eating,Home,Restaurant,102
+April,Wednesday,Morning,Eating,Work,Restaurant,402
+April,Wednesday,Morning,Eating,Pub,Restaurant,7
+April,Wednesday,Morning,Going Back to Home,Pub,Home,265
+April,Wednesday,Morning,Going Back to Home,Restaurant,Home,8
+April,Wednesday,Morning,Coming Back From Restaurant,Restaurant,Home,101
+April,Wednesday,Morning,Coming Back From Restaurant,Restaurant,Work,189
+April,Wednesday,Morning,Coming Back From Restaurant,Restaurant,Pub,3
+April,Wednesday,Morning,Work/Home Commute,Home,Work,3332
+April,Wednesday,Afternoon,Eating,Work,Restaurant,1339
+April,Wednesday,Afternoon,Eating,Home,Restaurant,19
+April,Wednesday,Afternoon,Eating,Pub,Restaurant,4
+April,Wednesday,Afternoon,Going Back to Home,Pub,Home,47
+April,Wednesday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,8
+April,Wednesday,Afternoon,Coming Back From Restaurant,Restaurant,Work,1312
+April,Wednesday,Afternoon,Coming Back From Restaurant,Restaurant,Home,17
+April,Wednesday,Afternoon,Recreation (Social Gathering),Home,Pub,44
+April,Wednesday,Evening,Eating,Work,Restaurant,890
+April,Wednesday,Evening,Eating,Home,Restaurant,320
+April,Wednesday,Evening,Eating,Pub,Restaurant,70
+April,Wednesday,Evening,Going Back to Home,Pub,Home,146
+April,Wednesday,Evening,Coming Back From Restaurant,Restaurant,Home,222
+April,Wednesday,Evening,Coming Back From Restaurant,Restaurant,Work,1129
+April,Wednesday,Evening,Coming Back From Restaurant,Restaurant,Pub,38
+April,Wednesday,Evening,Recreation (Social Gathering),Home,Pub,798
+April,Wednesday,Evening,Work/Home Commute,Work,Home,3322
+April,Wednesday,Night,Going Back to Home,Pub,Home,1861
+April,Wednesday,Night,Going Back to Home,Restaurant,Home,47
+April,Wednesday,Night,Coming Back From Restaurant,Restaurant,Home,566
+April,Wednesday,Night,Coming Back From Restaurant,Restaurant,Pub,250
+April,Wednesday,Night,Coming Back From Restaurant,Restaurant,Work,1
+April,Wednesday,Night,Eating,Home,Restaurant,500
+April,Wednesday,Night,Eating,Pub,Restaurant,238
+April,Wednesday,Night,Recreation (Social Gathering),Home,Pub,1345
+April,Wednesday,Night,Work/Home Commute,Work,Home,10
+April,Thursday,Morning,Coming Back From Restaurant,Restaurant,Pub,7
+April,Thursday,Morning,Coming Back From Restaurant,Restaurant,Home,83
+April,Thursday,Morning,Coming Back From Restaurant,Restaurant,Work,198
+April,Thursday,Morning,Recreation (Social Gathering),Home,Pub,133
+April,Thursday,Morning,Eating,Home,Restaurant,92
+April,Thursday,Morning,Eating,Work,Restaurant,409
+April,Thursday,Morning,Eating,Pub,Restaurant,7
+April,Thursday,Morning,Going Back to Home,Pub,Home,253
+April,Thursday,Morning,Going Back to Home,Restaurant,Home,10
+April,Thursday,Morning,Work/Home Commute,Home,Work,3368
+April,Thursday,Afternoon,Going Back to Home,Pub,Home,37
+April,Thursday,Afternoon,Coming Back From Restaurant,Restaurant,Home,19
+April,Thursday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,5
+April,Thursday,Afternoon,Coming Back From Restaurant,Restaurant,Work,1306
+April,Thursday,Afternoon,Eating,Work,Restaurant,1330
+April,Thursday,Afternoon,Eating,Home,Restaurant,17
+April,Thursday,Afternoon,Eating,Pub,Restaurant,8
+April,Thursday,Afternoon,Recreation (Social Gathering),Home,Pub,39
+April,Thursday,Evening,Eating,Work,Restaurant,903
+April,Thursday,Evening,Eating,Home,Restaurant,339
+April,Thursday,Evening,Eating,Pub,Restaurant,62
+April,Thursday,Evening,Going Back to Home,Pub,Home,132
+April,Thursday,Evening,Coming Back From Restaurant,Restaurant,Pub,36
+April,Thursday,Evening,Coming Back From Restaurant,Restaurant,Home,228
+April,Thursday,Evening,Coming Back From Restaurant,Restaurant,Work,1136
+April,Thursday,Evening,Work/Home Commute,Work,Home,3357
+April,Thursday,Evening,Recreation (Social Gathering),Home,Pub,901
+April,Thursday,Night,Work/Home Commute,Work,Home,11
+April,Thursday,Night,Going Back to Home,Pub,Home,2162
+April,Thursday,Night,Going Back to Home,Restaurant,Home,42
+April,Thursday,Night,Coming Back From Restaurant,Restaurant,Home,566
+April,Thursday,Night,Coming Back From Restaurant,Restaurant,Pub,278
+April,Thursday,Night,Coming Back From Restaurant,Restaurant,Work,2
+April,Thursday,Night,Eating,Home,Restaurant,483
+April,Thursday,Night,Eating,Pub,Restaurant,267
+April,Thursday,Night,Recreation (Social Gathering),Home,Pub,1558
+May,Sunday,Morning,Eating,Home,Restaurant,2230
+May,Sunday,Morning,Eating,Work,Restaurant,71
+May,Sunday,Morning,Eating,Pub,Restaurant,47
+May,Sunday,Morning,Recreation (Social Gathering),Home,Pub,2220
+May,Sunday,Morning,Coming Back From Restaurant,Restaurant,Home,2076
+May,Sunday,Morning,Coming Back From Restaurant,Restaurant,Pub,17
+May,Sunday,Morning,Coming Back From Restaurant,Restaurant,Work,48
+May,Sunday,Morning,Going Back to Home,Pub,Home,1641
+May,Sunday,Morning,Going Back to Home,Restaurant,Home,98
+May,Sunday,Morning,Work/Home Commute,Home,Work,520
+May,Sunday,Afternoon,Going Back to Home,Pub,Home,700
+May,Sunday,Afternoon,Recreation (Social Gathering),Home,Pub,657
+May,Sunday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,149
+May,Sunday,Afternoon,Coming Back From Restaurant,Restaurant,Home,447
+May,Sunday,Afternoon,Coming Back From Restaurant,Restaurant,Work,168
+May,Sunday,Afternoon,Eating,Work,Restaurant,190
+May,Sunday,Afternoon,Eating,Home,Restaurant,534
+May,Sunday,Afternoon,Eating,Pub,Restaurant,172
+May,Sunday,Evening,Going Back to Home,Pub,Home,1359
+May,Sunday,Evening,Recreation (Social Gathering),Home,Pub,1458
+May,Sunday,Evening,Coming Back From Restaurant,Restaurant,Home,892
+May,Sunday,Evening,Coming Back From Restaurant,Restaurant,Pub,223
+May,Sunday,Evening,Coming Back From Restaurant,Restaurant,Work,174
+May,Sunday,Evening,Eating,Work,Restaurant,129
+May,Sunday,Evening,Eating,Home,Restaurant,848
+May,Sunday,Evening,Eating,Pub,Restaurant,193
+May,Sunday,Evening,Work/Home Commute,Work,Home,514
+May,Sunday,Night,Going Back to Home,Pub,Home,2117
+May,Sunday,Night,Going Back to Home,Restaurant,Home,54
+May,Sunday,Night,Eating,Pub,Restaurant,215
+May,Sunday,Night,Eating,Home,Restaurant,628
+May,Sunday,Night,Coming Back From Restaurant,Restaurant,Home,703
+May,Sunday,Night,Coming Back From Restaurant,Restaurant,Pub,220
+May,Sunday,Night,Recreation (Social Gathering),Home,Pub,1454
+May,Sunday,Night,Work/Home Commute,Work,Home,6
+May,Monday,Morning,Eating,Home,Restaurant,128
+May,Monday,Morning,Eating,Work,Restaurant,538
+May,Monday,Morning,Recreation (Social Gathering),Home,Pub,132
+May,Monday,Morning,Coming Back From Restaurant,Restaurant,Home,119
+May,Monday,Morning,Coming Back From Restaurant,Restaurant,Work,273
+May,Monday,Morning,Coming Back From Restaurant,Restaurant,Pub,2
+May,Monday,Morning,Work/Home Commute,Home,Work,4170
+May,Monday,Morning,Going Back to Home,Pub,Home,259
+May,Monday,Morning,Going Back to Home,Restaurant,Home,14
+May,Monday,Afternoon,Eating,Work,Restaurant,1647
+May,Monday,Afternoon,Eating,Home,Restaurant,32
+May,Monday,Afternoon,Eating,Pub,Restaurant,17
+May,Monday,Afternoon,Recreation (Social Gathering),Home,Pub,39
+May,Monday,Afternoon,Going Back to Home,Pub,Home,35
+May,Monday,Afternoon,Coming Back From Restaurant,Restaurant,Home,26
+May,Monday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,13
+May,Monday,Afternoon,Coming Back From Restaurant,Restaurant,Work,1627
+May,Monday,Evening,Eating,Work,Restaurant,1113
+May,Monday,Evening,Eating,Home,Restaurant,451
+May,Monday,Evening,Eating,Pub,Restaurant,58
+May,Monday,Evening,Going Back to Home,Pub,Home,144
+May,Monday,Evening,Work/Home Commute,Work,Home,4164
+May,Monday,Evening,Coming Back From Restaurant,Restaurant,Work,1398
+May,Monday,Evening,Coming Back From Restaurant,Restaurant,Home,305
+May,Monday,Evening,Coming Back From Restaurant,Restaurant,Pub,29
+May,Monday,Evening,Recreation (Social Gathering),Home,Pub,797
+May,Monday,Night,Going Back to Home,Pub,Home,1867
+May,Monday,Night,Going Back to Home,Restaurant,Home,61
+May,Monday,Night,Eating,Home,Restaurant,666
+May,Monday,Night,Eating,Pub,Restaurant,219
+May,Monday,Night,Recreation (Social Gathering),Home,Pub,1342
+May,Monday,Night,Coming Back From Restaurant,Restaurant,Pub,234
+May,Monday,Night,Coming Back From Restaurant,Restaurant,Home,762
+May,Monday,Night,Work/Home Commute,Work,Home,6
+May,Tuesday,Morning,Recreation (Social Gathering),Home,Pub,123
+May,Tuesday,Morning,Eating,Home,Restaurant,135
+May,Tuesday,Morning,Eating,Work,Restaurant,538
+May,Tuesday,Morning,Eating,Pub,Restaurant,8
+May,Tuesday,Morning,Coming Back From Restaurant,Restaurant,Home,134
+May,Tuesday,Morning,Coming Back From Restaurant,Restaurant,Work,263
+May,Tuesday,Morning,Coming Back From Restaurant,Restaurant,Pub,8
+May,Tuesday,Morning,Going Back to Home,Pub,Home,241
+May,Tuesday,Morning,Going Back to Home,Restaurant,Home,16
+May,Tuesday,Morning,Work/Home Commute,Home,Work,4175
+May,Tuesday,Afternoon,Eating,Work,Restaurant,1667
+May,Tuesday,Afternoon,Eating,Pub,Restaurant,6
+May,Tuesday,Afternoon,Eating,Home,Restaurant,24
+May,Tuesday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,7
+May,Tuesday,Afternoon,Coming Back From Restaurant,Restaurant,Work,1656
+May,Tuesday,Afternoon,Coming Back From Restaurant,Restaurant,Home,14
+May,Tuesday,Afternoon,Going Back to Home,Pub,Home,39
+May,Tuesday,Afternoon,Recreation (Social Gathering),Home,Pub,42
+May,Tuesday,Evening,Eating,Work,Restaurant,1102
+May,Tuesday,Evening,Eating,Home,Restaurant,441
+May,Tuesday,Evening,Eating,Pub,Restaurant,72
+May,Tuesday,Evening,Going Back to Home,Pub,Home,133
+May,Tuesday,Evening,Work/Home Commute,Work,Home,4161
+May,Tuesday,Evening,Coming Back From Restaurant,Restaurant,Work,1385
+May,Tuesday,Evening,Coming Back From Restaurant,Restaurant,Pub,44
+May,Tuesday,Evening,Coming Back From Restaurant,Restaurant,Home,305
+May,Tuesday,Evening,Recreation (Social Gathering),Home,Pub,687
+May,Tuesday,Night,Going Back to Home,Pub,Home,1618
+May,Tuesday,Night,Going Back to Home,Restaurant,Home,63
+May,Tuesday,Night,Eating,Home,Restaurant,689
+May,Tuesday,Night,Eating,Pub,Restaurant,167
+May,Tuesday,Night,Coming Back From Restaurant,Restaurant,Work,3
+May,Tuesday,Night,Coming Back From Restaurant,Restaurant,Pub,179
+May,Tuesday,Night,Coming Back From Restaurant,Restaurant,Home,779
+May,Tuesday,Night,Recreation (Social Gathering),Home,Pub,1190
+May,Tuesday,Night,Work/Home Commute,Work,Home,14
+May,Wednesday,Morning,Recreation (Social Gathering),Home,Pub,101
+May,Wednesday,Morning,Eating,Home,Restaurant,107
+May,Wednesday,Morning,Eating,Work,Restaurant,395
+May,Wednesday,Morning,Eating,Pub,Restaurant,7
+May,Wednesday,Morning,Going Back to Home,Pub,Home,188
+May,Wednesday,Morning,Going Back to Home,Restaurant,Home,8
+May,Wednesday,Morning,Coming Back From Restaurant,Restaurant,Home,109
+May,Wednesday,Morning,Coming Back From Restaurant,Restaurant,Work,183
+May,Wednesday,Morning,Coming Back From Restaurant,Restaurant,Pub,4
+May,Wednesday,Morning,Work/Home Commute,Home,Work,3332
+May,Wednesday,Afternoon,Eating,Work,Restaurant,1341
+May,Wednesday,Afternoon,Eating,Home,Restaurant,16
+May,Wednesday,Afternoon,Eating,Pub,Restaurant,3
+May,Wednesday,Afternoon,Going Back to Home,Pub,Home,43
+May,Wednesday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,5
+May,Wednesday,Afternoon,Coming Back From Restaurant,Restaurant,Home,17
+May,Wednesday,Afternoon,Coming Back From Restaurant,Restaurant,Work,1314
+May,Wednesday,Afternoon,Recreation (Social Gathering),Home,Pub,32
+May,Wednesday,Evening,Eating,Work,Restaurant,897
+May,Wednesday,Evening,Eating,Home,Restaurant,341
+May,Wednesday,Evening,Eating,Pub,Restaurant,52
+May,Wednesday,Evening,Going Back to Home,Pub,Home,91
+May,Wednesday,Evening,Work/Home Commute,Work,Home,3323
+May,Wednesday,Evening,Coming Back From Restaurant,Restaurant,Work,1136
+May,Wednesday,Evening,Coming Back From Restaurant,Restaurant,Home,217
+May,Wednesday,Evening,Coming Back From Restaurant,Restaurant,Pub,27
+May,Wednesday,Evening,Recreation (Social Gathering),Home,Pub,537
+May,Wednesday,Night,Going Back to Home,Pub,Home,1293
+May,Wednesday,Night,Going Back to Home,Restaurant,Home,42
+May,Wednesday,Night,Eating,Home,Restaurant,544
+May,Wednesday,Night,Eating,Pub,Restaurant,137
+May,Wednesday,Night,Coming Back From Restaurant,Restaurant,Pub,149
+May,Wednesday,Night,Coming Back From Restaurant,Restaurant,Home,629
+May,Wednesday,Night,Recreation (Social Gathering),Home,Pub,939
+May,Wednesday,Night,Work/Home Commute,Work,Home,9
+May,Thursday,Morning,Eating,Home,Restaurant,86
+May,Thursday,Morning,Eating,Work,Restaurant,412
+May,Thursday,Morning,Eating,Pub,Restaurant,15
+May,Thursday,Morning,Recreation (Social Gathering),Home,Pub,124
+May,Thursday,Morning,Going Back to Home,Pub,Home,187
+May,Thursday,Morning,Going Back to Home,Restaurant,Home,11
+May,Thursday,Morning,Work/Home Commute,Home,Work,3368
+May,Thursday,Morning,Coming Back From Restaurant,Restaurant,Home,85
+May,Thursday,Morning,Coming Back From Restaurant,Restaurant,Pub,10
+May,Thursday,Morning,Coming Back From Restaurant,Restaurant,Work,197
+May,Thursday,Afternoon,Going Back to Home,Pub,Home,37
+May,Thursday,Afternoon,Eating,Work,Restaurant,1333
+May,Thursday,Afternoon,Eating,Home,Restaurant,15
+May,Thursday,Afternoon,Eating,Pub,Restaurant,11
+May,Thursday,Afternoon,Recreation (Social Gathering),Home,Pub,35
+May,Thursday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,12
+May,Thursday,Afternoon,Coming Back From Restaurant,Restaurant,Work,1313
+May,Thursday,Afternoon,Coming Back From Restaurant,Restaurant,Home,13
+May,Thursday,Evening,Eating,Work,Restaurant,902
+May,Thursday,Evening,Eating,Home,Restaurant,313
+May,Thursday,Evening,Eating,Pub,Restaurant,39
+May,Thursday,Evening,Coming Back From Restaurant,Restaurant,Pub,23
+May,Thursday,Evening,Coming Back From Restaurant,Restaurant,Work,1134
+May,Thursday,Evening,Coming Back From Restaurant,Restaurant,Home,204
+May,Thursday,Evening,Going Back to Home,Pub,Home,119
+May,Thursday,Evening,Work/Home Commute,Work,Home,3357
+May,Thursday,Evening,Recreation (Social Gathering),Home,Pub,662
+May,Thursday,Night,Going Back to Home,Pub,Home,1533
+May,Thursday,Night,Going Back to Home,Restaurant,Home,46
+May,Thursday,Night,Coming Back From Restaurant,Restaurant,Home,599
 May,Thursday,Night,Coming Back From Restaurant,Restaurant,Work,3
-May,Thursday,Night,Coming Back From Restaurant,Restaurant,Pub,328
-May,Thursday,Night,Eating,Pub,Restaurant,310
-May,Thursday,Night,Eating,Home,Restaurant,956
-May,Thursday,Night,Recreation (Social Gathering),Home,Pub,1838
-May,Thursday,Night,Work/Home Commute,Work,Home,18
-May,Friday,Morning,Eating,Pub,Restaurant,15
-May,Friday,Morning,Eating,Home,Restaurant,126
-May,Friday,Morning,Eating,Work,Restaurant,708
-May,Friday,Morning,Recreation (Social Gathering),Home,Pub,152
-May,Friday,Morning,Coming Back From Restaurant,Restaurant,Pub,7
-May,Friday,Morning,Coming Back From Restaurant,Restaurant,Home,129
-May,Friday,Morning,Coming Back From Restaurant,Restaurant,Work,334
-May,Friday,Morning,Going Back to Home,Pub,Home,315
-May,Friday,Morning,Going Back to Home,Restaurant,Home,16
-May,Friday,Morning,Work/Home Commute,Home,Work,5915
-May,Friday,Afternoon,Eating,Work,Restaurant,2326
-May,Friday,Afternoon,Eating,Home,Restaurant,54
-May,Friday,Afternoon,Eating,Pub,Restaurant,10
-May,Friday,Afternoon,Going Back to Home,Pub,Home,56
-May,Friday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,9
-May,Friday,Afternoon,Coming Back From Restaurant,Restaurant,Work,2266
-May,Friday,Afternoon,Coming Back From Restaurant,Restaurant,Home,45
-May,Friday,Afternoon,Recreation (Social Gathering),Home,Pub,47
-May,Friday,Evening,Eating,Work,Restaurant,1611
-May,Friday,Evening,Eating,Home,Restaurant,543
-May,Friday,Evening,Eating,Pub,Restaurant,92
-May,Friday,Evening,Work/Home Commute,Work,Home,5899
-May,Friday,Evening,Going Back to Home,Pub,Home,195
-May,Friday,Evening,Coming Back From Restaurant,Restaurant,Work,2043
-May,Friday,Evening,Coming Back From Restaurant,Restaurant,Home,376
-May,Friday,Evening,Coming Back From Restaurant,Restaurant,Pub,39
-May,Friday,Evening,Recreation (Social Gathering),Home,Pub,1308
-May,Friday,Night,Recreation (Social Gathering),Home,Pub,2205
-May,Friday,Night,Going Back to Home,Pub,Home,3052
-May,Friday,Night,Going Back to Home,Restaurant,Home,83
-May,Friday,Night,Eating,Pub,Restaurant,321
-May,Friday,Night,Eating,Home,Restaurant,887
-May,Friday,Night,Coming Back From Restaurant,Restaurant,Pub,351
-May,Friday,Night,Coming Back From Restaurant,Restaurant,Home,989
-May,Friday,Night,Coming Back From Restaurant,Restaurant,Work,2
-May,Friday,Night,Work/Home Commute,Work,Home,16
-May,Saturday,Morning,Eating,Home,Restaurant,3044
-May,Saturday,Morning,Eating,Work,Restaurant,127
-May,Saturday,Morning,Eating,Pub,Restaurant,96
-May,Saturday,Morning,Recreation (Social Gathering),Home,Pub,3345
-May,Saturday,Morning,Coming Back From Restaurant,Restaurant,Pub,51
-May,Saturday,Morning,Coming Back From Restaurant,Restaurant,Home,2805
-May,Saturday,Morning,Coming Back From Restaurant,Restaurant,Work,80
-May,Saturday,Morning,Going Back to Home,Pub,Home,2420
-May,Saturday,Morning,Going Back to Home,Restaurant,Home,167
-May,Saturday,Morning,Work/Home Commute,Home,Work,749
-May,Saturday,Afternoon,Going Back to Home,Pub,Home,1057
-May,Saturday,Afternoon,Eating,Work,Restaurant,248
-May,Saturday,Afternoon,Eating,Home,Restaurant,856
-May,Saturday,Afternoon,Eating,Pub,Restaurant,249
-May,Saturday,Afternoon,Coming Back From Restaurant,Restaurant,Home,671
-May,Saturday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,237
-May,Saturday,Afternoon,Coming Back From Restaurant,Restaurant,Work,253
-May,Saturday,Afternoon,Recreation (Social Gathering),Home,Pub,1021
-May,Saturday,Evening,Going Back to Home,Pub,Home,2075
-May,Saturday,Evening,Eating,Home,Restaurant,1106
-May,Saturday,Evening,Eating,Work,Restaurant,191
-May,Saturday,Evening,Eating,Pub,Restaurant,273
-May,Saturday,Evening,Coming Back From Restaurant,Restaurant,Home,1228
-May,Saturday,Evening,Coming Back From Restaurant,Restaurant,Pub,279
-May,Saturday,Evening,Coming Back From Restaurant,Restaurant,Work,233
-May,Saturday,Evening,Recreation (Social Gathering),Home,Pub,2170
-May,Saturday,Evening,Work/Home Commute,Work,Home,749
-May,Saturday,Night,Going Back to Home,Pub,Home,3175
-May,Saturday,Night,Going Back to Home,Restaurant,Home,64
-May,Saturday,Night,Coming Back From Restaurant,Restaurant,Home,973
-May,Saturday,Night,Coming Back From Restaurant,Restaurant,Pub,350
-May,Saturday,Night,Eating,Home,Restaurant,886
-May,Saturday,Night,Eating,Pub,Restaurant,324
-May,Saturday,Night,Recreation (Social Gathering),Home,Pub,2208
+May,Thursday,Night,Coming Back From Restaurant,Restaurant,Pub,195
+May,Thursday,Night,Eating,Pub,Restaurant,187
+May,Thursday,Night,Eating,Home,Restaurant,530
+May,Thursday,Night,Recreation (Social Gathering),Home,Pub,1089
+May,Thursday,Night,Work/Home Commute,Work,Home,11
+May,Friday,Morning,Eating,Pub,Restaurant,7
+May,Friday,Morning,Eating,Home,Restaurant,76
+May,Friday,Morning,Eating,Work,Restaurant,398
+May,Friday,Morning,Recreation (Social Gathering),Home,Pub,87
+May,Friday,Morning,Coming Back From Restaurant,Restaurant,Pub,3
+May,Friday,Morning,Coming Back From Restaurant,Restaurant,Home,78
+May,Friday,Morning,Coming Back From Restaurant,Restaurant,Work,184
+May,Friday,Morning,Going Back to Home,Pub,Home,180
+May,Friday,Morning,Going Back to Home,Restaurant,Home,7
+May,Friday,Morning,Work/Home Commute,Home,Work,3380
+May,Friday,Afternoon,Eating,Work,Restaurant,1325
+May,Friday,Afternoon,Eating,Home,Restaurant,32
+May,Friday,Afternoon,Eating,Pub,Restaurant,5
+May,Friday,Afternoon,Going Back to Home,Pub,Home,29
+May,Friday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,6
+May,Friday,Afternoon,Coming Back From Restaurant,Restaurant,Work,1291
+May,Friday,Afternoon,Coming Back From Restaurant,Restaurant,Home,27
+May,Friday,Afternoon,Recreation (Social Gathering),Home,Pub,23
+May,Friday,Evening,Eating,Work,Restaurant,923
+May,Friday,Evening,Eating,Home,Restaurant,299
+May,Friday,Evening,Eating,Pub,Restaurant,53
+May,Friday,Evening,Work/Home Commute,Work,Home,3372
+May,Friday,Evening,Going Back to Home,Pub,Home,127
+May,Friday,Evening,Coming Back From Restaurant,Restaurant,Work,1171
+May,Friday,Evening,Coming Back From Restaurant,Restaurant,Home,200
+May,Friday,Evening,Coming Back From Restaurant,Restaurant,Pub,21
+May,Friday,Evening,Recreation (Social Gathering),Home,Pub,827
+May,Friday,Night,Recreation (Social Gathering),Home,Pub,1377
+May,Friday,Night,Going Back to Home,Pub,Home,1924
+May,Friday,Night,Going Back to Home,Restaurant,Home,43
+May,Friday,Night,Eating,Pub,Restaurant,195
+May,Friday,Night,Eating,Home,Restaurant,501
+May,Friday,Night,Coming Back From Restaurant,Restaurant,Pub,210
+May,Friday,Night,Coming Back From Restaurant,Restaurant,Home,565
+May,Friday,Night,Work/Home Commute,Work,Home,8
+May,Saturday,Morning,Eating,Home,Restaurant,1749
+May,Saturday,Morning,Eating,Work,Restaurant,69
+May,Saturday,Morning,Eating,Pub,Restaurant,62
+May,Saturday,Morning,Recreation (Social Gathering),Home,Pub,2117
+May,Saturday,Morning,Coming Back From Restaurant,Restaurant,Pub,37
+May,Saturday,Morning,Coming Back From Restaurant,Restaurant,Home,1619
+May,Saturday,Morning,Coming Back From Restaurant,Restaurant,Work,42
+May,Saturday,Morning,Going Back to Home,Pub,Home,1524
+May,Saturday,Morning,Going Back to Home,Restaurant,Home,97
+May,Saturday,Morning,Work/Home Commute,Home,Work,428
+May,Saturday,Afternoon,Going Back to Home,Pub,Home,656
+May,Saturday,Afternoon,Eating,Work,Restaurant,142
+May,Saturday,Afternoon,Eating,Home,Restaurant,484
+May,Saturday,Afternoon,Eating,Pub,Restaurant,169
+May,Saturday,Afternoon,Coming Back From Restaurant,Restaurant,Home,375
+May,Saturday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,155
+May,Saturday,Afternoon,Coming Back From Restaurant,Restaurant,Work,145
+May,Saturday,Afternoon,Recreation (Social Gathering),Home,Pub,649
+May,Saturday,Evening,Going Back to Home,Pub,Home,1329
+May,Saturday,Evening,Eating,Home,Restaurant,636
+May,Saturday,Evening,Eating,Work,Restaurant,108
+May,Saturday,Evening,Eating,Pub,Restaurant,174
+May,Saturday,Evening,Coming Back From Restaurant,Restaurant,Home,708
+May,Saturday,Evening,Coming Back From Restaurant,Restaurant,Pub,182
+May,Saturday,Evening,Coming Back From Restaurant,Restaurant,Work,132
+May,Saturday,Evening,Recreation (Social Gathering),Home,Pub,1394
+May,Saturday,Evening,Work/Home Commute,Work,Home,428
+May,Saturday,Night,Going Back to Home,Pub,Home,2014
+May,Saturday,Night,Going Back to Home,Restaurant,Home,36
+May,Saturday,Night,Coming Back From Restaurant,Restaurant,Home,536
+May,Saturday,Night,Coming Back From Restaurant,Restaurant,Pub,224
+May,Saturday,Night,Eating,Home,Restaurant,487
+May,Saturday,Night,Eating,Pub,Restaurant,211
+May,Saturday,Night,Recreation (Social Gathering),Home,Pub,1396
 June,Wednesday,Morning,Eating,Pub,Restaurant,8
 June,Wednesday,Morning,Eating,Home,Restaurant,137
 June,Wednesday,Morning,Eating,Work,Restaurant,489
@@ -3000,39 +2995,39 @@ February,Monday,Night,Coming Back From Restaurant,Restaurant,Pub,191
 February,Monday,Night,Coming Back From Restaurant,Restaurant,Home,602
 February,Monday,Night,Coming Back From Restaurant,Restaurant,Work,3
 February,Monday,Night,Work/Home Commute,Work,Home,7
-February,Tuesday,Morning,Eating,Home,Restaurant,110
-February,Tuesday,Morning,Eating,Work,Restaurant,427
+February,Tuesday,Morning,Eating,Home,Restaurant,80
+February,Tuesday,Morning,Eating,Work,Restaurant,320
 February,Tuesday,Morning,Eating,Pub,Restaurant,1
-February,Tuesday,Morning,Recreation (Social Gathering),Home,Pub,77
+February,Tuesday,Morning,Recreation (Social Gathering),Home,Pub,61
 February,Tuesday,Morning,Coming Back From Restaurant,Restaurant,Pub,4
-February,Tuesday,Morning,Coming Back From Restaurant,Restaurant,Home,100
-February,Tuesday,Morning,Coming Back From Restaurant,Restaurant,Work,205
-February,Tuesday,Morning,Work/Home Commute,Home,Work,3340
-February,Tuesday,Morning,Going Back to Home,Pub,Home,200
-February,Tuesday,Morning,Going Back to Home,Restaurant,Home,14
-February,Tuesday,Afternoon,Eating,Work,Restaurant,1335
-February,Tuesday,Afternoon,Eating,Home,Restaurant,19
-February,Tuesday,Afternoon,Eating,Pub,Restaurant,5
-February,Tuesday,Afternoon,Going Back to Home,Pub,Home,21
-February,Tuesday,Afternoon,Recreation (Social Gathering),Home,Pub,25
-February,Tuesday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,4
-February,Tuesday,Afternoon,Coming Back From Restaurant,Restaurant,Work,1329
-February,Tuesday,Afternoon,Coming Back From Restaurant,Restaurant,Home,20
-February,Tuesday,Evening,Eating,Work,Restaurant,883
-February,Tuesday,Evening,Eating,Home,Restaurant,334
-February,Tuesday,Evening,Eating,Pub,Restaurant,40
-February,Tuesday,Evening,Going Back to Home,Pub,Home,80
-February,Tuesday,Evening,Coming Back From Restaurant,Restaurant,Pub,22
-February,Tuesday,Evening,Coming Back From Restaurant,Restaurant,Work,1110
-February,Tuesday,Evening,Coming Back From Restaurant,Restaurant,Home,229
-February,Tuesday,Evening,Work/Home Commute,Work,Home,3331
-February,Tuesday,Evening,Recreation (Social Gathering),Home,Pub,437
-February,Tuesday,Night,Going Back to Home,Pub,Home,1034
-February,Tuesday,Night,Going Back to Home,Restaurant,Home,52
+February,Tuesday,Morning,Coming Back From Restaurant,Restaurant,Home,72
+February,Tuesday,Morning,Coming Back From Restaurant,Restaurant,Work,153
+February,Tuesday,Morning,Work/Home Commute,Home,Work,2505
+February,Tuesday,Morning,Going Back to Home,Pub,Home,160
+February,Tuesday,Morning,Going Back to Home,Restaurant,Home,11
+February,Tuesday,Afternoon,Eating,Work,Restaurant,1001
+February,Tuesday,Afternoon,Eating,Home,Restaurant,15
+February,Tuesday,Afternoon,Eating,Pub,Restaurant,3
+February,Tuesday,Afternoon,Going Back to Home,Pub,Home,16
+February,Tuesday,Afternoon,Recreation (Social Gathering),Home,Pub,21
+February,Tuesday,Afternoon,Coming Back From Restaurant,Restaurant,Pub,2
+February,Tuesday,Afternoon,Coming Back From Restaurant,Restaurant,Work,997
+February,Tuesday,Afternoon,Coming Back From Restaurant,Restaurant,Home,13
+February,Tuesday,Evening,Eating,Work,Restaurant,662
+February,Tuesday,Evening,Eating,Home,Restaurant,246
+February,Tuesday,Evening,Eating,Pub,Restaurant,30
+February,Tuesday,Evening,Going Back to Home,Pub,Home,60
+February,Tuesday,Evening,Coming Back From Restaurant,Restaurant,Pub,18
+February,Tuesday,Evening,Coming Back From Restaurant,Restaurant,Work,832
+February,Tuesday,Evening,Coming Back From Restaurant,Restaurant,Home,167
+February,Tuesday,Evening,Work/Home Commute,Work,Home,2498
+February,Tuesday,Evening,Recreation (Social Gathering),Home,Pub,324
+February,Tuesday,Night,Going Back to Home,Pub,Home,770
+February,Tuesday,Night,Going Back to Home,Restaurant,Home,41
 February,Tuesday,Night,Coming Back From Restaurant,Restaurant,Work,1
-February,Tuesday,Night,Coming Back From Restaurant,Restaurant,Pub,123
-February,Tuesday,Night,Coming Back From Restaurant,Restaurant,Home,625
-February,Tuesday,Night,Eating,Home,Restaurant,566
-February,Tuesday,Night,Eating,Pub,Restaurant,115
-February,Tuesday,Night,Recreation (Social Gathering),Home,Pub,751
-February,Tuesday,Night,Work/Home Commute,Work,Home,9
+February,Tuesday,Night,Coming Back From Restaurant,Restaurant,Pub,91
+February,Tuesday,Night,Coming Back From Restaurant,Restaurant,Home,474
+February,Tuesday,Night,Eating,Home,Restaurant,427
+February,Tuesday,Night,Eating,Pub,Restaurant,87
+February,Tuesday,Night,Recreation (Social Gathering),Home,Pub,565
+February,Tuesday,Night,Work/Home Commute,Work,Home,7

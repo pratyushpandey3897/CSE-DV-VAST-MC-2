@@ -41,6 +41,8 @@ with open('/Users/titanium/Desktop/study/dv/grp-prj/VAST-Challenge-2022/Datasets
 location_dict = {**restaurant_dict, **pub_dict,
                  **employer_dict, **apartment_dict}
 
+end_date = datetime(2023,2,28)
+
 # Read the data from the CSV file
 with open('/Users/titanium/Desktop/study/dv/grp-prj/VAST-Challenge-2022/Datasets/Journals/TravelJournal.csv', newline='') as csvfile:
     reader = csv.DictReader(csvfile, delimiter=',')
@@ -49,6 +51,9 @@ with open('/Users/titanium/Desktop/study/dv/grp-prj/VAST-Challenge-2022/Datasets
     for row in reader:
         start_time = datetime.fromisoformat(
             row['travelStartTime'][:-1])  # Parse the start time
+        
+        if start_time > end_date:
+            continue
 
         # Calculate the month, day of the week, and portion of the day
         month = start_time.strftime('%B')
