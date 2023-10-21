@@ -1,9 +1,18 @@
 let data;
+let lineData;
 let groupedData;
 let selectedMonth;
 let selectedDay;
 
 document.addEventListener("DOMContentLoaded", (event) => {
+  d3.csv("data/line_chart.csv")
+    .then(function (lineData) {
+      create_line_chart(lineData);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
   d3.csv("data/grouped_chart.csv")
     .then(function (data) {
       get_month_and_day();
@@ -42,7 +51,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
           return v[0] === "Unknown";
         })[1];
       });
-      // Create the chart with groupedData
 
       create_grouped_bar_chart();
     })
@@ -52,7 +60,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 
 function create_grouped_bar_chart() {
-  console.log(groupedData);
   let svg = d3.select("#grouped-bar-chart");
 
   let margin = { top: 60, right: 40, bottom: 50, left: 60 };
@@ -182,4 +189,106 @@ function get_month_and_day() {
   // TODO: Remove hard codes and use selected values
   selectedMonth = "March";
   selectedDay = "Wednesday";
+}
+
+function create_line_chart(lineData) {
+  let svg = d3.select("#line-chart");
+
+  let months = [
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+    "January",
+    "February",
+  ];
+  let margin = { top: 60, right: 40, bottom: 50, left: 60 };
+  let width = +svg.attr("width") - margin.left - margin.right;
+  let height = +svg.attr("height") - margin.top - margin.bottom;
+
+  let g = svg
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  // Define the x and y scales
+  let x = d3.scalePoint().domain(months).range([4, width]);
+  let y = d3.scaleLinear().rangeRound([height, 0]);
+
+  // Define the line
+  let line = d3
+    .line()
+    // .curve(d3.curveBasis)
+    .x((d) => x(d.Month))
+    .y((d) => y(d["Total Commutes"]));
+
+  // Define the color scale
+  let z = d3.scaleOrdinal(d3.schemeTableau10);
+
+  x.domain(lineData.map((d) => d.Month)); // Use 'Month' for x domain
+  y.domain([0, d3.max(lineData, (d) => d["Total Commutes"])]); // Use 'Total Commutes' for y domain
+
+  // Draw the line
+  g.append("path")
+    .datum(lineData)
+    .attr("fill", "none")
+    .attr("stroke", z("value"))
+    .attr("stroke-linejoin", "round")
+    .attr("stroke-linecap", "round")
+    .attr("stroke-width", 2.5)
+    .attr("d", line);
+
+  // Add the x-axis
+  g.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x));
+
+  // Add the y-axis
+  g.append("g").call(d3.axisLeft(y));
+
+  // Add the x-axis label
+  svg
+    .append("text")
+    .attr(
+      "transform",
+      "translate(" +
+        (width / 2 + margin.left) +
+        " ," +
+        (height + margin.top + margin.bottom - 10) +
+        ")"
+    )
+    .style("text-anchor", "middle")
+    .style("font-size", "11px")
+    .text("Month"); // Change x-axis label to 'Month'
+
+    // Add circles at each data point with mouseover and mouseout events
+    lineData.forEach(function(d) {
+      let circle = g.append('circle')
+      .attr('cx', x(d.Month))
+      .attr('cy', y(d['Total Commutes']))
+      .attr('r', 5) 
+      .attr('fill', 'black') 
+      .attr('stroke', 'black') 
+      .attr('class', 'line-circles');
+  
+      circle.on('mouseover', function() {
+        console.log("triggered");
+          // On mouseover, decrease the opacity of all circles to 0.6 with transition
+          d3.selectAll('.line-circles').transition().duration(200).style('opacity', 0.3);
+          // Increase the opacity of the current circle to 1 with transition
+          d3.select(this).transition().duration(200).style('opacity', 1);
+      });
+  
+      circle.on('mouseout', function() {
+        console.log("triggered");
+          // On mouseout, restore the opacity of all circles to 1 with transition
+          d3.selectAll('.line-circles').transition().duration(200).style('opacity', 1);
+      });
+  });
 }
