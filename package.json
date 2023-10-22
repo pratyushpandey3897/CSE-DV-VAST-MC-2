@@ -1,0 +1,22 @@
+{
+  "name": "cse-dv-vast-mc-2",
+  "version": "1.0.0",
+  "description": "VAST MC 2 Challenge Data Visualization",
+  "main": "js/main.js",
+  "scripts": {
+    "start": "node js/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/pratyushpandey3897/CSE-DV-VAST-MC-2.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pratyushpandey3897/CSE-DV-VAST-MC-2/issues"
+  },
+  "homepage": "https://github.com/pratyushpandey3897/CSE-DV-VAST-MC-2#readme",
+  "dependencies": {
+    "sqlite3": "^5.1.6"
+  }
+}
