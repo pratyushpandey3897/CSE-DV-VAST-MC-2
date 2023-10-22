@@ -1,7 +1,7 @@
 body{
     background-color: rgb(247, 247, 228);
 }
-svg {
+.chart-div {
     background-color: rgb(247, 251, 228);
     width: 100%;
     border: 1px solid #ccc;
