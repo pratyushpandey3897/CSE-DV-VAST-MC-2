@@ -1,8 +1,8 @@
-let data;
+let globalData;
 let lineData;
 let groupedData;
-let selectedMonth;
-let selectedDay;
+let selectedMonth = "March";
+let selectedDay = "Wednesday";
 
 document.addEventListener("DOMContentLoaded", (event) => {
   d3.csv("data/line_chart.csv")
@@ -14,52 +14,65 @@ document.addEventListener("DOMContentLoaded", (event) => {
     });
 
   d3.csv("data/grouped_chart.csv")
-    .then(function (data) {
-      get_month_and_day();
-      let filteredData = data.filter(function (d) {
-        return d["Month"] === selectedMonth && d["Day of Week"] === selectedDay;
-      });
-
-      groupedData = Array.from(
-        d3.group(filteredData, (d) => d["Portion of Day"]),
-        ([key, values]) => ({
-          key,
-          values: Array.from(
-            d3.rollup(
-              values,
-              (v) => d3.sum(v, (leaf) => leaf["Total Commutes"]),
-              (d) => d["End Location Type"]
-            )
-          ),
-        })
-      );
-
-      groupedData.forEach(function (d) {
-        d["Work"] = d.values.find(function (v) {
-          return v[0] === "Work";
-        })[1];
-        d["Home"] = d.values.find(function (v) {
-          return v[0] === "Home";
-        })[1];
-        d["Pub"] = d.values.find(function (v) {
-          return v[0] === "Pub";
-        })[1];
-        d["Restaurant"] = d.values.find(function (v) {
-          return v[0] === "Restaurant";
-        })[1];
-        d["Unknown"] = d.values.find(function (v) {
-          return v[0] === "Unknown";
-        })[1];
-      });
-
-      create_grouped_bar_chart();
+    .then(function (loadedData) {
+      globalData = loadedData;
+      create_grouped_bar_chart(globalData);
     })
     .catch(function (error) {
       console.log(error);
     });
 });
 
-function create_grouped_bar_chart() {
+function prepare_grouped_data(data){
+  let filteredData = data.filter(function (d) {
+    return d["Month"] === selectedMonth && d["Day of Week"] === selectedDay;
+  });
+
+  groupedData = Array.from(
+    d3.group(filteredData, (d) => d["Portion of Day"]),
+    ([key, values]) => ({
+      key,
+      values: Array.from(
+        d3.rollup(
+          values,
+          (v) => d3.sum(v, (leaf) => leaf["Total Commutes"]),
+          (d) => d["End Location Type"]
+        )
+      ),
+    })
+  );
+  
+  groupedData.forEach(function (d) {
+    let work = d.values.find(function (v) {
+      return v[0] === "Work";
+    });
+    d["Work"] = work ? work[1] : 0;
+  
+    let home = d.values.find(function (v) {
+      return v[0] === "Home";
+    });
+    d["Home"] = home ? home[1] : 0;
+  
+    let pub = d.values.find(function (v) {
+      return v[0] === "Pub";
+    });
+    d["Pub"] = pub ? pub[1] : 0;
+  
+    let restaurant = d.values.find(function (v) {
+      return v[0] === "Restaurant";
+    });
+    d["Restaurant"] = restaurant ? restaurant[1] : 0;
+  
+    let unknown = d.values.find(function (v) {
+      return v[0] === "Unknown";
+    });
+    d["Unknown"] = unknown ? unknown[1] : 0;
+  });
+}
+
+function create_grouped_bar_chart(data) {
+  d3.select("#grouped-bar-chart").select("g").remove();
+  prepare_grouped_data(data);
   let svg = d3.select("#grouped-bar-chart");
 
   let margin = { top: 60, right: 40, bottom: 50, left: 60 };
@@ -183,14 +196,6 @@ function create_grouped_bar_chart() {
     .text("Number of Commutes");
 }
 
-function get_month_and_day() {
-  // let month = document.getElementById("month").value;
-  // let day = document.getElementById("day").value;
-  // TODO: Remove hard codes and use selected values
-  selectedMonth = "March";
-  selectedDay = "Wednesday";
-}
-
 function create_line_chart(lineData) {
   let svg = d3.select("#line-chart");
 
@@ -208,7 +213,7 @@ function create_line_chart(lineData) {
     "January",
     "February",
   ];
-  let margin = { top: 60, right: 40, bottom: 50, left: 60 };
+  let margin = { top: 60, right: 60, bottom: 50, left: 75 };
   let width = +svg.attr("width") - margin.left - margin.right;
   let height = +svg.attr("height") - margin.top - margin.bottom;
 
@@ -217,7 +222,10 @@ function create_line_chart(lineData) {
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   // Define the x and y scales
-  let x = d3.scalePoint().domain(months).range([4, width]);
+  let x = d3
+    .scalePoint()
+    .domain(months)
+    .range([4, width - margin.left - margin.right]);
   let y = d3.scaleLinear().rangeRound([height, 0]);
 
   // Define the line
@@ -258,37 +266,66 @@ function create_line_chart(lineData) {
     .attr(
       "transform",
       "translate(" +
-        (width / 2 + margin.left) +
+        width / 2 +
         " ," +
         (height + margin.top + margin.bottom - 10) +
         ")"
     )
     .style("text-anchor", "middle")
-    .style("font-size", "11px")
-    .text("Month"); // Change x-axis label to 'Month'
+    .style("font-size", "14px")
+    .text("Month");
 
-    // Add circles at each data point with mouseover and mouseout events
-    lineData.forEach(function(d) {
-      let circle = g.append('circle')
-      .attr('cx', x(d.Month))
-      .attr('cy', y(d['Total Commutes']))
-      .attr('r', 5) 
-      .attr('fill', 'black') 
-      .attr('stroke', 'black') 
-      .attr('class', 'line-circles');
-  
-      circle.on('mouseover', function() {
-        console.log("triggered");
-          // On mouseover, decrease the opacity of all circles to 0.6 with transition
-          d3.selectAll('.line-circles').transition().duration(200).style('opacity', 0.3);
-          // Increase the opacity of the current circle to 1 with transition
-          d3.select(this).transition().duration(200).style('opacity', 1);
-      });
-  
-      circle.on('mouseout', function() {
-        console.log("triggered");
-          // On mouseout, restore the opacity of all circles to 1 with transition
-          d3.selectAll('.line-circles').transition().duration(200).style('opacity', 1);
-      });
+  svg
+    .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", margin.left / 2 - 35)
+    .attr("x", 0 - (height + margin.top + margin.bottom) / 2)
+    .attr("dy", "1em")
+    .style("text-anchor", "middle")
+    .style("font-size", "14px")
+    .text("Total number of Commutes");
+
+  let clicked = false;
+  // Add circles at each data point with mouseover and mouseout events
+  lineData.forEach(function (d) {
+    let circle = g
+      .append("circle")
+      .attr("cx", x(d.Month))
+      .attr("cy", y(d["Total Commutes"]))
+      .attr("r", 5)
+      .attr("fill", "black")
+      .attr("stroke", "black")
+      .attr("class", "line-circles");
+
+    circle.on("mouseover", function () {
+      d3.selectAll(".line-circles")
+        .transition()
+        .duration(200)
+        .style("opacity", 0.3);
+
+      d3.select(this).transition().duration(200).style("opacity", 1);
+    });
+
+    circle.on("mouseout", function () {
+      if (!clicked) {
+        d3.selectAll(".line-circles")
+          .transition()
+          .duration(200)
+          .style("opacity", 1);
+      }
+    });
+    circle.on("click", function () {
+      
+      // On click, set the opacity of all circles to 0.5 with transition
+      d3.selectAll(".line-circles")
+        .transition()
+        .duration(200)
+        .style("opacity", 0.3);
+      // Set the opacity of the current circle to 1 with transition
+      d3.select(this).transition().duration(200).style("opacity", 1);
+      clicked = true;
+      selectedMonth = d.Month;
+      create_grouped_bar_chart(globalData);
+    });
   });
 }
