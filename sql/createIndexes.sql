@@ -14,13 +14,16 @@ CREATE INDEX idx_check_out_time ON TravelJournal(checkOutTime);
 CREATE INDEX idx_purpose ON TravelJournal(purpose);
 
 -- Create an index on the purpose column
-CREATE INDEX idx_tod_purpose ON TravelJournalWithTimeOfDayAndMonth(purpose);
+CREATE INDEX idx_tjc_purpose ON TravelJournalCombined(purpose);
 
 -- Create an index on the purpose column
-CREATE INDEX idx_tod ON TravelJournalWithTimeOfDayAndMonth(timeOfDay);
+CREATE INDEX idx_tjc_tod ON TravelJournalCombined(timeOfDay);
 
 -- Create an index on the purpose column
-CREATE INDEX idx_tod_month ON TravelJournalWithTimeOfDayAndMonth(month);
+CREATE INDEX idx_tjc_month ON TravelJournalCombined(month);
+
+-- Create an index on the purpose column
+CREATE INDEX idx_tjc_location ON TravelJournalCombined(locationType);
 
 -- Create an index on the buildingId column
 CREATE INDEX idx_apt_building_id ON Apartments(buildingId);
