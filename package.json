@@ -2,9 +2,9 @@
   "name": "cse-dv-vast-mc-2",
   "version": "1.0.0",
   "description": "VAST MC 2 Challenge Data Visualization",
-  "main": "js/main.js",
+  "main": "src/server.js",
   "scripts": {
-    "start": "node js/main.js"
+    "start": "node src/server.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/pratyushpandey3897/CSE-DV-VAST-MC-2#readme",
   "dependencies": {
+    "express": "^4.18.2",
     "sqlite3": "^5.1.6"
-  }
+  },
+  "type": "module"
 }
