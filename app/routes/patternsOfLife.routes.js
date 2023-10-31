@@ -13,6 +13,9 @@ const router = express.Router()
     })
     .get("/locations/:year/:month/:dayOfWeek/:timeOfDay", async(req, res) => {
         res.json(await db.getLocationsByTimeOfDay(req.params.year, req.params.month, req.params.dayOfWeek, req.params.timeOfDay));
+    })
+    .get("/map", async(_, res) => {
+        res.json(await db.getMapGeoJson());
     });
 
 export default router;
