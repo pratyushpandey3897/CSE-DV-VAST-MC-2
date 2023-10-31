@@ -1,24 +1,17 @@
 {
-  "name": "cse-dv-vast-mc-2",
+  "name": "vast-2022-mc2",
   "version": "1.0.0",
-  "description": "VAST MC 2 Challenge Data Visualization",
-  "main": "src/server.js",
+  "description": "",
+  "main": "server.js",
   "scripts": {
-    "start": "node src/server.js"
+    "dev": "node --watch server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/pratyushpandey3897/CSE-DV-VAST-MC-2.git"
-  },
-  "author": "",
+  "type": "module",
+  "author": "Revanth Suresha",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/pratyushpandey3897/CSE-DV-VAST-MC-2/issues"
-  },
-  "homepage": "https://github.com/pratyushpandey3897/CSE-DV-VAST-MC-2#readme",
   "dependencies": {
+    "dedent": "^1.5.1",
     "express": "^4.18.2",
     "sqlite3": "^5.1.6"
-  },
-  "type": "module"
+  }
 }

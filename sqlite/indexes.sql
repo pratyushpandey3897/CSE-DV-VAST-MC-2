@@ -13,8 +13,11 @@ CREATE INDEX idx_check_out_time ON TravelJournal(checkOutTime);
 -- Create an index on the purpose column
 CREATE INDEX idx_purpose ON TravelJournal(purpose);
 
--- Create an index on the timeOfDay column
-CREATE INDEX idx_tjc_tod ON TravelJournal(timeOfDay);
+-- Create an index on the datetime column
+CREATE INDEX idx_tjc_datetime ON TravelJournal(year, month, dayOfWeek, timeOfDay);
+
+-- Create an index on the datetime column
+CREATE INDEX idx_tjc_year_month ON TravelJournal(year, month);
 
 -- Create an index on the startLocationType column
 CREATE INDEX idx_location ON Location(location);

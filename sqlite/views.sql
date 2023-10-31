@@ -11,3 +11,8 @@ LEFT JOIN Location AS l1
     ON tj.travelStartLocationId = l1.buildingId
 LEFT JOIN Location AS l2
     ON tj.travelEndLocationId = l2.buildingId;
+
+-- Create a view of total commutes by month
+CREATE VIEW TotalCommutesByMonth AS
+SELECT year, month, COUNT(*) AS totalCommutes 
+    FROM TravelJournal GROUP BY year, month
