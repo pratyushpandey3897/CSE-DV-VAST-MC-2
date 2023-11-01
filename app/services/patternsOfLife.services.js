@@ -26,12 +26,7 @@ export async function getTotalCommutesTimeOfDay(year, month, dayOfWeek, timeOfDa
             and month = '${month}' and dayOfWeek='${dayOfWeek}'
             and timeOfDay = '${timeOfDay}'
             group by purpose, travelEndLocationId
-        `)
-        .then(data => data
-            .reduce((a, { purpose, buildingId, location, totalCommutes }) => ({
-                ...a,
-                [purpose]: [...a[purpose] || [], { buildingId, location, totalCommutes }]
-            }), {}));
+        `);
 }
 
 export async function getLocationsByTimeOfDay(year, month, dayOfWeek, timeOfDay) {
