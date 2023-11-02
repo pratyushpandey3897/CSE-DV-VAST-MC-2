@@ -297,14 +297,16 @@ function create_line_chart(lineData) {
       .attr("stroke", "black")
       .attr("class", "line-circles");
 
-    circle.on("mouseover", function () {
-      d3.selectAll(".line-circles")
-        .transition()
-        .duration(200)
-        .style("opacity", 0.3);
-
-      d3.select(this).transition().duration(200).style("opacity", 1);
-    });
+      circle.on("mouseover", function () {
+        if (!clicked) {
+          d3.selectAll(".line-circles")
+            .transition()
+            .duration(200)
+            .style("opacity", 0.3);
+      
+          d3.select(this).transition().duration(200).style("opacity", 1);
+        }
+      });
 
     circle.on("mouseout", function () {
       if (!clicked) {
