@@ -1,7 +1,2 @@
-csv
-os
-json
 datetime
-dotenv
-pymongo
-tqdm
+python-dotenv

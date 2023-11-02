@@ -3,8 +3,6 @@ import os
 import json
 from datetime import datetime, timezone
 from dotenv import load_dotenv
-from pymongo import MongoClient
-from tqdm import tqdm
 
 restaurantData = {}
 pointOfInterestData = {}
@@ -136,7 +134,7 @@ with open(os.getenv('TRAVEL_JOURNAL_DATA_PATH')) as f:
 
             month = startdate.strftime('%B')  
             dow = startdate.strftime('%A')
-            tod = 'morning' if startdate.hour < 12 else 'afternoon' if startdate.hour < 17 else 'evening'
+            tod = 'morning' if startdate.hour < 12 else 'afternoon' if startdate.hour < 14 else 'evening' if startdate.hour < 18 else 'night'
             purpose = row['purpose']
             
             start = row['travelStartLocationId']
@@ -174,25 +172,14 @@ with open(os.getenv('TRAVEL_JOURNAL_DATA_PATH')) as f:
 
 grouped = {}
 
-# client = MongoClient("mongodb+srv://csedvmc2team:pppasr@cluster0.osfz3hb.mongodb.net/?retryWrites=true&w=majority")
 
-# # Select the database
-# db = client['VASTChallenge2021MC2']
-
-# # Select the collection
-# collection = db['CommuteSpecifics']
-
-
-for d in tqdm(masterTravelData, desc="Inserting documents"):
+for d in masterTravelData:
     month = grouped.setdefault(d['month'], {})
     dow = month.setdefault(d['dow'], {})
     tod = dow.setdefault(d['tod'], {})
     purpose = tod.setdefault(d['purpose'], {'commute': []})
     purpose['commute'].append(d['commute'])
 
-    # Insert the data into MongoDB
-    # collection.insert_one(d)
-    
 os.makedirs('../parsedData', exist_ok=True)
 
 with open('../parsedData/commute_specifics.json', 'w') as json_file:

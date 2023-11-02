@@ -1,8 +1,9 @@
 let globalData;
 let lineData;
 let groupedData;
+let bubbleData;
 let selectedMonth = "March";
-let selectedDay = "Wednesday";
+let selectedDay = "Tuesday";
 
 document.addEventListener("DOMContentLoaded", (event) => {
   d3.csv("data/line_chart.csv")
@@ -21,6 +22,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
     .catch(function (error) {
       console.log(error);
     });
+
+  d3.json("parsedData/commute_counts_rpe.json")
+    .then(function(loadedData){
+      console.log(loadedData);
+      create_bubble_chart(loadedData);
+    })
 });
 
 function prepare_grouped_data(data){
@@ -331,3 +338,13 @@ function create_line_chart(lineData) {
     });
   });
 }
+
+function prepare_bubble_chart_data(data){
+  return bubbleData = data[selectedMonth][selectedDay];
+}
+
+function create_bubble_chart(data){
+  prepare_bubble_chart_data(data);
+  console.log(bubbleData);
+}
+

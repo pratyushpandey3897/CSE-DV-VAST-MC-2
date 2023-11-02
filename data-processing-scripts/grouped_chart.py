@@ -1,7 +1,10 @@
 import csv
 from datetime import datetime
 from collections import defaultdict
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 # Initialize a dictionary to store the organized data
 organized_data = defaultdict(lambda: defaultdict(
     lambda: defaultdict(lambda: defaultdict(int))))
@@ -14,25 +17,25 @@ pub_dict = {}
 employer_dict = {}
 
 # Read the data from the restaurants CSV file
-with open('/Users/titanium/Desktop/study/dv/grp-prj/VAST-Challenge-2022/Datasets/Attributes/Apartments.csv', newline='') as csvfile:
+with open(os.getenv('APARTMENTS_DATA_PATH'), newline='') as csvfile:
     reader = csv.DictReader(csvfile, delimiter=',')
     for row in reader:
         apartment_dict[row['apartmentId']] = 'Home'
 
 # Read the data from the restaurants CSV file
-with open('/Users/titanium/Desktop/study/dv/grp-prj/VAST-Challenge-2022/Datasets/Attributes/Restaurants.csv', newline='') as csvfile:
+with open(os.getenv('RESTAURANTS_DATA_PATH'), newline='') as csvfile:
     reader = csv.DictReader(csvfile, delimiter=',')
     for row in reader:
         restaurant_dict[row['restaurantId']] = 'Restaurant'
 
 # Read the data from the pubs CSV file
-with open('/Users/titanium/Desktop/study/dv/grp-prj/VAST-Challenge-2022/Datasets/Attributes/Pubs.csv', newline='') as csvfile:
+with open(os.getenv('PUBS_DATA_PATH'), newline='') as csvfile:
     reader = csv.DictReader(csvfile, delimiter=',')
     for row in reader:
         pub_dict[row['pubId']] = 'Pub'
 
 # Read the data from the employers CSV file
-with open('/Users/titanium/Desktop/study/dv/grp-prj/VAST-Challenge-2022/Datasets/Attributes/Employers.csv', newline='') as csvfile:
+with open(os.getenv('EMPLOYERS_DATA_PATH'), newline='') as csvfile:
     reader = csv.DictReader(csvfile, delimiter=',')
     for row in reader:
         employer_dict[row['employerId']] = 'Work'
@@ -44,7 +47,7 @@ location_dict = {**restaurant_dict, **pub_dict,
 end_date = datetime(2023,2,28)
 
 # Read the data from the CSV file
-with open('/Users/titanium/Desktop/study/dv/grp-prj/VAST-Challenge-2022/Datasets/Journals/TravelJournal.csv', newline='') as csvfile:
+with open(os.getenv('TRAVEL_JOURNAL_DATA_PATH'), newline='') as csvfile:
     reader = csv.DictReader(csvfile, delimiter=',')
     print(next(reader).keys())
     # Process each row of data and aggregate it based on the specified columns
