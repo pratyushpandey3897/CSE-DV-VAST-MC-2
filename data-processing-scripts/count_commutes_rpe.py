@@ -16,13 +16,13 @@ for month, weekdays in data.items():
             if time not in counts[month][weekday]:
                 counts[month][weekday][time] = {}
             for location_type, details in location_types.items():
-                if location_type not in counts[month][weekday][time]:
+                if location_type not in counts[month][weekday][time] and location_type not in ["Home", "School"]:
                     counts[month][weekday][time][location_type] = {}
-                for commute in details['commute']:
-                    buildingId = commute['end']['pointId']
-                    if buildingId not in counts[month][weekday][time][location_type]:
-                        counts[month][weekday][time][location_type][buildingId] = 0
-                    counts[month][weekday][time][location_type][buildingId] += 1
+                    for commute in details['commute']:
+                        buildingId = commute['end']['pointId']
+                        if buildingId not in counts[month][weekday][time][location_type]:
+                            counts[month][weekday][time][location_type][buildingId] = 0
+                        counts[month][weekday][time][location_type][buildingId] += 1
 
-with open('../parsedData/commute_counts.json', 'w') as f:
+with open('../parsedData/commute_counts_rpe.json', 'w') as f:
     json.dump(counts, f, indent=4)
