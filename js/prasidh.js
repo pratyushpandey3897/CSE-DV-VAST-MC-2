@@ -3,7 +3,8 @@ let lineData;
 let groupedData;
 let bubbleData;
 let selectedMonth = "March";
-let selectedDay = "Tuesday";
+let selectedDay = "Sunday";
+let selectedTimeOfDay = "morning"
 
 document.addEventListener("DOMContentLoaded", (event) => {
   d3.csv("data/line_chart.csv")
@@ -23,14 +24,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
       console.log(error);
     });
 
-  d3.json("parsedData/commute_counts_rpe.json")
-    .then(function(loadedData){
-      console.log(loadedData);
-      create_bubble_chart(loadedData);
-    })
+  d3.json("parsedData/commute_counts_rpe.json").then(function (loadedData) {
+    console.log(loadedData);
+    create_beeswarm_chart(loadedData);
+  });
 });
 
-function prepare_grouped_data(data){
+function prepare_grouped_data(data) {
   let filteredData = data.filter(function (d) {
     return d["Month"] === selectedMonth && d["Day of Week"] === selectedDay;
   });
@@ -48,28 +48,28 @@ function prepare_grouped_data(data){
       ),
     })
   );
-  
+
   groupedData.forEach(function (d) {
     let work = d.values.find(function (v) {
       return v[0] === "Work";
     });
     d["Work"] = work ? work[1] : 0;
-  
+
     let home = d.values.find(function (v) {
       return v[0] === "Home";
     });
     d["Home"] = home ? home[1] : 0;
-  
+
     let pub = d.values.find(function (v) {
       return v[0] === "Pub";
     });
     d["Pub"] = pub ? pub[1] : 0;
-  
+
     let restaurant = d.values.find(function (v) {
       return v[0] === "Restaurant";
     });
     d["Restaurant"] = restaurant ? restaurant[1] : 0;
-  
+
     let unknown = d.values.find(function (v) {
       return v[0] === "Unknown";
     });
@@ -80,6 +80,7 @@ function prepare_grouped_data(data){
 function create_grouped_bar_chart(data) {
   d3.select("#grouped-bar-chart").select("g").remove();
   prepare_grouped_data(data);
+  console.log(groupedData);
   let svg = d3.select("#grouped-bar-chart");
 
   let margin = { top: 60, right: 40, bottom: 50, left: 60 };
@@ -246,7 +247,7 @@ function create_line_chart(lineData) {
   let z = d3.scaleOrdinal(d3.schemeTableau10);
 
   x.domain(lineData.map((d) => d.Month)); // Use 'Month' for x domain
-  y.domain([0, d3.max(lineData, (d) => d["Total Commutes"])]); // Use 'Total Commutes' for y domain
+  y.domain([40000, d3.max(lineData, (d) => d["Total Commutes"])]); // Use 'Total Commutes' for y domain
 
   // Draw the line
   g.append("path")
@@ -304,16 +305,16 @@ function create_line_chart(lineData) {
       .attr("stroke", "black")
       .attr("class", "line-circles");
 
-      circle.on("mouseover", function () {
-        if (!clicked) {
-          d3.selectAll(".line-circles")
-            .transition()
-            .duration(200)
-            .style("opacity", 0.3);
-      
-          d3.select(this).transition().duration(200).style("opacity", 1);
-        }
-      });
+    circle.on("mouseover", function () {
+      if (!clicked) {
+        d3.selectAll(".line-circles")
+          .transition()
+          .duration(200)
+          .style("opacity", 0.3);
+
+        d3.select(this).transition().duration(200).style("opacity", 1);
+      }
+    });
 
     circle.on("mouseout", function () {
       if (!clicked) {
@@ -324,7 +325,6 @@ function create_line_chart(lineData) {
       }
     });
     circle.on("click", function () {
-      
       // On click, set the opacity of all circles to 0.5 with transition
       d3.selectAll(".line-circles")
         .transition()
@@ -339,12 +339,122 @@ function create_line_chart(lineData) {
   });
 }
 
-function prepare_bubble_chart_data(data){
-  return bubbleData = data[selectedMonth][selectedDay];
+function prepare_beeswarm_data(data) {
+  return (bubbleData = data[selectedMonth][selectedDay][selectedTimeOfDay]);
 }
 
-function create_bubble_chart(data){
-  prepare_bubble_chart_data(data);
-  console.log(bubbleData);
-}
+function create_beeswarm_chart(data) {
+  prepare_beeswarm_data(data);
 
+  var svg = d3.select("#beeswarm-chart");
+  let margin = { top: 60, right: 60, bottom: 50, left: 50 };
+  let width = +svg.attr("width") - margin.left - margin.right;
+  let height = +svg.attr("height") - margin.top - margin.bottom;
+
+  // create dummy data -> just one element per circle
+  var chart_data = [];
+  Object.entries(bubbleData).forEach(([group, groupData]) => {
+    Object.entries(groupData).forEach(([name, value]) => {
+      chart_data.push({ name, value, group });
+    });
+  });
+  console.log(chart_data)
+
+  // A scale that gives a X target position for each group
+  var x = d3.scaleOrdinal().domain([1, 2, 3]).range([500, 600, 740]);
+
+  var minValue = d3.min(chart_data, d => d.value);
+  var maxValue = d3.max(chart_data, d => d.value);
+
+  var radiusScale = d3.scaleSqrt()
+  .domain([minValue, maxValue]) // input range
+  .range([4, 20]); // output range
+
+  // A color scale
+  var color = d3
+    .scaleOrdinal()
+    .domain([1, 2, 3])
+    .range(["#F8766D", "#00BA38", "#619CFF"]);
+
+  // Initialize the circle: all located at the center of the svg area
+  var node = svg
+    .append("g")
+    .selectAll("circle")
+    .data(chart_data)
+    .enter()
+    .append("circle")
+    .attr("r", d => radiusScale(d.value))
+    .attr("cx", width / 2)
+    .attr("cy", height / 2)
+    .style("fill", function (d) {
+      return color(d.group);
+    })
+    .style("fill-opacity", 0.8)
+    .attr("stroke", "black")
+    .style("stroke-width", 1)
+    .call(
+      d3
+        .drag() // call specific function when circle is dragged
+        .on("start", dragstarted)
+        .on("drag", dragged)
+        .on("end", dragended)
+    );
+
+  // Features of the forces applied to the nodes:
+  var simulation = d3
+    .forceSimulation()
+    .force(
+      "x",
+      d3
+        .forceX()
+        .strength(1)
+        .x(function (d) {
+          return x(d.group);
+        })
+    )
+    .force(
+      "y",
+      d3
+        .forceY()
+        .strength(0.5)
+        .y(height / 2)
+    )
+    .force(
+      "center",
+      d3
+        .forceCenter()
+        .x(width / 2)
+        .y(height / 2)
+    ) // Attraction to the center of the svg area
+    .force("charge", d3.forceManyBody().strength(-50)) // Nodes are attracted one each other of value is > 0
+    .force("collide", d3.forceCollide().strength(0.1).radius(10).iterations(1)); // Force that avoids circle overlapping
+
+  // Apply these forces to the nodes and update their positions.
+  // Once the force algorithm is happy with positions ('alpha' value is low enough), simulations will stop.
+  simulation.nodes(chart_data).on("tick", function (d) {
+    node
+      .attr("cx", function (d) {
+        return d.x;
+      })
+      .attr("cy", function (d) {
+        return d.y;
+      });
+  });
+
+  function dragstarted(event, d) {
+    if (!event.active) simulation.alphaTarget(0.3).restart();
+    d.fx = d.x;
+    d.fy = d.y;
+  }
+  
+  function dragged(event, d) {
+    d.fx = event.x;
+    d.fy = event.y;
+  }
+  
+  function dragended(event, d) {
+    if (!event.active) simulation.alphaTarget(0);
+    d.fx = null;
+    d.fy = null;
+  }
+}
