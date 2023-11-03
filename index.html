@@ -15,6 +15,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="/js/prasidh.js"></script>
+
+    <style>
+      #lives-of-people svg {
+        display: block;
+      }
+    </style>
   </head>
   <body>
     <div class="jumbotron mb-1">
@@ -73,8 +79,8 @@
       <div class="row mt-1 mb-3">
         <div class="col-md-12">
           <div>Compare lives of people</div>
-          <div class="chart-div">
-            <svg height="500"></svg>
+          <div id ="lives-of-people" class="chart-div">
+            <!-- <svg height="500"></svg> -->
           </div>
         </div>
       </div>

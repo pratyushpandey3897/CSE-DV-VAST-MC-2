@@ -458,3 +458,76 @@ function create_beeswarm_chart(data) {
     d.fy = null;
   }
 }
+
+function createLineChart(data) {
+  data.forEach((item) => {
+    let date = Object.keys(item)[0];
+    let places = item[date];
+
+    let personsvg = d3.select("#lives-of-people").append("svg").attr("width", 700).attr("height", 100),
+        margin = {top: 20, right: 20, bottom: 30, left: 50},
+        width = +personsvg.attr("width") - margin.left - margin.right,
+        height = +personsvg.attr("height") - margin.top - margin.bottom,
+        g = personsvg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    let x = d3.scaleTime().rangeRound([0, width]);
+
+    x.domain([new Date(date + " 00:00"), new Date(date + " 23:59")]);
+
+    g.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x))
+      .select(".domain")
+        .remove();
+
+    g.selectAll(".dot")
+      .data(places)
+      .enter().append("circle")
+      .attr("class", "dot")
+      .attr("cx", function(d) { return x(new Date(d.startTime)); })
+      .attr("cy", height / 2)
+      .attr("r", 3.5);
+
+    // Add date next to the chart
+    personsvg.append("text")
+      .attr("x", width + margin.right)
+      .attr("y", height / 2)
+      .text(date);
+  });
+}
+
+// Call the function with your 
+let id = "359";
+let visitedPlaces = [];
+
+fetch('/parsedData/particpiantDayActivity.json')
+    .then(response => response.json())
+    .then(data => {
+        let monthData = data["March"];
+        if (monthData) {
+            let dayData = monthData["Tuesday"];
+            if (dayData && dayData[id]) {
+                for (let date in dayData[id]) {
+                    if (!visitedPlaces[date]) {
+                        visitedPlaces[date] = [];
+                    }
+                    dayData[id][date].forEach(activity => {
+                        visitedPlaces[date].push({
+                            place: activity.end.type,
+                            startTime: activity.starttime,
+                            endTime: activity.endtime
+                        });
+                    });
+                }
+            }
+        }
+
+        // Convert to array of objects
+        let result = Object.keys(visitedPlaces).map(date => {
+            return {[date]: visitedPlaces[date]};
+        });
+
+        // Call the function with your data
+        createLineChart(result);
+    })
+    .catch(error => console.error('Error:', error));
