@@ -28,6 +28,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
     console.log(loadedData);
     create_beeswarm_chart(loadedData);
   });
+
+
+
+  // Select menus for comparing lives
+  personSelect1 = document.getElementById("personSelect1");
+  personSelect1.addEventListener("change", personChange)
+  personSelect2 = document.getElementById("personSelect2");
+  personSelect2.addEventListener("change", personChange)
+
 });
 
 function prepare_grouped_data(data) {
@@ -184,10 +193,10 @@ function create_grouped_bar_chart(data) {
     .attr(
       "transform",
       "translate(" +
-        (width / 2 + margin.left) +
-        " ," +
-        (height + margin.top + margin.bottom - 10) +
-        ")"
+      (width / 2 + margin.left) +
+      " ," +
+      (height + margin.top + margin.bottom - 10) +
+      ")"
     )
     .style("text-anchor", "middle")
     .style("font-size", "14px")
@@ -274,10 +283,10 @@ function create_line_chart(lineData) {
     .attr(
       "transform",
       "translate(" +
-        width / 2 +
-        " ," +
-        (height + margin.top + margin.bottom - 10) +
-        ")"
+      width / 2 +
+      " ," +
+      (height + margin.top + margin.bottom - 10) +
+      ")"
     )
     .style("text-anchor", "middle")
     .style("font-size", "14px")
@@ -367,8 +376,8 @@ function create_beeswarm_chart(data) {
   var maxValue = d3.max(chart_data, d => d.value);
 
   var radiusScale = d3.scaleSqrt()
-  .domain([minValue, maxValue]) // input range
-  .range([4, 20]); // output range
+    .domain([minValue, maxValue]) // input range
+    .range([4, 20]); // output range
 
   // A color scale
   var color = d3
@@ -446,12 +455,12 @@ function create_beeswarm_chart(data) {
     d.fx = d.x;
     d.fy = d.y;
   }
-  
+
   function dragged(event, d) {
     d.fx = event.x;
     d.fy = event.y;
   }
-  
+
   function dragended(event, d) {
     if (!event.active) simulation.alphaTarget(0);
     d.fx = null;
@@ -459,75 +468,136 @@ function create_beeswarm_chart(data) {
   }
 }
 
-function createLineChart(data) {
+function createLineChart(data, chartName) {
+  
+  d3.selectAll(`.${chartName}Child`).remove()
+  d3.selectAll(".dateLabels").remove()
+
   data.forEach((item) => {
     let date = Object.keys(item)[0];
     let places = item[date];
 
-    let personsvg = d3.select("#lives-of-people").append("svg").attr("width", 700).attr("height", 100),
-        margin = {top: 20, right: 20, bottom: 30, left: 50},
-        width = +personsvg.attr("width") - margin.left - margin.right,
-        height = +personsvg.attr("height") - margin.top - margin.bottom,
-        g = personsvg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    let x = d3.scaleTime().rangeRound([0, width]);
+    let personsvg = d3.select(`#${chartName}`).append("svg").attr("class", `${chartName}Child`).attr("width", 350).attr("height", 100),
+      margin = { top: 20, right: 20, bottom: 30, left: 50 },
+      width = +personsvg.attr("width") - margin.left - margin.right,
+      height = +personsvg.attr("height") - margin.top - margin.bottom,
+      g = personsvg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    x.domain([new Date(date + " 00:00"), new Date(date + " 23:59")]);
+
+    let x = d3.scaleTime().rangeRound([0, width]).domain([new Date(date + " 00:00"), new Date(date + " 23:59")]);
+    let xAxis = d3.axisBottom(x).ticks(d3.timeHour.every(3), "%I %p");
 
     g.append("g")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x))
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis)
       .select(".domain")
-        .remove();
+      .remove();
 
     g.selectAll(".dot")
       .data(places)
-      .enter().append("circle")
+      .enter()
+      .append("circle")
       .attr("class", "dot")
-      .attr("cx", function(d) { return x(new Date(d.startTime)); })
+      .attr("cx", function (d) { return x(new Date(d.startTime)); })
       .attr("cy", height / 2)
       .attr("r", 3.5);
 
+
+      
+    let dateLabel = d3.select("#activityDatePanel").append("svg").attr("height", 100).attr("class", "dateLabels")
     // Add date next to the chart
-    personsvg.append("text")
-      .attr("x", width + margin.right)
-      .attr("y", height / 2)
+    dateLabel.append("text")
+    .attr("y", 55)
+      .attr("class", "dateLabels")
       .text(date);
   });
 }
 
-// Call the function with your 
-let id = "359";
-let visitedPlaces = [];
+// This needs to be called when in the onChange of month/date selector 
+populatePersonSelector(selectedDay, selectedDay) // remove when month/date selector added
+function populatePersonSelector() {
 
-fetch('/parsedData/particpiantDayActivity.json')
+  // Get list of 10 people
+  fetch('/parsedData/particpiantDayActivity.json')
     .then(response => response.json())
     .then(data => {
-        let monthData = data["March"];
+      let monthData = data[selectedMonth];
+      if (monthData) {
+        let dayData = monthData[selectedDay];
+        // Fetch keys here
+        if (dayData) {
+          options = Object.keys(dayData)
+          for (var i = 0; i < options.length; i++) {
+            var opt = options[i];
+            var el = document.createElement("option");
+            el.textContent = opt;
+            el.value = opt;
+            personSelect1.appendChild(el);
+            opt = options[i];
+            el = document.createElement("option");
+            el.textContent = opt;
+            el.value = opt;
+            personSelect2.appendChild(el);
+          }
+        }
+      }
+    })
+    .catch(error => console.log(error));
+
+}
+
+function personChange(event) {
+  var id = event.target.id;
+  var select = document.getElementById(id)
+  var value = select.value;
+  var chartName;
+  if (id == "personSelect1") {
+    chartName = "person1";
+  } else {
+    chartName = "person2"
+  }
+  getActivityData(value).then(result => {
+    createLineChart(result, chartName);
+  }).catch(error => {
+    console.error(error);
+  });
+
+}
+
+
+function getActivityData(id) {
+  return new Promise((resolve, reject) => {
+    let visitedPlaces = [];
+    fetch('/parsedData/particpiantDayActivity.json')
+      .then(response => response.json())
+      .then(data => {
+        let monthData = data[selectedMonth];
         if (monthData) {
-            let dayData = monthData["Tuesday"];
-            if (dayData && dayData[id]) {
-                for (let date in dayData[id]) {
-                    if (!visitedPlaces[date]) {
-                        visitedPlaces[date] = [];
-                    }
-                    dayData[id][date].forEach(activity => {
-                        visitedPlaces[date].push({
-                            place: activity.end.type,
-                            startTime: activity.starttime,
-                            endTime: activity.endtime
-                        });
-                    });
-                }
+          let dayData = monthData[selectedDay];
+          if (dayData && dayData[id]) {
+            for (let date in dayData[id]) {
+              if (!visitedPlaces[date]) {
+                visitedPlaces[date] = [];
+              }
+              dayData[id][date].forEach(activity => {
+                visitedPlaces[date].push({
+                  place: activity.end.type,
+                  startTime: activity.starttime,
+                  endTime: activity.endtime
+                });
+              });
             }
+          }
         }
 
-        // Convert to array of objects
         let result = Object.keys(visitedPlaces).map(date => {
-            return {[date]: visitedPlaces[date]};
+          return { [date]: visitedPlaces[date] };
         });
-
-        // Call the function with your data
-        createLineChart(result);
-    })
-    .catch(error => console.error('Error:', error));
+        resolve(result);
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
+}
