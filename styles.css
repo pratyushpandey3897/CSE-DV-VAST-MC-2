@@ -59,7 +59,17 @@ h1 {
   height: 500px;
 }
 
+#lives-of-people svg {
+  display: block;
+}
+
 .lopRow {
   display: flex;
   justify-content: space-around
+}
+
+.material-icon {
+  font-family: 'Material Icons';
+  display: inline-block;
+  font-size: 24px;
 }

@@ -468,6 +468,15 @@ function create_beeswarm_chart(data) {
   }
 }
 
+function getEmoji(key){ let emojis = {
+  "pub": "🍻",
+  "home": "🏠",
+  "restaurant": "🍔",
+  "workplace": "🏢"
+};
+  return emojis[key]
+}
+
 function createLineChart(data, chartName) {
   
   d3.selectAll(`.${chartName}Child`).remove()
@@ -478,14 +487,14 @@ function createLineChart(data, chartName) {
     let places = item[date];
 
 
-    let personsvg = d3.select(`#${chartName}`).append("svg").attr("class", `${chartName}Child`).attr("width", 350).attr("height", 100),
-      margin = { top: 20, right: 20, bottom: 30, left: 50 },
+    let personsvg = d3.select(`#${chartName}`).append("svg").attr("class", `${chartName}Child`).attr("width", "450").attr("height", 100),
+      margin = { top: 10, right: 10 , bottom: 20, left: 20 },
       width = +personsvg.attr("width") - margin.left - margin.right,
       height = +personsvg.attr("height") - margin.top - margin.bottom,
       g = personsvg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
-    let x = d3.scaleTime().rangeRound([0, width]).domain([new Date(date + " 00:00"), new Date(date + " 23:59")]);
+    let x = d3.scaleUtc().range([0, width]).domain([new Date(date + "T00:00:00Z"), new Date(date + "T23:59:59Z")]);
     let xAxis = d3.axisBottom(x).ticks(d3.timeHour.every(3), "%I %p");
 
     g.append("g")
@@ -494,6 +503,7 @@ function createLineChart(data, chartName) {
       .select(".domain")
       .remove();
 
+      /*
     g.selectAll(".dot")
       .data(places)
       .enter()
@@ -502,7 +512,28 @@ function createLineChart(data, chartName) {
       .attr("cx", function (d) { return x(new Date(d.startTime)); })
       .attr("cy", height / 2)
       .attr("r", 3.5);
+      */
+      g.selectAll(".symbol")
+      .data(places)
+      .enter()
+      .append("text")
+      .attr("class", "symbol")
+      .attr("x", function (d) { dt = x(new Date(d.startTime)); return dt}) 
+      .attr("y", height / 2 ) 
+      .text(d => getEmoji(d.place)); 
+     /*
 
+      g.selectAll(".symbol")
+      .data(places)
+      .enter()
+      .append("text")
+      .attr("class", "symbol material-icon")
+      .attr("x", d =>{dt= x(new Date(new Date(d.startTime).toISOString())); console.log(d); console.log(dt); return dt})
+      .attr("y", height / 2)
+      .text("lunch-dining")
+      .attr("font-size", 15)
+
+*/
 
       
     let dateLabel = d3.select("#activityDatePanel").append("svg").attr("height", 100).attr("class", "dateLabels")
