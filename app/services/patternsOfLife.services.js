@@ -2,7 +2,7 @@ import query from "./db.services.js";
 import dedent from "dedent";
 
 export async function totalCommutesByMonth() {
-    return await query(`select * from TotalCommutesByMonth`);
+    return await query(`select month as Month, totalCommutes as 'Total Commutes' from TotalCommutesByMonth where year = '2022'`);
 }
 
 export async function getTotalCommutesByPurpose(year, month, dayOfWeek) {
@@ -13,20 +13,30 @@ export async function getTotalCommutesByPurpose(year, month, dayOfWeek) {
             group by timeOfDay, purpose
         `)
         .then(data => data
-            .reduce((a, { timeOfDay, purpose, totalCommutes }) => ({
-                ...a,
-                [timeOfDay]: [...a[timeOfDay] || [], { purpose, totalCommutes }]
-            }), {}));
-}
-
-export async function getTotalCommutesTimeOfDay(year, month, dayOfWeek, timeOfDay) {
-    return await query(dedent`
-            select purpose, travelEndLocationId as buildingId, endLocation as location, count(*) as totalCommutes
-            from TravelJournalCombined where year = '${year}'
-            and month = '${month}' and dayOfWeek='${dayOfWeek}'
-            and timeOfDay = '${timeOfDay}'
-            group by purpose, travelEndLocationId
-        `);
+            .map(function(row) {
+                let endLocationType;
+                switch(row.purpose) {
+                    case "Going Back to Home":
+                        endLocationType = "Home";
+                        break;
+                    case "Work/Home Commute":
+                        endLocationType = "Work";
+                        break;
+                    case "Eating":
+                        endLocationType = "Restaurant";
+                        break;
+                    case "Recreation (Social Gathering)":
+                        endLocationType = "Pub";
+                        break;
+                    default:
+                        endLocationType = "Unknown";
+                }
+                return {
+                    "Portion of Day": row.timeOfDay,
+                    "Total Commutes": row.totalCommutes,
+                    "End Location Type": endLocationType
+                }
+            }));
 }
 
 export async function getLocationsByTimeOfDay(year, month, dayOfWeek, timeOfDay) {

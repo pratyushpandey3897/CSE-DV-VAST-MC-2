@@ -2,7 +2,7 @@
     document.addEventListener("DOMContentLoaded", () => {
         const height = 500, width = 600;
 
-        const svg = d3.select('#map-svg-filter')
+        const svg = d3.select('#map-svg-traffic')
             .attr("width", width)
             .attr("height", height);
 

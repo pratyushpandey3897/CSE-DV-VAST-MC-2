@@ -5,7 +5,8 @@ let selectedMonth = "March";
 let selectedDay = "Wednesday";
 
 document.addEventListener("DOMContentLoaded", (event) => {
-  d3.csv("data/line_chart.csv")
+  fetch("/patternsOfLife/totalCommutesByMonth")
+    .then(res => res.json())
     .then(function (lineData) {
       create_line_chart(lineData);
     })
@@ -13,7 +14,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
       console.log(error);
     });
 
-  d3.csv("data/grouped_chart.csv")
+    fetch(`/patternsOfLife/totalCommutesByPurpose/2022/${selectedMonth}/${selectedDay}`)
+    .then(res => res.json())
     .then(function (loadedData) {
       globalData = loadedData;
       create_grouped_bar_chart(globalData);
@@ -23,13 +25,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
     });
 });
 
-function prepare_grouped_data(data){
-  let filteredData = data.filter(function (d) {
-    return d["Month"] === selectedMonth && d["Day of Week"] === selectedDay;
-  });
+function prepare_grouped_data(data) {
+
 
   groupedData = Array.from(
-    d3.group(filteredData, (d) => d["Portion of Day"]),
+    d3.group(data, (d) => d["Portion of Day"]),
     ([key, values]) => ({
       key,
       values: Array.from(
@@ -41,28 +41,28 @@ function prepare_grouped_data(data){
       ),
     })
   );
-  
+
   groupedData.forEach(function (d) {
     let work = d.values.find(function (v) {
       return v[0] === "Work";
     });
     d["Work"] = work ? work[1] : 0;
-  
+
     let home = d.values.find(function (v) {
       return v[0] === "Home";
     });
     d["Home"] = home ? home[1] : 0;
-  
+
     let pub = d.values.find(function (v) {
       return v[0] === "Pub";
     });
     d["Pub"] = pub ? pub[1] : 0;
-  
+
     let restaurant = d.values.find(function (v) {
       return v[0] === "Restaurant";
     });
     d["Restaurant"] = restaurant ? restaurant[1] : 0;
-  
+
     let unknown = d.values.find(function (v) {
       return v[0] === "Unknown";
     });
@@ -176,10 +176,10 @@ function create_grouped_bar_chart(data) {
     .attr(
       "transform",
       "translate(" +
-        (width / 2 + margin.left) +
-        " ," +
-        (height + margin.top + margin.bottom - 10) +
-        ")"
+      (width / 2 + margin.left) +
+      " ," +
+      (height + margin.top + margin.bottom - 10) +
+      ")"
     )
     .style("text-anchor", "middle")
     .style("font-size", "14px")
@@ -266,10 +266,10 @@ function create_line_chart(lineData) {
     .attr(
       "transform",
       "translate(" +
-        width / 2 +
-        " ," +
-        (height + margin.top + margin.bottom - 10) +
-        ")"
+      width / 2 +
+      " ," +
+      (height + margin.top + margin.bottom - 10) +
+      ")"
     )
     .style("text-anchor", "middle")
     .style("font-size", "14px")
@@ -315,7 +315,7 @@ function create_line_chart(lineData) {
       }
     });
     circle.on("click", function () {
-      
+
       // On click, set the opacity of all circles to 0.5 with transition
       d3.selectAll(".line-circles")
         .transition()
