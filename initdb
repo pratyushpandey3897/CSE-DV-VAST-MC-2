@@ -97,7 +97,9 @@ UNION ALL
 UNION ALL
     SELECT restaurantId, location, 'Restaurant' FROM Restaurants
 UNION ALL
-    SELECT apartmentId, location, 'Apartment' FROM Apartments;
+    SELECT apartmentId, location, 'Apartment' FROM Apartments
+UNION ALL
+    SELECT employerId, location, 'Workplace' FROM Employers;
 
 -- Add a derived column timeOfDay to help with some common query filtering usecases
 ALTER TABLE TravelJournal

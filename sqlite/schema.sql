@@ -130,5 +130,5 @@ CREATE TABLE IF NOT EXISTS ParticipantStatusLogs (
 CREATE TABLE IF NOT EXISTS Location (
     buildingId INTEGER PRIMARY KEY,
     location POINT,
-    buildingType TEXT CHECK(buildingType in ('Restaurant', 'Pub', 'School', 'Apartment'))
+    buildingType TEXT CHECK(buildingType in ('Restaurant', 'Pub', 'School', 'Apartment', 'Workplace'))
 );

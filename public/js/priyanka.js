@@ -7,7 +7,8 @@ let selectedCommercialIdBLChart = "894"
 margin = {top: 20, right: 80, bottom: 70, left: 80}, // Increase bottom and left margins to make room for labels
 
 document.addEventListener("DOMContentLoaded", (event) => {
-    d3.csv("data/commercial_expenditures_occupancy.csv")
+    fetch(`/patternsOfLife/totalExpendituresByLocationId/2022/${selectedMonthBLChart}/${selectedDayBLChart}/${selectedTimeOfDayBLChart}`)
+    .then(res => res.json())
       .then(function (barLineData) {
         groupAndAggregateData(barLineData);
         create_bar_line_chart();
@@ -21,7 +22,7 @@ function groupAndAggregateData(barLineData) {
     globalDataBarLineChart = barLineData;
     groupedDataBLChart = globalDataBarLineChart.reduce((acc, curr) => {
         // Filter based on selected variables
-        if (curr.month === selectedMonthBLChart && curr.day_of_week === selectedDayBLChart && curr.portion_of_day === selectedTimeOfDayBLChart && curr.commercialId === selectedCommercialIdBLChart) {
+        // if (curr.month === selectedMonthBLChart && curr.day_of_week === selectedDayBLChart && curr.portion_of_day === selectedTimeOfDayBLChart && curr.commercialId === selectedCommercialIdBLChart) {
             // Extract the hour from start_time
             let hour = new Date(curr.start_time).getHours();
             // Initialize the hour group if it doesn't exist
@@ -35,7 +36,7 @@ function groupAndAggregateData(barLineData) {
             // Aggregate the total occupancy and increment the count
             acc[hour].totalOccupancy += 1;
             acc[hour].expenditure += parseFloat(curr.expenditures);
-        }
+        // }
 
         return acc;
     }, {});

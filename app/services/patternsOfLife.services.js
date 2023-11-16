@@ -5,36 +5,50 @@ export async function totalCommutesByMonth() {
     return await query(`select month as Month, totalCommutes as 'Total Commutes' from TotalCommutesByMonth where year = '2022'`);
 }
 
-export async function getTotalCommutesByPurpose(year, month, dayOfWeek) {
+export async function getTotalCommutesByLocationType(year, month, dayOfWeek) {
     return await query(dedent`
-            select timeOfDay, purpose, count(*) as totalCommutes
+            select timeOfDay, endLocationType, count(*) as totalCommutes
             from TravelJournalCombined where year = '${year}'
             and month = '${month}' and dayOfWeek='${dayOfWeek}'
-            group by timeOfDay, purpose
+            group by timeOfDay, endLocationType
         `)
         .then(data => data
-            .map(function(row) {
-                let endLocationType;
-                switch(row.purpose) {
-                    case "Going Back to Home":
-                        endLocationType = "Home";
-                        break;
-                    case "Work/Home Commute":
-                        endLocationType = "Work";
-                        break;
-                    case "Eating":
-                        endLocationType = "Restaurant";
-                        break;
-                    case "Recreation (Social Gathering)":
-                        endLocationType = "Pub";
-                        break;
-                    default:
-                        endLocationType = "Unknown";
-                }
+            .map(function (row) {
                 return {
                     "Portion of Day": row.timeOfDay,
                     "Total Commutes": row.totalCommutes,
-                    "End Location Type": endLocationType
+                    "End Location Type": row.endLocationType
+                }
+            }));
+}
+
+export async function getTotalExpendituresByLocationId(year, month, dayOfWeek, timeOfDay) {
+    return await query(dedent`
+            select participantId, travelEndLocationId, travelStartTime, (startingBalance - endingBalance) as expenditure, 
+            b.maxOccupancy, endLocationType
+            from TravelJournalCombined t
+            join (
+                select restaurantId as buildingId, maxOccupancy from Restaurants
+                union
+                select pubId as buildingId, maxOccupancy from Pubs
+            ) as b where b.buildingId = t.travelEndLocationId
+            and t.year = '${year}'
+            and t.month = '${month}' and t.dayOfWeek='${dayOfWeek}'
+            and t.timeOfDay = '${timeOfDay}'
+        `)
+        .then(data => data
+            .map(function (row) {
+                return {
+                    "participantId": row.participantId,
+                    "commercialId": row.travelEndLocationId,
+                    "start_time": row.travelStartTime,
+                    "month": row.month,
+                    "day_of_week": row.dayOfWeek,
+                    "portion_of_day": row.timeOfDay,
+                    "expenditures": row.expenditure,
+                    "occupancy": row.maxOccupancy,
+                    "buildingId": row.travelEndLocationId,
+                    "commercialType": row.endLocationType
                 }
             }));
 }

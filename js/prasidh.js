@@ -51,7 +51,7 @@ function prepare_grouped_data(data) {
 
   groupedData.forEach(function (d) {
     let work = d.values.find(function (v) {
-      return v[0] === "Work";
+      return v[0] === "Workplace";
     });
     d["Work"] = work ? work[1] : 0;
 
@@ -101,7 +101,7 @@ function create_grouped_bar_chart(data) {
   // Define the color scale
   let z = d3.scaleOrdinal(d3.schemeTableau10);
 
-  let keys = ["Work", "Pub", "Restaurant"];
+  let keys = ["Workplace", "Pub", "Restaurant"];
   x0.domain(groupedData.map((d) => d.key));
   x1.domain(keys).rangeRound([0, x0.bandwidth()]);
   y.domain([
