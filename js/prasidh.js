@@ -1,5 +1,6 @@
 let globalData;
 let lineData;
+let horizontalBarData;
 let groupedData;
 let bubbleData;
 let selectedMonth = "March";
@@ -27,6 +28,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
   d3.json("parsedData/commute_counts_rpe.json").then(function (loadedData) {
     console.log(loadedData);
     create_beeswarm_chart(loadedData);
+  });
+
+  d3.json("parsedData/weekday_commutes.json").then(function (loadedData) {
+    console.log(loadedData);
+    horizontalBarData = loadedData;
+    initialize_horizontal_bar_chart(loadedData, "March");
   });
 });
 
@@ -335,8 +342,121 @@ function create_line_chart(lineData) {
       clicked = true;
       selectedMonth = d.Month;
       create_grouped_bar_chart(globalData);
+      create_horizontal_bar_chart(horizontalBarData, selectedMonth);
     });
   });
+}
+
+
+let horizontal_bar_svg, g, x, y, color;
+
+function initialize_horizontal_bar_chart(data, selectedMonth) {
+  horizontal_bar_svg = d3.select("#horizontal-bar-chart");
+  let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+  let margin = { top: 60, right: 20, bottom: 50, left: 70 };
+  let width = +horizontal_bar_svg.attr("width") - margin.left - margin.right;
+  let height = +horizontal_bar_svg.attr("height") - margin.top - margin.bottom;
+
+  g = horizontal_bar_svg
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  let maxVal = d3.max(Object.values(data).flatMap(Object.values));
+
+  color = d3
+    .scaleSequential()
+    .domain([0, maxVal])
+    .interpolator(d3.interpolateReds);
+
+  x = d3
+    .scaleLinear()
+    .domain([0, maxVal+2000])
+    .range([0, width - margin.left - margin.right]);
+
+  y = d3.scaleBand().domain(days).range([height, 0]).padding(0.1);
+
+  g.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x).ticks(5));
+
+  g.append("g")
+    .attr("class", "y axis")
+    .call(d3.axisLeft(y));
+
+  create_horizontal_bar_chart(data, selectedMonth);
+}
+
+function create_horizontal_bar_chart(data, selectedMonth) {
+  let bars = g.selectAll(".bar")
+    .data(Object.entries(data[selectedMonth]));
+
+  // Update existing bars
+  bars
+    .transition()
+    .duration(1000)
+    .attr("y", function (d) {
+      return y(d[0]);
+    })
+    .attr("height", y.bandwidth())
+    .attr("x", 0)
+    .attr("width", function (d) {
+      return x(d[1]);
+    })
+    .on("click", function (d) {
+      g.selectAll(".bar").style("opacity", 0.8);
+      g.selectAll(".bar").style("stroke", "none");
+
+      // Add border stroke to clicked bar
+      d3.select(this).style("stroke", "black").style("stroke-width", 2);
+
+
+      // Highlight clicked bar
+      d3.select(this).style("opacity", 1);
+    
+      // Get clicked element value
+      selectedDay = d3.select(this).data()[0][0];
+    
+      create_grouped_bar_chart(globalData);
+    })
+    .attr("fill", function (d) {
+      return color(d[1]);
+    });
+
+  // Enter new bars, if any
+  bars
+    .enter()
+    .append("rect")
+    .attr("class", "bar")
+    .attr("y", function (d) {
+      return y(d[0]);
+    })
+    .attr("height", y.bandwidth())
+    .attr("x", 0)
+    .attr("width", function (d) {
+      return x(d[1]);
+    })
+    .on("click", function (d) {
+      g.selectAll(".bar").style("opacity", 0.8);
+      g.selectAll(".bar").style("stroke", "none");
+
+      // Add border stroke to clicked bar
+      d3.select(this).style("stroke", "black").style("stroke-width", 2);
+    
+      // Highlight clicked bar
+      d3.select(this).style("opacity", 1);
+    
+      // Get clicked element value
+      selectedDay = d3.select(this).data()[0][0];
+    
+      create_grouped_bar_chart(globalData);
+    })
+    .attr("fill", function (d) {
+      return color(d[1]);
+    });
+
+  // Remove old bars, if any
+  bars.exit().remove();
 }
 
 function prepare_beeswarm_data(data) {
@@ -361,43 +481,58 @@ function create_beeswarm_chart(data) {
   console.log(chart_data)
 
   // A scale that gives a X target position for each group
-  var x = d3.scaleOrdinal().domain([1, 2, 3]).range([500, 600, 740]);
+  var x = d3.scaleOrdinal().domain(["Work", "Pub", "Restaurant"]).range([width / 4, width / 2, (3 * width) / 4]);
 
   var minValue = d3.min(chart_data, d => d.value);
   var maxValue = d3.max(chart_data, d => d.value);
 
   var radiusScale = d3.scaleSqrt()
   .domain([minValue, maxValue]) // input range
-  .range([4, 20]); // output range
+  .range([8, 30]); // output range
 
-  // A color scale
-  var color = d3
-    .scaleOrdinal()
-    .domain([1, 2, 3])
-    .range(["#F8766D", "#00BA38", "#619CFF"]);
+
+let z = d3.scaleOrdinal(d3.schemeTableau10);
+let keys = ["Work", "Pub", "Restaurant"];
+
+// Map the keys to the color scale
+z.domain(keys);
 
   // Initialize the circle: all located at the center of the svg area
   var node = svg
     .append("g")
     .selectAll("circle")
     .data(chart_data)
-    .enter()
-    .append("circle")
-    .attr("r", d => radiusScale(d.value))
-    .attr("cx", width / 2)
-    .attr("cy", height / 2)
-    .style("fill", function (d) {
-      return color(d.group);
-    })
-    .style("fill-opacity", 0.8)
-    .attr("stroke", "black")
-    .style("stroke-width", 1)
-    .call(
-      d3
-        .drag() // call specific function when circle is dragged
-        .on("start", dragstarted)
-        .on("drag", dragged)
-        .on("end", dragended)
+    .join(
+        enter => enter
+            .append("circle")
+            .attr("r", 3) // Start with 0 radius
+            .attr("cx", width / 2)
+            .attr("cy", height / 2)
+            .style("fill", function (d) {
+              return z(d.group);
+            })
+            .style("fill-opacity", 0.9)
+            .attr("stroke", "black")
+            .style("stroke-width", 1)
+            .call(
+              d3
+                .drag() // call specific function when circle is dragged
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended)
+            )
+            .transition()
+            .duration(2000)
+            .attr("r", d => radiusScale(d.value)), // Grow to actual radius
+        update => update
+            .transition()
+            .duration(2000)
+            .attr("r", d => radiusScale(d.value)), // Update radius
+        exit => exit
+            .transition()
+            .duration(1000)
+            .attr("r", 0) // Shrink to 0 radius
+            .remove()
     );
 
   // Features of the forces applied to the nodes:
@@ -407,7 +542,7 @@ function create_beeswarm_chart(data) {
       "x",
       d3
         .forceX()
-        .strength(1)
+        .strength(0.5)
         .x(function (d) {
           return x(d.group);
         })
@@ -419,15 +554,8 @@ function create_beeswarm_chart(data) {
         .strength(0.5)
         .y(height / 2)
     )
-    .force(
-      "center",
-      d3
-        .forceCenter()
-        .x(width / 2)
-        .y(height / 2)
-    ) // Attraction to the center of the svg area
     .force("charge", d3.forceManyBody().strength(-50)) // Nodes are attracted one each other of value is > 0
-    .force("collide", d3.forceCollide().strength(0.1).radius(10).iterations(1)); // Force that avoids circle overlapping
+    .force("collide", d3.forceCollide().strength(0.5).radius(d => radiusScale(d.value) + 1).iterations(1))
 
   // Apply these forces to the nodes and update their positions.
   // Once the force algorithm is happy with positions ('alpha' value is low enough), simulations will stop.
@@ -442,19 +570,19 @@ function create_beeswarm_chart(data) {
   });
 
   function dragstarted(event, d) {
-    if (!event.active) simulation.alphaTarget(0.3).restart();
+    if (!event.active) simulation.alphaTarget(0.03).restart(); // Increase alphaTarget
     d.fx = d.x;
     d.fy = d.y;
-  }
+}
   
-  function dragged(event, d) {
+function dragged(event, d) {
     d.fx = event.x;
     d.fy = event.y;
-  }
+}
   
-  function dragended(event, d) {
-    if (!event.active) simulation.alphaTarget(0);
+function dragended(event, d) {
+    if (!event.active) simulation.alphaTarget(0.03);
     d.fx = null;
     d.fy = null;
-  }
+}
 }
