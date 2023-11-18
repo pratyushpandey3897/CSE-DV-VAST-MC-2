@@ -6,6 +6,7 @@ let bubbleData;
 let selectedMonth = "March";
 let selectedDay = "Sunday";
 let selectedTimeOfDay = "morning"
+let commute_counts_rpe_data;
 
 document.addEventListener("DOMContentLoaded", (event) => {
   d3.csv("data/line_chart.csv")
@@ -27,7 +28,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   d3.json("parsedData/commute_counts_rpe.json").then(function (loadedData) {
     console.log(loadedData);
-    create_beeswarm_chart(loadedData);
+    commute_counts_rpe_data = loadedData;
+    selectedTimeOfDay="morning";
+    create_beeswarm_chart(commute_counts_rpe_data);
   });
 
   d3.json("parsedData/weekday_commutes.json").then(function (loadedData) {
@@ -135,6 +138,11 @@ function create_grouped_bar_chart(data) {
     .on("mouseout", function () {
       // Restore the default opacity of all bars on mouseout
       d3.selectAll(".bar-group").transition().duration(200).style("opacity", 1);
+    })
+    .on("click", function () {
+      console.log("Bar clicked");
+      selectedTimeOfDay = d3.select(this).data()[0].key;
+      create_beeswarm_chart(commute_counts_rpe_data);
     })
     .selectAll("rect")
     .data((d) => keys.map((key) => ({ key: key, value: d[key] }))) // Create a new array of objects with properties 'key' and 'value'
@@ -342,6 +350,7 @@ function create_line_chart(lineData) {
       clicked = true;
       selectedMonth = d.Month;
       create_grouped_bar_chart(globalData);
+      create_beeswarm_chart(commute_counts_rpe_data);
       create_horizontal_bar_chart(horizontalBarData, selectedMonth);
     });
   });
@@ -416,7 +425,7 @@ function create_horizontal_bar_chart(data, selectedMonth) {
     
       // Get clicked element value
       selectedDay = d3.select(this).data()[0][0];
-    
+      create_beeswarm_chart(commute_counts_rpe_data);
       create_grouped_bar_chart(globalData);
     })
     .attr("fill", function (d) {
@@ -448,7 +457,7 @@ function create_horizontal_bar_chart(data, selectedMonth) {
     
       // Get clicked element value
       selectedDay = d3.select(this).data()[0][0];
-    
+      create_beeswarm_chart(commute_counts_rpe_data);
       create_grouped_bar_chart(globalData);
     })
     .attr("fill", function (d) {
@@ -460,14 +469,15 @@ function create_horizontal_bar_chart(data, selectedMonth) {
 }
 
 function prepare_beeswarm_data(data) {
+  selectedTimeOfDay= selectedTimeOfDay.toLowerCase();
   return (bubbleData = data[selectedMonth][selectedDay][selectedTimeOfDay]);
 }
 
 function create_beeswarm_chart(data) {
-  prepare_beeswarm_data(data);
-
   var svg = d3.select("#beeswarm-chart");
-  let margin = { top: 60, right: 60, bottom: 50, left: 50 };
+  svg.selectAll("*").remove();
+  prepare_beeswarm_data(data);
+  let margin = { top: 60, right: 70, bottom: 20, left: 30 };
   let width = +svg.attr("width") - margin.left - margin.right;
   let height = +svg.attr("height") - margin.top - margin.bottom;
 
@@ -481,14 +491,14 @@ function create_beeswarm_chart(data) {
   console.log(chart_data)
 
   // A scale that gives a X target position for each group
-  var x = d3.scaleOrdinal().domain(["Work", "Pub", "Restaurant"]).range([width / 4, width / 2, (3 * width) / 4]);
+  var x = d3.scaleOrdinal().domain(["Work", "Pub", "Restaurant"]).range([width / 4, (width) / 2, (3*width)/4]);
 
   var minValue = d3.min(chart_data, d => d.value);
   var maxValue = d3.max(chart_data, d => d.value);
 
   var radiusScale = d3.scaleSqrt()
   .domain([minValue, maxValue]) // input range
-  .range([8, 30]); // output range
+  .range([4, 25]); // output range
 
 
 let z = d3.scaleOrdinal(d3.schemeTableau10);
@@ -534,7 +544,6 @@ z.domain(keys);
             .attr("r", 0) // Shrink to 0 radius
             .remove()
     );
-
   // Features of the forces applied to the nodes:
   var simulation = d3
     .forceSimulation()
@@ -542,7 +551,7 @@ z.domain(keys);
       "x",
       d3
         .forceX()
-        .strength(0.5)
+        .strength(0.9)
         .x(function (d) {
           return x(d.group);
         })
