@@ -1,14 +1,19 @@
 let globalData;
 let lineData;
 let horizontalBarData;
+let barLineChartData;
+let barLineData;
 let groupedData;
 let bubbleData;
 let selectedMonth = "March";
 let selectedDay = "Sunday";
 let selectedTimeOfDay = "morning"
+let selectedBubble = "894";
+let selectedBubbleCategory = "Pub"
 let commute_counts_rpe_data;
 
-document.addEventListener("DOMContentLoaded", (event) => {
+document.addEventListener("DOMContentLoaded", async (event) => {
+
   d3.csv("data/line_chart.csv")
     .then(function (lineData) {
       create_line_chart(lineData);
@@ -26,18 +31,46 @@ document.addEventListener("DOMContentLoaded", (event) => {
       console.log(error);
     });
 
-  d3.json("parsedData/commute_counts_rpe.json").then(function (loadedData) {
-    console.log(loadedData);
-    commute_counts_rpe_data = loadedData;
-    selectedTimeOfDay="morning";
-    create_beeswarm_chart(commute_counts_rpe_data);
-  });
-
   d3.json("parsedData/weekday_commutes.json").then(function (loadedData) {
-    console.log(loadedData);
+    //console.log(loadedData);
     horizontalBarData = loadedData;
     initialize_horizontal_bar_chart(loadedData, "March");
   });
+
+
+  // d3.json("parsedData/commute_counts_rpe.json").then(function (loadedData) {
+  //   //console.log(loadedData);
+  //   commute_counts_rpe_data = loadedData;
+  //   selectedTimeOfDay = "morning";
+  //   create_beeswarm_chart(commute_counts_rpe_data);
+  // });
+
+  // d3.csv("data/commercial_expenditures_occupancy.csv")
+  // .then(function (barLineData) {
+  //   console.log(barLineData)
+  //   groupAndAggregateData(barLineData);
+  //   create_bar_line_chart();
+  // })
+  // .catch(function (error) {
+  //   console.log(error);
+  // });
+
+  let loadedData = await d3.json("parsedData/commute_counts_rpe.json");
+  commute_counts_rpe_data = loadedData;
+  selectedTimeOfDay = "morning";
+  create_beeswarm_chart(commute_counts_rpe_data);
+
+  await new Promise(resolve => setTimeout(resolve, 3000)); // Adjust the delay as needed
+
+  d3.csv("data/commercial_expenditures_occupancy.csv")
+    .then(function (data) {
+      console.log(data)
+      barLineData = data;
+      create_bar_line_chart();
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 });
 
 function prepare_grouped_data(data) {
@@ -199,10 +232,10 @@ function create_grouped_bar_chart(data) {
     .attr(
       "transform",
       "translate(" +
-        (width / 2 + margin.left) +
-        " ," +
-        (height + margin.top + margin.bottom - 10) +
-        ")"
+      (width / 2 + margin.left) +
+      " ," +
+      (height + margin.top + margin.bottom - 10) +
+      ")"
     )
     .style("text-anchor", "middle")
     .style("font-size", "14px")
@@ -289,10 +322,10 @@ function create_line_chart(lineData) {
     .attr(
       "transform",
       "translate(" +
-        width / 2 +
-        " ," +
-        (height + margin.top + margin.bottom - 10) +
-        ")"
+      width / 2 +
+      " ," +
+      (height + margin.top + margin.bottom - 10) +
+      ")"
     )
     .style("text-anchor", "middle")
     .style("font-size", "14px")
@@ -379,7 +412,7 @@ function initialize_horizontal_bar_chart(data, selectedMonth) {
 
   x = d3
     .scaleLinear()
-    .domain([0, maxVal+2000])
+    .domain([0, maxVal + 2000])
     .range([0, width - margin.left - margin.right]);
 
   y = d3.scaleBand().domain(days).range([height, 0]).padding(0.1);
@@ -422,7 +455,7 @@ function create_horizontal_bar_chart(data, selectedMonth) {
 
       // Highlight clicked bar
       d3.select(this).style("opacity", 1);
-    
+
       // Get clicked element value
       selectedDay = d3.select(this).data()[0][0];
       create_beeswarm_chart(commute_counts_rpe_data);
@@ -451,10 +484,10 @@ function create_horizontal_bar_chart(data, selectedMonth) {
 
       // Add border stroke to clicked bar
       d3.select(this).style("stroke", "black").style("stroke-width", 2);
-    
+
       // Highlight clicked bar
       d3.select(this).style("opacity", 1);
-    
+
       // Get clicked element value
       selectedDay = d3.select(this).data()[0][0];
       create_beeswarm_chart(commute_counts_rpe_data);
@@ -469,7 +502,7 @@ function create_horizontal_bar_chart(data, selectedMonth) {
 }
 
 function prepare_beeswarm_data(data) {
-  selectedTimeOfDay= selectedTimeOfDay.toLowerCase();
+  selectedTimeOfDay = selectedTimeOfDay.toLowerCase();
   return (bubbleData = data[selectedMonth][selectedDay][selectedTimeOfDay]);
 }
 
@@ -491,59 +524,75 @@ function create_beeswarm_chart(data) {
   console.log(chart_data)
 
   // A scale that gives a X target position for each group
-  var x = d3.scaleOrdinal().domain(["Work", "Pub", "Restaurant"]).range([width / 4, (width) / 2, (3*width)/4]);
+  var x = d3.scaleOrdinal().domain(["Work", "Pub", "Restaurant"]).range([width / 4, (width) / 2, (3 * width) / 4]);
 
   var minValue = d3.min(chart_data, d => d.value);
   var maxValue = d3.max(chart_data, d => d.value);
 
   var radiusScale = d3.scaleSqrt()
-  .domain([minValue, maxValue]) // input range
-  .range([4, 25]); // output range
+    .domain([minValue, maxValue]) // input range
+    .range([4, 25]); // output range
 
 
-let z = d3.scaleOrdinal(d3.schemeTableau10);
-let keys = ["Work", "Pub", "Restaurant"];
+  let z = d3.scaleOrdinal(d3.schemeTableau10);
+  let keys = ["Work", "Pub", "Restaurant"];
 
-// Map the keys to the color scale
-z.domain(keys);
+  // Map the keys to the color scale
+  z.domain(keys);
 
   // Initialize the circle: all located at the center of the svg area
   var node = svg
     .append("g")
     .selectAll("circle")
+    .attr("class", "circles")
     .data(chart_data)
     .join(
-        enter => enter
-            .append("circle")
-            .attr("r", 3) // Start with 0 radius
-            .attr("cx", width / 2)
-            .attr("cy", height / 2)
-            .style("fill", function (d) {
-              return z(d.group);
-            })
-            .style("fill-opacity", 0.9)
-            .attr("stroke", "black")
-            .style("stroke-width", 1)
-            .call(
-              d3
-                .drag() // call specific function when circle is dragged
-                .on("start", dragstarted)
-                .on("drag", dragged)
-                .on("end", dragended)
-            )
-            .transition()
-            .duration(2000)
-            .attr("r", d => radiusScale(d.value)), // Grow to actual radius
-        update => update
-            .transition()
-            .duration(2000)
-            .attr("r", d => radiusScale(d.value)), // Update radius
-        exit => exit
-            .transition()
-            .duration(1000)
-            .attr("r", 0) // Shrink to 0 radius
-            .remove()
-    );
+      enter => enter
+        .append("circle")
+        .attr("r", 3) // Start with 0 radius
+        .attr("cx", width / 2)
+        .attr("cy", height / 2)
+        .style("fill", function (d) {
+          return z(d.group);
+        })
+        .style("fill-opacity", 0.9)
+        .attr("stroke", "black")
+        .style("stroke-width", 1)
+        .call(
+          d3
+            .drag() // call specific function when circle is dragged
+            .on("start", dragstarted)
+            .on("drag", dragged)
+            .on("end", dragended)
+        )
+        .transition()
+        .duration(1000)
+        .attr("r", d => radiusScale(d.value)), // Grow to actual radius
+      update => update
+        .transition()
+        .duration(1000)
+        .attr("r", d => radiusScale(d.value)), // Update radius
+      exit => exit
+        .transition()
+        .duration(1000)
+        .attr("r", 0) // Shrink to 0 radius
+        .remove()
+    )
+    .on("click", function (d) {
+      node.style("opacity", 0.8);
+      node.style("stroke", "none");
+
+      // Add border stroke to clicked bar
+      d3.select(this).style("stroke", "black").style("stroke-width", 1);
+      d3.select(this).style("opacity", 1);
+
+      // Get clicked element value
+      selectedBubble = d3.select(this).data()[0]['name'];
+      selectedBubbleCategory = d3.select(this).data()[0]['group'];
+      console.log("selected bubble  is " + selectedBubbleCategory);
+      create_bar_line_chart();
+    });
+
   // Features of the forces applied to the nodes:
   var simulation = d3
     .forceSimulation()
@@ -582,16 +631,215 @@ z.domain(keys);
     if (!event.active) simulation.alphaTarget(0.03).restart(); // Increase alphaTarget
     d.fx = d.x;
     d.fy = d.y;
-}
-  
-function dragged(event, d) {
+  }
+
+  function dragged(event, d) {
     d.fx = event.x;
     d.fy = event.y;
-}
-  
-function dragended(event, d) {
+  }
+
+  function dragended(event, d) {
     if (!event.active) simulation.alphaTarget(0.03);
     d.fx = null;
     d.fy = null;
+  }
 }
+
+
+function groupAndAggregateData() {
+  barLineChartData = barLineData.reduce((acc, curr) => {
+    // Filter based on selected variables
+    if (curr.month === selectedMonth && curr.day_of_week === selectedDay && curr.portion_of_day === selectedTimeOfDay && curr.commercialId === selectedBubble) {
+      // Extract the hour from start_time
+      let hour = new Date(curr.start_time).getHours();
+      // Initialize the hour group if it doesn't exist
+      if (!acc[hour]) {
+        acc[hour] = {
+          hour: formatHour(hour),
+          totalOccupancy: 0,
+          expenditure: 0
+        };
+      }
+      // Aggregate the total occupancy and increment the count
+      acc[hour].totalOccupancy += 1;
+      acc[hour].expenditure += parseFloat(curr.expenditures);
+    }
+
+    return acc;
+  }, {});
+  console.log("bar line chart data is " + barLineChartData);
 }
+
+function formatHour(hour) {
+  let period = hour < 12 ? 'AM' : 'PM';
+  hour = hour % 12;
+  hour = hour ? hour : 12;
+  return hour + ' ' + period;
+}
+
+function create_bar_line_chart(barLineData) {
+
+  groupAndAggregateData(barLineData);
+  d3.select("#bar_line_chart").selectAll("*").remove();
+  let margin = { top: 20, right: 80, bottom: 70, left: 80 };
+  let data = Object.values(barLineChartData);
+  data.sort((a, b) => a.hour - b.hour);
+  let svg = d3.select("#bar_line_chart"),
+    width = +svg.attr("width") - margin.left - margin.right,
+    height = +svg.attr("height") - margin.top - margin.bottom;
+
+  let z = d3.scaleOrdinal(d3.schemeTableau10);
+  let keys = ["Work", "Pub", "Restaurant"];
+  z.domain(keys);
+
+  let x = d3.scaleBand().rangeRound([0, width]).padding(0.4);
+  let y = d3.scaleLinear().rangeRound([height, 0]);
+  let yRight = d3.scaleLinear().rangeRound([height, 0]); // Define a new y-scale for the right axis
+
+  x.domain(data.map(function (d) { return d.hour; }));
+  y.domain([0, d3.max(data, function (d) { return d.totalOccupancy; })]);
+  yRight.domain([d3.min(data, function (d) { return d.expenditure; }) - 5 , d3.max(data, function (d) { return d.expenditure; }) ]); // Set the domain of the right y-scale
+
+  let chart = svg.append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")"); // Translate the chart area within the margins
+
+  chart.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x))
+    .append("text") // Append a text element for the x-axis label
+    .attr("fill", "#000")
+    .attr("y", 35) // Position the label below the x-axis
+    .attr("x", width / 2)
+    .attr("text-anchor", "middle")
+    .text("Time");
+
+  chart.append("g")
+    .call(d3.axisLeft(y))
+    .append("text") // Append a text element for the y-axis label
+    .attr("fill", "#000")
+    .attr("transform", "rotate(-90)") // Rotate the label to be vertical
+    .attr("y", -50) // Position the label to the left of the y-axis
+    .attr("x", -height / 2)
+    .attr("text-anchor", "middle")
+    .text("Total Occupancy");
+
+  let rightAxis = chart.append("g")
+    .attr("transform", "translate(" + width + ",0)") // Translate the right y-axis to the right side of the chart
+    .call(d3.axisRight(yRight));
+
+  rightAxis.append("text") // Append a text element for the right y-axis label
+    .attr("fill", "#000")
+    .attr("transform", "rotate(-90)") // Rotate the label to be vertical
+    .attr("y", 50) // Position the label to the right of the y-axis
+    .attr("x", -height / 2)
+    .attr("dy", "1em") // Shift the label down slightly
+    .style("text-anchor", "middle")
+    .text("Total Expenditure");
+
+  var tooltip = d3.select("body")
+    .append("div")
+    .style("position", "absolute")
+    .style("background-color", "white")
+    .style("border", "solid")
+    .style('font-size', '18px')
+    .style("border-width", "2px")
+    .style("border-radius", "6px")
+    .style("padding", "10px")
+    .style("visibility", "hidden");
+
+  let legend = svg.append("g")
+    .attr("font-family", "sans-serif")
+    .attr("font-size", 10)
+    .attr("text-anchor", "end")
+    .selectAll("g")
+    .data(["Total Occupancy", "Total Expenditure"])
+    .enter().append("g")
+    .attr("transform", function (d, i) { return "translate(0," + i * 20 + ")"; });
+
+  legend.append("rect")
+    .attr("x", width - 19)
+    .attr("width", 19)
+    .attr("height", 19)
+    .attr("fill", function (d) { return d === "Total Occupancy" ? z(selectedBubbleCategory) : "green"; });
+
+  legend.append("text")
+    .attr("x", width - 24)
+    .attr("y", 9.5)
+    .attr("dy", "0.32em")
+    .text(function (d) { return d; });
+
+  chart.selectAll(".bar")
+    .data(data)
+    .enter().append("rect")
+    .attr("class", "bar")
+    .attr("x", function (d) { return x(d.hour); })
+    .attr("y", function (d) { return y(d.totalOccupancy); })
+    .attr("width", x.bandwidth())
+    .attr("height", function (d) {
+      let barHeight = height - y(d.totalOccupancy);
+      if (isNaN(barHeight)) {
+        console.error('Invalid bar height', d, barHeight);
+        return 0;
+      }
+      return barHeight;
+    })
+    .attr("fill", function (d) {
+      return z(selectedBubbleCategory);
+    })
+    .on('mouseover', function (_, d) {
+      console.log(d.totalOccupancy);
+
+      tooltip
+        .style("visibility", "visible")
+        .html(
+          'Time: ' + d.hour
+          + '</br>' + 'Total Occupancy: ' + d.totalOccupancy);
+    }).on('mousemove', function (event, d) {
+      tooltip
+        .style("top", (event.pageY - 70) + "px")
+        .style("left", (event.pageX + 20) + "px");
+    })
+    .on('mouseout', function () {
+      tooltip.style("visibility", "hidden");
+    })
+
+  let line = d3.line()
+    .x(function (d) { return x(d.hour) + x.bandwidth() / 2; }) // Center the line in the bars
+    .y(function (d) { return yRight(d.expenditure); }); // Use the right y-scale for the line chart
+
+  // Add the line chart to the SVG
+  chart.append("path")
+    .datum(data)
+    .attr("fill", "none")
+    .attr("stroke", "green")
+    .attr("stroke-width", 1.5)
+    .attr("d", line);
+
+  chart.selectAll(".dot")
+    .data(data)
+    .enter().append("circle") // Append circle elements
+    .attr("class", "dot") // Assign a class for styling
+    .attr("cx", function (d) { return x(d.hour) + x.bandwidth() / 2; })
+    .attr("cy", function (d) { return yRight(d.expenditure); })
+    .attr("r", 3) // Radius of circle
+    .attr("fill", "green")
+    //.attr("stroke", "#fff")
+    .on('mouseover', function (_, d) {
+      console.log(d.expenditure);
+      tooltip
+        .style("visibility", "visible")
+        .html(
+          'Time: ' + d.hour
+          + '</br>' + 'Total Expenditure: ' + d.expenditure.toFixed(2));
+    }).on('mousemove', function (event, d) {
+      tooltip
+        .style("top", (event.pageY - 70) + "px")
+        .style("left", (event.pageX + 20) + "px");
+    })
+    .on('mouseout', function () {
+      tooltip.style("visibility", "hidden");
+    });
+  //attr("stroke-width", "1.5px"); 
+}
+
+
