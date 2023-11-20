@@ -6,7 +6,7 @@ import pandas as pd
 from dotenv import load_dotenv
 
 load_dotenv()
-outputPath = 'data/commercial_expenditures_occupancy.csv'
+outputPath = '../data/commercial_expenditures_occupancy.csv'
 
 absolute_path = os.path.abspath(os.getenv('PUBS_DATA_PATH'))
 print("PUBS absolute path is " + os.path.abspath(os.getenv('PUBS_DATA_PATH')))
@@ -38,7 +38,7 @@ travel_journal_df = travel_journal_df[travel_journal_df['travelEndLocationId'].i
 travel_journal_df['start_time'] = pd.to_datetime(travel_journal_df['checkInTime'].str[:-1])
 travel_journal_df['month'] = travel_journal_df['start_time'].dt.strftime('%B')
 travel_journal_df['day_of_week'] = travel_journal_df['start_time'].dt.strftime('%A')
-travel_journal_df['portion_of_day'] = pd.cut(travel_journal_df['start_time'].dt.hour, bins=[0,12,14,18,24], labels=['Morning', 'Afternoon', 'Evening', 'Night'], include_lowest=True)
+travel_journal_df['portion_of_day'] = pd.cut(travel_journal_df['start_time'].dt.hour, bins=[0,12,14,18,24], labels=['morning', 'afternoon', 'evening', 'night'], include_lowest=True)
 travel_journal_df.rename(columns={'travelEndLocationId': 'commercialId'}, inplace=True)
 travel_journal_df['expenditures'] = travel_journal_df['startingBalance'] - travel_journal_df['endingBalance']
 
@@ -47,9 +47,12 @@ travel_journal_df.drop(['startingBalance', 'endingBalance', 'checkInTime'], axis
 #print(travel_journal_df)
 
 merged_df = pd.merge(travel_journal_df, combined_df, on='commercialId', how='inner')
+merged_df.to_csv(outputPath, index=False)
+merged_df.to_json('../data/commercial_expenditures_occupanc.json', orient='records', lines=True)
+
+
 #distinct_occupancy = merged_df['occupancy'].unique()
 #distinct_df = merged_df[['commercialId', 'commercialType', 'occupancy']].drop_duplicates()
 #distinct_df = distinct_df.reset_index(drop=True)
 # grouped_df = merged_df.groupby(['commercialId'])['expenditures'].sum().reset_index()
 # print(grouped_df)
-merged_df.to_csv(outputPath, index=False)
