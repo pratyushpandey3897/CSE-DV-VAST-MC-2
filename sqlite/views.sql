@@ -2,6 +2,8 @@
 CREATE VIEW TravelJournalCombined AS
 SELECT
     tj.*,
+    l1.buildingId as startLocationId,
+    l2.buildingId as endLocationId,
     l1.location as startLocation,
     l2.location as endLocation,
     l1.buildingType as startLocationType,

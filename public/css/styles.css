@@ -35,12 +35,10 @@ h1 {
     background-image: none;
 }
 
-#map-svg-filter,
-#map-svg-traffic {
-    /* Uncomment the below lines if setting the map image as background from css itself */
-
-    /*background-image: url('/images/base-map.png'); 
-    background-size: contain; 
-    background-position: center;
-    background-repeat: no-repeat; */
+#building-tooltip {
+    background-color: white;
+    border-radius: 5px;
+    border: solid 1px gray;
+    padding: 5px;
+    font-size: 10px;
 }

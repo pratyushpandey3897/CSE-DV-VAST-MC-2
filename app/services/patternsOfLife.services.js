@@ -55,10 +55,12 @@ export async function getTotalExpendituresByLocationId(year, month, dayOfWeek, t
 
 export async function getLocationsByTimeOfDay(year, month, dayOfWeek, timeOfDay) {
     return await query(dedent`
-            select distinct endLocation as location, endLocationType as locationType
+            select endLocationId as locationId, endLocation as location, endLocationType as locationType, count(*) as totalCommutes
             from TravelJournalCombined where year = '${year}'
             and month = '${month}' and dayOfWeek='${dayOfWeek}'
             and timeOfDay = '${timeOfDay}'
+            group by endLocationId, endLocationType
+            order by totalCommutes desc
         `)
         .then(data => data
             .filter(row => row.location != null)
@@ -76,7 +78,9 @@ export async function getLocationsByTimeOfDay(year, month, dayOfWeek, timeOfDay)
                         coordinates: [longitude, latitude]
                     },
                     properties: {
-                        locationType: row.locationType
+                        locationId: row.locationId,
+                        locationType: row.locationType,
+                        totalCommutes: row.totalCommutes
                     }
                 };
             }));
@@ -84,13 +88,17 @@ export async function getLocationsByTimeOfDay(year, month, dayOfWeek, timeOfDay)
 
 export async function getMapGeoJson() {
     return await query(dedent`
-            select b.buildingId as buildingId, b.location as location, l.buildingType as buildingType 
+            select b.buildingId as buildingId, b.location as plot, l.location as location, l.buildingType as buildingType 
             from Buildings b left join Location l where l.buildingId = b.buildingId
         `)
         .then(data => data
             .map(item => {
 
-                const coordinates = item.location.match(/([-+]?[0-9]*\.?[0-9]+) ([-+]?[0-9]*\.?[0-9]+)/g);
+                const coordinates = item.plot.match(/([-+]?[0-9]*\.?[0-9]+) ([-+]?[0-9]*\.?[0-9]+)/g);
+
+                const location = item.location.match(/\(([^)]+)\)/)[1].split(' ');
+                const longitude = parseFloat(location[0]);
+                const latitude = parseFloat(location[1]);
 
                 if (!coordinates) {
                     return null;
@@ -111,7 +119,8 @@ export async function getMapGeoJson() {
                         },
                         properties: {
                             buildingId: item.buildingId,
-                            buildingType: item.buildingType
+                            buildingType: item.buildingType,
+                            location: [longitude, latitude]
                         }
                     };
                 }
