@@ -698,7 +698,7 @@ function create_bar_line_chart(barLineData) {
 
   x.domain(data.map(function (d) { return d.hour; }));
   y.domain([0, d3.max(data, function (d) { return d.totalOccupancy; })]);
-  yRight.domain([d3.min(data, function (d) { return d.expenditure; }) - 5 , d3.max(data, function (d) { return d.expenditure; }) ]); // Set the domain of the right y-scale
+  yRight.domain([0, d3.max(data, function (d) { return d.expenditure; })]); // Set the domain of the right y-scale
 
   let chart = svg.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")"); // Translate the chart area within the margins
@@ -735,17 +735,6 @@ function create_bar_line_chart(barLineData) {
     .attr("dy", "1em") // Shift the label down slightly
     .style("text-anchor", "middle")
     .text("Total Expenditure");
-
-  var tooltip = d3.select("body")
-    .append("div")
-    .style("position", "absolute")
-    .style("background-color", "white")
-    .style("border", "solid")
-    .style('font-size', '18px')
-    .style("border-width", "2px")
-    .style("border-radius", "6px")
-    .style("padding", "10px")
-    .style("visibility", "hidden");
 
   let legend = svg.append("g")
     .attr("font-family", "sans-serif")
@@ -786,22 +775,11 @@ function create_bar_line_chart(barLineData) {
     .attr("fill", function (d) {
       return z(selectedBubbleCategory);
     })
-    .on('mouseover', function (_, d) {
-      console.log(d.totalOccupancy);
 
-      tooltip
-        .style("visibility", "visible")
-        .html(
-          'Time: ' + d.hour
-          + '</br>' + 'Total Occupancy: ' + d.totalOccupancy);
-    }).on('mousemove', function (event, d) {
-      tooltip
-        .style("top", (event.pageY - 70) + "px")
-        .style("left", (event.pageX + 20) + "px");
-    })
-    .on('mouseout', function () {
-      tooltip.style("visibility", "hidden");
-    })
+  create_tooltip(chart.selectAll(".bar"), function (d) {
+    return 'Time: ' + d.hour
+      + '</br>' + 'Total Occupancy: ' + d.totalOccupancy;
+  });
 
   let line = d3.line()
     .x(function (d) { return x(d.hour) + x.bandwidth() / 2; }) // Center the line in the bars
@@ -822,16 +800,26 @@ function create_bar_line_chart(barLineData) {
     .attr("cx", function (d) { return x(d.hour) + x.bandwidth() / 2; })
     .attr("cy", function (d) { return yRight(d.expenditure); })
     .attr("r", 3) // Radius of circle
-    .attr("fill", "green")
-    //.attr("stroke", "#fff")
-    .on('mouseover', function (_, d) {
-      console.log(d.expenditure);
+    .attr("fill", "green");
+
+  create_tooltip(chart.selectAll(".dot"), function (d) {
+    return 'Time: ' + d.hour
+      + '</br>' + 'Total Expenditure: ' + d.expenditure.toFixed(2);
+  });
+
+}
+
+function create_tooltip(selection, formatTooltip) {
+  var tooltip = d3.select("body")
+    .append("div")
+    .attr("class", "hovertooltip");
+  selection
+    .on('mouseover', function (event, d) {
       tooltip
         .style("visibility", "visible")
-        .html(
-          'Time: ' + d.hour
-          + '</br>' + 'Total Expenditure: ' + d.expenditure.toFixed(2));
-    }).on('mousemove', function (event, d) {
+        .html(formatTooltip(d));
+    })
+    .on('mousemove', function (event) {
       tooltip
         .style("top", (event.pageY - 70) + "px")
         .style("left", (event.pageX + 20) + "px");
@@ -839,7 +827,6 @@ function create_bar_line_chart(barLineData) {
     .on('mouseout', function () {
       tooltip.style("visibility", "hidden");
     });
-  //attr("stroke-width", "1.5px"); 
 }
 
 
