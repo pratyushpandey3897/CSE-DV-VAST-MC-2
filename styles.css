@@ -32,6 +32,17 @@ body{
 h1 {
   background-image: none;
 }
+
+.hovertooltip {
+  position: absolute;
+  background-color: white;
+  border: 2px solid;
+  font-size: 18px;
+  border-radius: 6px;
+  padding: 10px;
+  visibility: hidden;
+}
+
 #map-svg-filter, #map-svg-traffic{
     /* Uncomment the below lines if setting the map image as background from css itself */
     
