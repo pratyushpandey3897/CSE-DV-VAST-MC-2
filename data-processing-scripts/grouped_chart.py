@@ -62,7 +62,7 @@ with open(os.getenv('TRAVEL_JOURNAL_DATA_PATH'), newline='') as csvfile:
         month = start_time.strftime('%B')
         day_of_week = start_time.strftime('%A')
         portion_of_day = 'Morning' if start_time.hour < 12 else (
-            'Afternoon' if start_time.hour < 14 else ('Evening' if start_time.hour < 18 else 'Night'))
+            'Afternoon' if start_time.hour < 16 else ('Evening' if start_time.hour < 19 else 'Night'))
         purpose = row['purpose']  # Get the purpose of the commute
         # Get the start building ID
         start_building_id = row['travelStartLocationId']

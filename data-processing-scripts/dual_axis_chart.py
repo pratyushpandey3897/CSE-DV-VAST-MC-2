@@ -44,7 +44,7 @@ travel_journal_df = travel_journal_df[travel_journal_df['travelEndLocationId'].i
 travel_journal_df['start_time'] = pd.to_datetime(travel_journal_df['checkInTime'].str[:-1])
 travel_journal_df['month'] = travel_journal_df['start_time'].dt.strftime('%B')
 travel_journal_df['day_of_week'] = travel_journal_df['start_time'].dt.strftime('%A')
-travel_journal_df['portion_of_day'] = pd.cut(travel_journal_df['start_time'].dt.hour, bins=[0,12,14,18,24], labels=['morning', 'afternoon', 'evening', 'night'], include_lowest=True)
+travel_journal_df['portion_of_day'] = pd.cut(travel_journal_df['start_time'].dt.hour, bins=[0,12,16,19,24], labels=['morning', 'afternoon', 'evening', 'night'], include_lowest=True)
 travel_journal_df.rename(columns={'travelEndLocationId': 'commercialId'}, inplace=True)
 
 #travel_journal_df['occupancy'] = travel_journal_df.groupby('commercialId')['participantId'].transform('count')
