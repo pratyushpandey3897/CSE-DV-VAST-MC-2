@@ -31,6 +31,8 @@ export async function getTotalExpendituresByLocationId(year, month, dayOfWeek, t
                 select restaurantId as buildingId, maxOccupancy from Restaurants
                 union
                 select pubId as buildingId, maxOccupancy from Pubs
+                union
+                select employerId as buildingId, maxOccupancy from Employers
             ) as b where b.buildingId = t.travelEndLocationId
             and t.year = '${year}'
             and t.month = '${month}' and t.dayOfWeek='${dayOfWeek}'
@@ -66,16 +68,14 @@ export async function getLocationsByTimeOfDay(year, month, dayOfWeek, timeOfDay)
             .filter(row => row.location != null)
             .map(row => {
 
-                const coordinates = row.location.match(/\(([^)]+)\)/)[1].split(' ');
-                const longitude = parseFloat(coordinates[0]);
-                const latitude = parseFloat(coordinates[1]);
+                const coordinates = row.location.match(/([-+]?[0-9]*\.?[0-9]+) ([-+]?[0-9]*\.?[0-9]+)/g)?.map(pair => pair.split(' ').map(Number));
 
                 // Create a GeoJSON feature for each item
                 return {
                     type: "Feature",
                     geometry: {
                         type: "Point",
-                        coordinates: [longitude, latitude]
+                        coordinates: coordinates[0]
                     },
                     properties: {
                         locationId: row.locationId,
@@ -86,41 +86,45 @@ export async function getLocationsByTimeOfDay(year, month, dayOfWeek, timeOfDay)
             }));
 }
 
+export async function getTotalCommutesByLocationId(year, month, dayOfWeek, timeOfDay) {
+    return await query(dedent`
+            select endLocationType, endLocationId, count(*) as totalCommutes
+            from TravelJournalCombined where year = '${year}'
+            and month = '${month}' and dayOfWeek='${dayOfWeek}'
+            and timeOfDay = '${timeOfDay}'
+            group by endLocationType, endLocationId
+        `)
+        .then(data => data
+            .filter(row => row.endLocationType != null)
+            .reduce((acc, curr) => {
+                if (!acc[curr.endLocationType]) {
+                    acc[curr.endLocationType] = {};
+                }
+                acc[curr.endLocationType][curr.endLocationId] = curr.totalCommutes;
+                return acc;
+            }, {}));
+}
+
 export async function getMapGeoJson() {
     return await query(dedent`
-            select b.buildingId as buildingId, b.location as plot, l.location as location, l.buildingType as buildingType 
-            from Buildings b left join Location l where l.buildingId = b.buildingId
+            select * from Location;
         `)
         .then(data => data
             .map(item => {
 
-                const coordinates = item.plot.match(/([-+]?[0-9]*\.?[0-9]+) ([-+]?[0-9]*\.?[0-9]+)/g);
-
-                const location = item.location.match(/\(([^)]+)\)/)[1].split(' ');
-                const longitude = parseFloat(location[0]);
-                const latitude = parseFloat(location[1]);
-
-                if (!coordinates) {
-                    return null;
-                }
-
-                const polygonCoordinates = coordinates.map(pair => {
-                    const [lon, lat] = pair.split(' ').map(Number);
-                    return [lon, lat];
-                });
+                const coordinates = item.location.match(/([-+]?[0-9]*\.?[0-9]+) ([-+]?[0-9]*\.?[0-9]+)/g)?.map(pair => pair.split(' ').map(Number));
 
                 // Ensure the polygon has at least 3 valid coordinates
-                if (polygonCoordinates.length >= 3) {
+                if (coordinates?.length >= 3) {
                     return {
                         type: "Feature",
                         geometry: {
                             type: "Polygon",
-                            coordinates: [polygonCoordinates]
+                            coordinates: [coordinates]
                         },
                         properties: {
                             buildingId: item.buildingId,
-                            buildingType: item.buildingType,
-                            location: [longitude, latitude]
+                            buildingType: item.buildingType
                         }
                     };
                 }

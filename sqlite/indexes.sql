@@ -19,8 +19,8 @@ CREATE INDEX idx_tjc_datetime ON TravelJournal(year, month, dayOfWeek, timeOfDay
 -- Create an index on the datetime column
 CREATE INDEX idx_tjc_year_month ON TravelJournal(year, month);
 
--- Create an index on the startLocationType column
+-- Create an index on the location column
 CREATE INDEX idx_location ON Location(location);
 
--- Create an index on the startLocationType column
+-- Create an index on the buildingType column
 CREATE INDEX idx_building_type ON Location(buildingType);

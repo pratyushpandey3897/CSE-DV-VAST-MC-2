@@ -91,15 +91,15 @@
 
 -- Store all the location data in one table to quick lookup of locationType by locationId
 INSERT INTO Location(buildingId, location, buildingType)
-    SELECT pubId, location, 'Pub' FROM Pubs
+    SELECT p.pubId, b.location, 'Pub' FROM Pubs p join Buildings b on p.pubId = b.buildingId
 UNION ALL
-    SELECT schoolId, location, 'School' FROM Schools
+    SELECT s.schoolId, b.location, 'School' FROM Schools s join Buildings b on s.schoolId = b.buildingId
 UNION ALL
-    SELECT restaurantId, location, 'Restaurant' FROM Restaurants
+    SELECT r.restaurantId, b.location, 'Restaurant' FROM Restaurants r join Buildings b on r.restaurantId = b.buildingId
 UNION ALL
-    SELECT apartmentId, location, 'Apartment' FROM Apartments
+    SELECT a.apartmentId, b.location, 'Apartment' FROM Apartments a join Buildings b on a.apartmentId = b.buildingId
 UNION ALL
-    SELECT employerId, location, 'Workplace' FROM Employers;
+    SELECT e.employerId, b.location, 'Workplace' FROM Employers e join Buildings b on e.employerId = b.buildingId;
 
 -- Add a derived column timeOfDay to help with some common query filtering usecases
 ALTER TABLE TravelJournal
@@ -128,6 +128,11 @@ UPDATE TravelJournal SET year = strftime('%Y', travelStartTime);
 UPDATE TravelJournal SET month = strftime('%m', travelStartTime);
 
 UPDATE TravelJournal SET dayOfWeek = strftime('%w', travelStartTime);
+
+ALTER TABLE Employers
+    ADD COLUMN maxOccupancy INTEGER;
+
+UPDATE Employers SET maxOccupancy = (SELECT maxOccupancy FROM Buildings WHERE buildingId = Employers.employerId);
 
 .read sqlite/indexes.sql
 .read sqlite/views.sql

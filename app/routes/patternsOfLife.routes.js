@@ -34,6 +34,9 @@ const router = express.Router()
     .get("/totalCommutesByLocationType/:year/:month/:dayOfWeek", async(req, res) => {
         res.json(await db.getTotalCommutesByLocationType(req.params.year, monthMap[req.params.month], weekdayMap[req.params.dayOfWeek]));
     })
+    .get("/totalCommutesByLocationId/:year/:month/:dayOfWeek/:timeOfDay", async(req, res) => {
+        res.json(await db.getTotalCommutesByLocationId(req.params.year, monthMap[req.params.month], weekdayMap[req.params.dayOfWeek], req.params.timeOfDay));
+    })
     .get("/totalExpendituresByLocationId/:year/:month/:dayOfWeek/:timeOfDay", async(req, res) => {
         res.json(await db.getTotalExpendituresByLocationId(req.params.year, monthMap[req.params.month], weekdayMap[req.params.dayOfWeek], req.params.timeOfDay));
     })

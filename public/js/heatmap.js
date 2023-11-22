@@ -73,27 +73,28 @@
             .append("path")
             .attr("class", "map")
             .attr("d", path)
-            .attr("id", d => "building-" + d.properties.buildingId)
             .style("fill", "none")
             .style("stroke", d => color(d.properties.buildingType));
 
-        // precompute the projected coordinates of each location
         features.forEach(item => {
-            item.properties.projectedCoords = projection(item.properties.location);
+            console.log(item.geometry.coordinates[0][0]);
+            item.properties.projectedCoords = projection(item.geometry.coordinates[0][0])
         });
-
-        console.log(features.slice(0, 10));
 
         svg.on("mousemove", function (event, d) {
 
-
-            const [x, y] = d3.pointer(event);
-
+            const [x, y] = d3.pointer(event);   
+            let minDist = Infinity;
             const nearest = d3.least(features, function (d) {
-                return Math.sqrt((x - d.properties.projectedCoords[0]) ** 2 + (y - d.properties.projectedCoords[1]) ** 2);
+                if (d.properties.buildingType === 'Apartment')
+                    return Infinity;
+                const dist = Math.sqrt((x - d.properties.projectedCoords[0]) ** 2 + (y - d.properties.projectedCoords[1]) ** 2);
+                minDist = Math.min(minDist, dist);
+                return dist;
             });
 
-            if (nearest) {
+            console.log("minDist: " + minDist);
+            if (nearest && minDist < 100) {
                 d3.select("#building-tooltip")
                     .style("opacity", 0.8)
                     .style("left", nearest.properties.projectedCoords[0] + 10 + "px")
