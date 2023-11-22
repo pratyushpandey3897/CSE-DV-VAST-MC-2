@@ -693,7 +693,7 @@ function formatHour(hour) {
 }
 
 function create_bar_line_chart() {
-
+  document.getElementById("bar-line-chart-title").textContent = `Bar+Line Chart for ${selectedBubbleCategory} ${selectedBubble} on ${selectedDay} ${selectedTimeOfDay} in ${selectedMonth}`;
   groupAndAggregateData();
   d3.select("#bar_line_chart").selectAll("*").remove();
   let margin = { top: 20, right: 80, bottom: 70, left: 80 };
@@ -749,14 +749,15 @@ function create_bar_line_chart() {
     .attr("x", -height / 2)
     .attr("dy", "1em") // Shift the label down slightly
     .style("text-anchor", "middle")
-    .text("Total Expenditure");
+    .text(selectedBubbleCategory==="Work"? "Total Salary": "Total Expenditure");
 
+  let legendData = selectedBubbleCategory === "Work" ? ["Total Occupancy", "Total Salary"] : ["Total Occupancy", "Total Expenditure"];
   let legend = svg.append("g")
     .attr("font-family", "sans-serif")
     .attr("font-size", 10)
     .attr("text-anchor", "end")
     .selectAll("g")
-    .data(["Total Occupancy", "Total Expenditure"])
+    .data(legendData)
     .enter().append("g")
     .attr("transform", function (d, i) { return "translate(0," + i * 20 + ")"; });
 
@@ -793,7 +794,8 @@ function create_bar_line_chart() {
 
   create_tooltip(chart.selectAll(".bar"), function (d) {
     return 'Time: ' + d.hour
-      + '</br>' + 'Total Occupancy: ' + d.totalOccupancy;
+      + '</br>' + 'Total Occupancy: ' + d.totalOccupancy
+      + '</br>' + (selectedBubbleCategory === "Work" ? 'Total Salary: ' : 'Total Expenditure: ') + d.expenditure.toFixed(2);
   });
 
   let line = d3.line()
@@ -819,7 +821,8 @@ function create_bar_line_chart() {
 
   create_tooltip(chart.selectAll(".dot"), function (d) {
     return 'Time: ' + d.hour
-      + '</br>' + 'Total Expenditure: ' + d.expenditure.toFixed(2);
+      + '</br>' + 'Total Occupancy: ' + d.totalOccupancy
+      + '</br>' + (selectedBubbleCategory === "Work" ? 'Total Salary: ' : 'Total Expenditure: ') + d.expenditure.toFixed(2);
   });
 
 }
