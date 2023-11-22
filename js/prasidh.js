@@ -444,8 +444,17 @@ function create_horizontal_bar_chart(data, selectedMonth) {
   let bars = g.selectAll(".bar")
     .data(Object.entries(data[selectedMonth]));
 
+  let maxVal = d3.max(Object.values(data[selectedMonth]));
+
+  color = d3
+    .scaleSequential()
+    .domain([0, maxVal])
+    .interpolator(d3.interpolateReds);
   // Update existing bars
   bars
+  .attr("fill", function (d) {
+    return color(d[1]);
+  })
     .transition()
     .duration(1000)
     .attr("y", function (d) {
@@ -471,9 +480,6 @@ function create_horizontal_bar_chart(data, selectedMonth) {
       selectedDay = d3.select(this).data()[0][0];
       create_beeswarm_chart(commute_counts_rpe_data);
       create_grouped_bar_chart(globalData);
-    })
-    .attr("fill", function (d) {
-      return color(d[1]);
     });
 
   // Enter new bars, if any
@@ -535,7 +541,7 @@ function create_beeswarm_chart(data) {
   console.log(chart_data)
 
   // A scale that gives a X target position for each group
-  var x = d3.scaleOrdinal().domain(["Work", "Pub", "Restaurant"]).range([width / 4, (width) / 2, (3 * width) / 4]);
+  var x = d3.scaleOrdinal().domain(["Work", "Pub", "Restaurant"]).range([2*(width / 5), (width) / 2, (3 * width) / 4]);
 
   var minValue = d3.min(chart_data, d => d.value);
   var maxValue = d3.max(chart_data, d => d.value);
@@ -567,8 +573,6 @@ function create_beeswarm_chart(data) {
           return z(d.group);
         })
         .style("fill-opacity", 0.9)
-        .attr("stroke", "black")
-        .style("stroke-width", 1)
         .call(
           d3
             .drag() // call specific function when circle is dragged
