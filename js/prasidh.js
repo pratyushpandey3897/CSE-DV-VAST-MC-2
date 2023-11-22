@@ -6,13 +6,19 @@ let barLineData;
 let groupedData;
 let bubbleData;
 let selectedMonth = "March";
-let selectedDay = "Sunday";
+let selectedDay = "Monday";
 let selectedTimeOfDay = "morning"
 let selectedBubble = "894";
 let selectedBubbleCategory = "Pub"
 let commute_counts_rpe_data;
 
 document.addEventListener("DOMContentLoaded", async (event) => {
+
+    // Select menus for comparing lives
+    personSelect1 = document.getElementById("personSelect1");
+    personSelect1.addEventListener("change", personChange)
+    personSelect2 = document.getElementById("personSelect2");
+    personSelect2.addEventListener("change", personChange)
 
   d3.csv("data/line_chart.csv")
     .then(function (lineData) {
@@ -71,6 +77,11 @@ document.addEventListener("DOMContentLoaded", async (event) => {
     .catch(function (error) {
       console.log(error);
     });
+
+
+
+
+
 });
 
 function prepare_grouped_data(data) {
@@ -830,3 +841,354 @@ function create_tooltip(selection, formatTooltip) {
 }
 
 
+
+
+function groupAndAggregateData() {
+  barLineChartData = barLineData.reduce((acc, curr) => {
+    // Filter based on selected variables
+    if (curr.month === selectedMonth && curr.day_of_week === selectedDay && curr.portion_of_day === selectedTimeOfDay && curr.commercialId === selectedBubble) {
+      // Extract the hour from start_time
+      let hour = new Date(curr.start_time).getHours();
+      // Initialize the hour group if it doesn't exist
+      if (!acc[hour]) {
+        acc[hour] = {
+          hour: formatHour(hour),
+          totalOccupancy: 0,
+          expenditure: 0
+        };
+      }
+      // Aggregate the total occupancy and increment the count
+      acc[hour].totalOccupancy += 1;
+      acc[hour].expenditure += parseFloat(curr.expenditures);
+    }
+
+    return acc;
+  }, {});
+  console.log("bar line chart data is " + barLineChartData);
+}
+
+function formatHour(hour) {
+  let period = hour < 12 ? 'AM' : 'PM';
+  hour = hour % 12;
+  hour = hour ? hour : 12;
+  return hour + ' ' + period;
+}
+
+function create_bar_line_chart(barLineData) {
+
+  groupAndAggregateData(barLineData);
+  d3.select("#bar_line_chart").selectAll("*").remove();
+  let margin = { top: 20, right: 80, bottom: 70, left: 80 };
+  let data = Object.values(barLineChartData);
+  data.sort((a, b) => a.hour - b.hour);
+  let svg = d3.select("#bar_line_chart"),
+    width = +svg.attr("width") - margin.left - margin.right,
+    height = +svg.attr("height") - margin.top - margin.bottom;
+
+  let z = d3.scaleOrdinal(d3.schemeTableau10);
+  let keys = ["Work", "Pub", "Restaurant"];
+  z.domain(keys);
+
+  let x = d3.scaleBand().rangeRound([0, width]).padding(0.4);
+  let y = d3.scaleLinear().rangeRound([height, 0]);
+  let yRight = d3.scaleLinear().rangeRound([height, 0]); // Define a new y-scale for the right axis
+
+  x.domain(data.map(function (d) { return d.hour; }));
+  y.domain([0, d3.max(data, function (d) { return d.totalOccupancy; })]);
+  yRight.domain([0, d3.max(data, function (d) { return d.expenditure; })]); // Set the domain of the right y-scale
+
+  let chart = svg.append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")"); // Translate the chart area within the margins
+
+  chart.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x))
+    .append("text") // Append a text element for the x-axis label
+    .attr("fill", "#000")
+    .attr("y", 35) // Position the label below the x-axis
+    .attr("x", width / 2)
+    .attr("text-anchor", "middle")
+    .text("Time");
+
+  chart.append("g")
+    .call(d3.axisLeft(y))
+    .append("text") // Append a text element for the y-axis label
+    .attr("fill", "#000")
+    .attr("transform", "rotate(-90)") // Rotate the label to be vertical
+    .attr("y", -50) // Position the label to the left of the y-axis
+    .attr("x", -height / 2)
+    .attr("text-anchor", "middle")
+    .text("Total Occupancy");
+
+  let rightAxis = chart.append("g")
+    .attr("transform", "translate(" + width + ",0)") // Translate the right y-axis to the right side of the chart
+    .call(d3.axisRight(yRight));
+
+  rightAxis.append("text") // Append a text element for the right y-axis label
+    .attr("fill", "#000")
+    .attr("transform", "rotate(-90)") // Rotate the label to be vertical
+    .attr("y", 50) // Position the label to the right of the y-axis
+    .attr("x", -height / 2)
+    .attr("dy", "1em") // Shift the label down slightly
+    .style("text-anchor", "middle")
+    .text("Total Expenditure");
+
+  let legend = svg.append("g")
+    .attr("font-family", "sans-serif")
+    .attr("font-size", 10)
+    .attr("text-anchor", "end")
+    .selectAll("g")
+    .data(["Total Occupancy", "Total Expenditure"])
+    .enter().append("g")
+    .attr("transform", function (d, i) { return "translate(0," + i * 20 + ")"; });
+
+  legend.append("rect")
+    .attr("x", width - 19)
+    .attr("width", 19)
+    .attr("height", 19)
+    .attr("fill", function (d) { return d === "Total Occupancy" ? z(selectedBubbleCategory) : "green"; });
+
+  legend.append("text")
+    .attr("x", width - 24)
+    .attr("y", 9.5)
+    .attr("dy", "0.32em")
+    .text(function (d) { return d; });
+
+  chart.selectAll(".bar")
+    .data(data)
+    .enter().append("rect")
+    .attr("class", "bar")
+    .attr("x", function (d) { return x(d.hour); })
+    .attr("y", function (d) { return y(d.totalOccupancy); })
+    .attr("width", x.bandwidth())
+    .attr("height", function (d) {
+      let barHeight = height - y(d.totalOccupancy);
+      if (isNaN(barHeight)) {
+        console.error('Invalid bar height', d, barHeight);
+        return 0;
+      }
+      return barHeight;
+    })
+    .attr("fill", function (d) {
+      return z(selectedBubbleCategory);
+    })
+
+  create_tooltip(chart.selectAll(".bar"), function (d) {
+    return 'Time: ' + d.hour
+      + '</br>' + 'Total Occupancy: ' + d.totalOccupancy;
+  });
+
+  let line = d3.line()
+    .x(function (d) { return x(d.hour) + x.bandwidth() / 2; }) // Center the line in the bars
+    .y(function (d) { return yRight(d.expenditure); }); // Use the right y-scale for the line chart
+
+  // Add the line chart to the SVG
+  chart.append("path")
+    .datum(data)
+    .attr("fill", "none")
+    .attr("stroke", "green")
+    .attr("stroke-width", 1.5)
+    .attr("d", line);
+
+  chart.selectAll(".dot")
+    .data(data)
+    .enter().append("circle") // Append circle elements
+    .attr("class", "dot") // Assign a class for styling
+    .attr("cx", function (d) { return x(d.hour) + x.bandwidth() / 2; })
+    .attr("cy", function (d) { return yRight(d.expenditure); })
+    .attr("r", 3) // Radius of circle
+    .attr("fill", "green");
+
+  create_tooltip(chart.selectAll(".dot"), function (d) {
+    return 'Time: ' + d.hour
+      + '</br>' + 'Total Expenditure: ' + d.expenditure.toFixed(2);
+  });
+
+}
+
+function create_tooltip(selection, formatTooltip) {
+  var tooltip = d3.select("body")
+    .append("div")
+    .attr("class", "hovertooltip");
+  selection
+    .on('mouseover', function (event, d) {
+      tooltip
+        .style("visibility", "visible")
+        .html(formatTooltip(d));
+    })
+    .on('mousemove', function (event) {
+      tooltip
+        .style("top", (event.pageY - 70) + "px")
+        .style("left", (event.pageX + 20) + "px");
+    })
+    .on('mouseout', function () {
+      tooltip.style("visibility", "hidden");
+    });
+}
+
+
+
+function getEmoji(key){ let emojis = {
+  "pub": "🍻",
+  "home": "🏠",
+  "restaurant": "🍔",
+  "workplace": "🏢"
+};
+  return emojis[key]
+}
+
+function createLineChart(data, chartName) {
+  
+  d3.selectAll(`.${chartName}Child`).remove()
+  d3.selectAll(".dateLabels").remove()
+
+  data.forEach((item) => {
+    let date = Object.keys(item)[0];
+    let places = item[date];
+
+
+    let personsvg = d3.select(`#${chartName}`).append("svg").attr("class", `${chartName}Child`).attr("width", "450").attr("height", 100),
+      margin = { top: 10, right: 10 , bottom: 20, left: 20 },
+      width = +personsvg.attr("width") - margin.left - margin.right,
+      height = +personsvg.attr("height") - margin.top - margin.bottom,
+      g = personsvg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+    let x = d3.scaleUtc().range([0, width]).domain([new Date(date + "T00:00:00Z"), new Date(date + "T23:59:59Z")]);
+    let xAxis = d3.axisBottom(x).ticks(d3.timeHour.every(3), "%I %p");
+
+    g.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis)
+      .select(".domain")
+      .remove();
+
+      /*
+    g.selectAll(".dot")
+      .data(places)
+      .enter()
+      .append("circle")
+      .attr("class", "dot")
+      .attr("cx", function (d) { return x(new Date(d.startTime)); })
+      .attr("cy", height / 2)
+      .attr("r", 3.5);
+      */
+      g.selectAll(".symbol")
+      .data(places)
+      .enter()
+      .append("text")
+      .attr("class", "symbol")
+      .attr("x", function (d) { dt = x(new Date(d.startTime)); return dt}) 
+      .attr("y", height / 2 ) 
+      .text(d => getEmoji(d.place)); 
+     /*
+
+      g.selectAll(".symbol")
+      .data(places)
+      .enter()
+      .append("text")
+      .attr("class", "symbol material-icon")
+      .attr("x", d =>{dt= x(new Date(new Date(d.startTime).toISOString())); console.log(d); console.log(dt); return dt})
+      .attr("y", height / 2)
+      .text("lunch-dining")
+      .attr("font-size", 15)
+
+*/
+
+      
+    let dateLabel = d3.select("#activityDatePanel").append("svg").attr("height", 100).attr("class", "dateLabels")
+    // Add date next to the chart
+    dateLabel.append("text")
+    .attr("y", 55)
+      .attr("class", "dateLabels")
+      .text(date);
+  });
+}
+
+// This needs to be called when in the onChange of month/date selector 
+populatePersonSelector(selectedDay, selectedDay) // remove when month/date selector added
+function populatePersonSelector() {
+
+  // Get list of 10 people
+  fetch('/parsedData/particpiantDayActivity.json')
+    .then(response => response.json())
+    .then(data => {
+      let monthData = data[selectedMonth];
+      if (monthData) {
+        let dayData = monthData[selectedDay];
+        // Fetch keys here
+        if (dayData) {
+          options = Object.keys(dayData)
+          for (var i = 0; i < options.length; i++) {
+            var opt = options[i];
+            var el = document.createElement("option");
+            el.textContent = opt;
+            el.value = opt;
+            personSelect1.appendChild(el);
+            opt = options[i];
+            el = document.createElement("option");
+            el.textContent = opt;
+            el.value = opt;
+            personSelect2.appendChild(el);
+          }
+        }
+      }
+    })
+    .catch(error => console.log(error));
+
+}
+
+function personChange(event) {
+  var id = event.target.id;
+  var select = document.getElementById(id)
+  var value = select.value;
+  var chartName;
+  if (id == "personSelect1") {
+    chartName = "person1";
+  } else {
+    chartName = "person2"
+  }
+  getActivityData(value).then(result => {
+    createLineChart(result, chartName);
+  }).catch(error => {
+    console.error(error);
+  });
+
+}
+
+
+function getActivityData(id) {
+  return new Promise((resolve, reject) => {
+    let visitedPlaces = [];
+    fetch('/parsedData/particpiantDayActivity.json')
+      .then(response => response.json())
+      .then(data => {
+        let monthData = data[selectedMonth];
+        if (monthData) {
+          let dayData = monthData[selectedDay];
+          if (dayData && dayData[id]) {
+            for (let date in dayData[id]) {
+              if (!visitedPlaces[date]) {
+                visitedPlaces[date] = [];
+              }
+              dayData[id][date].forEach(activity => {
+                visitedPlaces[date].push({
+                  place: activity.end.type,
+                  startTime: activity.starttime,
+                  endTime: activity.endtime
+                });
+              });
+            }
+          }
+        }
+
+        let result = Object.keys(visitedPlaces).map(date => {
+          return { [date]: visitedPlaces[date] };
+        });
+        resolve(result);
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
+}
