@@ -5,3 +5,4 @@ test.txt
 /data-processing-scripts/output.json
 /parsedData/
 .vscode/
+data/expense_occupancy.json

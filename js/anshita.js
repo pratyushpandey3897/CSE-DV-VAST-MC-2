@@ -3,7 +3,8 @@ emojis = {
     "home": "🏠",
     "restaurant": "🍜",
     "employer": "🏢", 
-    "school" :"🎒"
+    "school" :"🎒",
+    "money": "🤑"
 };
 
 
@@ -63,7 +64,8 @@ function createLineChart(data, chartName) {
 
         g.append("g")
             .attr("transform", "translate(0," + height + ")")
-            .call(xAxis);
+            .call(xAxis)
+            .attr("stroke-width", 0.5);
         /*
         .select(".domain")
         .remove();
