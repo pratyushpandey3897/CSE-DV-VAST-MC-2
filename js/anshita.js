@@ -104,7 +104,11 @@ function createLineChart(data, chartName) {
    */
 
 
-        let dateLabel = d3.select("#activityDatePanel").append("svg").attr("height", 100).attr("class", "dateLabels")
+        let dateLabel = d3.select("#activityDatePanel")
+            .append("div")
+            .attr("class", "dateLabels")
+            .style("height", "100px")
+            .style("padding-top", "45px");
         // Add date next to the chart
         dateLabel.append("text")
             .attr("y", 60)
