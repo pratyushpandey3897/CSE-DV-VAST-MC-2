@@ -2,7 +2,8 @@ emojis = {
     "pub": "🍺",
     "home": "🏠",
     "restaurant": "🍜",
-    "employer": "🏢"
+    "employer": "🏢", 
+    "school" :"🎒"
 };
 
 
@@ -54,7 +55,11 @@ function createLineChart(data, chartName) {
         }
 
         let x = d3.scaleUtc().range([0, width]).domain(timeOfDayMap[selectedTimeOfDay]);
-        let xAxis = d3.axisBottom(x).ticks(d3.timeHour.every(1), "%I %p");
+        var ticksFrequency = 1;
+        if (selectedTimeOfDay == "morning") {
+            ticksFrequency = 2;
+        }
+        let xAxis = d3.axisBottom(x).ticks(d3.utcHour.every(ticksFrequency)).tickFormat(d3.utcFormat("%I %p"));
 
         g.append("g")
             .attr("transform", "translate(0," + height + ")")
@@ -78,7 +83,7 @@ function createLineChart(data, chartName) {
             .enter()
             .append("text")
             .attr("class", "symbol")
-            .attr("x", function (d) { dt = x(new Date(d.startTime)); return dt })
+            .attr("x", function (d) { dt = x(new Date(d.endTime)); return dt })
             .attr("y", height / 2)
             .text(d => emojis[d.place])
             .attr("font-size", 16);
@@ -231,9 +236,9 @@ function drawComparisionChartLegend() {
         { label: "Pub", icon: "🍺" },
         { label: "Home", icon: "🏠" },
         { label: "Restaurant", icon: "🍜" },
-        { label: "Employer", icon: "🏢" }
+        { label: "Employer", icon: "🏢" }, 
+        { label: "School", icon: "🎒"}
     ];
-
     // Set up the SVG container
     const svg = d3.select("#legendArea")
 
