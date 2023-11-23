@@ -19,10 +19,11 @@ document.addEventListener("DOMContentLoaded", async (event) => {
     personSelect1.addEventListener("change", personChange)
     personSelect2 = document.getElementById("personSelect2");
     personSelect2.addEventListener("change", personChange);
-
+    drawComparisionChartLegend();
     // Populate person selector for comparision chart
     
     populatePersonSelector();
+    
 
   d3.csv("data/line_chart.csv")
     .then(function (lineData) {

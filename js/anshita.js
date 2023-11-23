@@ -1,13 +1,10 @@
+emojis = {
+    "pub": "🍺",
+    "home": "🏠",
+    "restaurant": "🍜",
+    "employer": "🏢"
+};
 
-function getEmoji(key) {
-    let emojis = {
-        "pub": "🍺",
-        "home": "🏠",
-        "restaurant": "🍜",
-        "employer": "🏢"
-    };
-    return emojis[key]
-}
 
 function createLineChart(data, chartName) {
 
@@ -83,7 +80,7 @@ function createLineChart(data, chartName) {
             .attr("class", "symbol")
             .attr("x", function (d) { dt = x(new Date(d.startTime)); return dt })
             .attr("y", height / 2)
-            .text(d => getEmoji(d.place))
+            .text(d => emojis[d.place])
             .attr("font-size", 16);
         /*
    
@@ -103,7 +100,7 @@ function createLineChart(data, chartName) {
         let dateLabel = d3.select("#activityDatePanel").append("svg").attr("height", 100).attr("class", "dateLabels")
         // Add date next to the chart
         dateLabel.append("text")
-            .attr("y", 55)
+            .attr("y", 60)
             .attr("class", "dateLabels")
             .text(outputDateString);
     });
@@ -226,4 +223,33 @@ function updateComparisionChart() {
             console.error(error);
         });
     }
+}
+
+function drawComparisionChartLegend() {
+    // Define the legend data
+    const legendData = [
+        { label: "Pub", icon: "🍺" },
+        { label: "Home", icon: "🏠" },
+        { label: "Restaurant", icon: "🍜" },
+        { label: "Employer", icon: "🏢" }
+    ];
+
+    // Set up the SVG container
+    const svg = d3.select("#legendArea")
+
+    // Create the legend
+    const legend = svg.selectAll(".legend")
+        .data(legendData)
+        .enter().append("div")
+        .attr("class", "legend")
+        .style("padding", "16px")
+        .style("height", "32px");
+
+    // Add the legend icons
+    legend.append("text")
+        .text(d => d.icon);
+
+    // Add the legend labels
+    legend.append("text")
+        .text(d => d.label);
 }
