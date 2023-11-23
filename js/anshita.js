@@ -66,42 +66,16 @@ function createLineChart(data, chartName) {
             .attr("transform", "translate(0," + height + ")")
             .call(xAxis)
             .attr("stroke-width", 0.5);
-        /*
-        .select(".domain")
-        .remove();
-  
         
-      g.selectAll(".dot")
-        .data(places)
-        .enter()
-        .append("circle")
-        .attr("class", "dot")
-        .attr("cx", function (d) { return x(new Date(d.startTime)); })
-        .attr("cy", height / 2)
-        .attr("r", 3.5);
-        */
         g.selectAll(".symbol")
             .data(places)
             .enter()
             .append("text")
             .attr("class", "symbol")
-            .attr("x", function (d) { dt = x(new Date(d.endTime)); return dt })
+            .attr("x", function (d) { dt = x(new Date(d.endTime))-10; return dt })
             .attr("y", height / 2)
             .text(d => emojis[d.place])
             .attr("font-size", 16);
-        /*
-   
-         g.selectAll(".symbol")
-         .data(places)
-         .enter()
-         .append("text")
-         .attr("class", "symbol material-icon")
-         .attr("x", d =>{dt= x(new Date(new Date(d.startTime).toISOString())); console.log(d); console.log(dt); return dt})
-         .attr("y", height / 2)
-         .text("lunch-dining")
-         .attr("font-size", 15)
-   
-   */
 
 
         let dateLabel = d3.select("#activityDatePanel")
@@ -114,7 +88,39 @@ function createLineChart(data, chartName) {
             .attr("y", 60)
             .attr("class", "dateLabels")
             .text(outputDateString);
+            
     });
+
+    // Create tooltip
+    create_tooltip(d3.selectAll(".symbol"), function (d) {
+        let startTime = new Date(d.startTime);
+        let endTime = new Date(d.endTime);
+        let startHour = startTime.getUTCHours();
+        let startMins = startTime.getUTCMinutes();
+        let endHour = endTime.getUTCHours();
+        let endMins = endTime.getUTCMinutes();
+        if (startHour < 10){
+            startHour = '0' + startHour;
+        }
+        if (startMins <10){
+            startMins = '0' + startMins;
+        }
+        if (endHour<10){
+            endHour = '0' + endHour;
+        }
+        if (endMins<10){
+            endMins = '0'+endMins;
+        }
+
+        let placeText = emojis[d.place] + " " + d.place.charAt(0).toUpperCase() + d.place.slice(1);
+
+        var text = 'Building ID: ' + d.pointId 
+        + '</br> Type: ' + placeText
+        + '</br> Start Time: ' + startHour + ":" + startMins
+        + '</br> End Time: ' + endHour + ":" + endMins;
+        return text;
+      });
+    
 }
 function populatePersonSelector() {
     //Remove existing options. 
@@ -204,7 +210,8 @@ function getActivityData(id) {
                                 visitedPlaces[date].push({
                                     place: activity.end.type,
                                     startTime: activity.starttime,
-                                    endTime: activity.endtime
+                                    endTime: activity.endtime,
+                                    pointId: activity.end.pointId
                                 });
                             });
                         }
