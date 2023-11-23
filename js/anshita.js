@@ -108,7 +108,7 @@ function createLineChart(data, chartName) {
             .append("div")
             .attr("class", "dateLabels")
             .style("height", "100px")
-            .style("padding-top", "45px");
+            .style("padding-top", "65px");
         // Add date next to the chart
         dateLabel.append("text")
             .attr("y", 60)
