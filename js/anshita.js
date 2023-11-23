@@ -12,10 +12,22 @@ function getEmoji(key){ let emojis = {
     
     d3.selectAll(`.${chartName}Child`).remove()
     d3.selectAll(".dateLabels").remove()
+
+    // Sort data based on dates
+    var sortedDates = Object.keys(data).sort();
   
-    data.forEach((item) => {
-      let date = Object.keys(item)[0];
-      let places = item[date];
+    sortedDates.forEach((item) => {
+      let date = item;
+      let places = data[date];
+
+      
+        var inputDate = new Date(date);
+
+        var year = inputDate.getUTCFullYear();
+        var month = ('0' + (inputDate.getUTCMonth() + 1)).slice(-2);  
+        var day = ('0' + inputDate.getUTCDate()).slice(-2);
+        var outputDateString = month + '-' + day + '-' + year;
+
   
   
       let personsvg = d3.select(`#${chartName}`).append("svg").attr("class", `${chartName}Child`).attr("width", "450").attr("height", 100),
@@ -26,9 +38,9 @@ function getEmoji(key){ let emojis = {
   
   
       const timeOfDayMap = {
-        "morning" : [new Date(date + "T00:00:00Z"), new Date(date + "T11:59:59Z")],
-        "afternoon" : [new Date(date + "T12:00:00Z"), new Date(date + "T15:59:59Z")],
-        "evening" : [new Date(date + "T16:00:00Z"), new Date(date + "T18:59:59Z")],
+        "morning" : [new Date(date + "T00:00:00Z"), new Date(date + "T12:00:00Z")],
+        "afternoon" : [new Date(date + "T12:00:00Z"), new Date(date + "T16:00:00Z")],
+        "evening" : [new Date(date + "T16:00:00Z"), new Date(date + "T19:00:00Z")],
         "night" : [new Date(date + "T19:00:00Z"), new Date(date + "T23:59:59Z")]
       }
       
@@ -79,7 +91,7 @@ function getEmoji(key){ let emojis = {
       dateLabel.append("text")
       .attr("y", 55)
         .attr("class", "dateLabels")
-        .text(date);
+        .text(outputDateString);
     });
   }
   
@@ -164,10 +176,7 @@ function getEmoji(key){ let emojis = {
             }
           }
   
-          let result = Object.keys(visitedPlaces).map(date => {
-            return { [date]: visitedPlaces[date] };
-          });
-          resolve(result);
+          resolve(visitedPlaces)
         })
         .catch(error => {
           reject(error);
