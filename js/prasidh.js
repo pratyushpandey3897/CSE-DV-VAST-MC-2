@@ -18,7 +18,11 @@ document.addEventListener("DOMContentLoaded", async (event) => {
     personSelect1 = document.getElementById("personSelect1");
     personSelect1.addEventListener("change", personChange)
     personSelect2 = document.getElementById("personSelect2");
-    personSelect2.addEventListener("change", personChange)
+    personSelect2.addEventListener("change", personChange);
+
+    // Populate person selector for comparision chart
+    
+    populatePersonSelector();
 
   d3.csv("data/line_chart.csv")
     .then(function (lineData) {
@@ -187,7 +191,7 @@ function create_grouped_bar_chart(data) {
       selectedTimeOfDay = d3.select(this).data()[0].key;
       create_beeswarm_chart(commute_counts_rpe_data);
       // update comparision chart
-      updateComparisionChart()
+      updateComparisionChart();
     })
 
     let bars = barGroups.selectAll("rect")

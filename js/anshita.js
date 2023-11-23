@@ -1,10 +1,10 @@
 
 function getEmoji(key) {
     let emojis = {
-        "pub": "🍻",
+        "pub": "🍺",
         "home": "🏠",
-        "restaurant": "🍔",
-        "workplace": "🏢"
+        "restaurant": "🍜",
+        "employer": "🏢"
     };
     return emojis[key]
 }
@@ -16,6 +16,14 @@ function createLineChart(data, chartName) {
 
     // Sort data based on dates
     var sortedDates = Object.keys(data).sort();
+    var lopDiv = document.getElementById("lives-of-people");
+
+    // If there are 5 dates then set height to 600px. Else 500px.
+    if (sortedDates.length >= 5) {
+        lopDiv.style.height = "600px";
+    } else {
+        lopDiv.style.height = "500px";
+    }
 
     sortedDates.forEach((item) => {
         let date = item;
@@ -75,7 +83,8 @@ function createLineChart(data, chartName) {
             .attr("class", "symbol")
             .attr("x", function (d) { dt = x(new Date(d.startTime)); return dt })
             .attr("y", height / 2)
-            .text(d => getEmoji(d.place));
+            .text(d => getEmoji(d.place))
+            .attr("font-size", 16);
         /*
    
          g.selectAll(".symbol")
@@ -111,7 +120,7 @@ function populatePersonSelector() {
     }
 
     //Clear the comparision chart
-    
+
 
     d3.selectAll(`.person1Child`).remove()
     d3.selectAll(`.person2Child`).remove()
@@ -203,15 +212,18 @@ function getActivityData(id) {
 }
 
 function updateComparisionChart() {
-    getActivityData(selectedPerson1).then(result => {
-        createLineChart(result, "person1");
-    }).catch(error => {
-        console.error(error);
-    });
-
-    getActivityData(selectedPerson2).then(result => {
-        createLineChart(result, "person2");
-    }).catch(error => {
-        console.error(error);
-    });
+    if (typeof selectedPerson1 !== 'undefined' && selectedPerson1 !== null) {
+        getActivityData(selectedPerson1).then(result => {
+            createLineChart(result, "person1");
+        }).catch(error => {
+            console.error(error);
+        });
+    }
+    if (typeof selectedPerson2 !== 'undefined' && selectedPerson2 !== null) {
+        getActivityData(selectedPerson2).then(result => {
+            createLineChart(result, "person2");
+        }).catch(error => {
+            console.error(error);
+        });
+    }
 }
