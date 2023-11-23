@@ -396,6 +396,7 @@ function create_line_chart(lineData) {
       }
     });
     circle.on("click", function () {
+      console.log("over here")
       // On click, set the opacity of all circles to 0.5 with transition
       d3.selectAll(".line-circles")
         .transition()
@@ -405,6 +406,10 @@ function create_line_chart(lineData) {
       d3.select(this).transition().duration(200).style("opacity", 1);
       clicked = true;
       selectedMonth = d.Month;
+      
+      // Update comparision chart
+      populatePersonSelector();
+
       create_grouped_bar_chart(globalData);
       create_beeswarm_chart(commute_counts_rpe_data);
       create_horizontal_bar_chart(horizontalBarData, selectedMonth);
@@ -500,6 +505,8 @@ function create_horizontal_bar_chart(data, selectedMonth) {
       selectedDay = d3.select(this).data()[0][0];
       create_beeswarm_chart(commute_counts_rpe_data);
       create_grouped_bar_chart(globalData);
+      // Update comparision chart
+      populatePersonSelector();
     })
     .attr("fill", function (d) {
       return color(d[1]);
@@ -507,7 +514,6 @@ function create_horizontal_bar_chart(data, selectedMonth) {
 
   // Add tooltip to existing bars
   create_tooltip(bars, function (d) {
-    console.log("here");
     return "Day: " + d[0] + "</br>" + "Commutes: " + d[1];
   });
 
@@ -538,13 +544,14 @@ function create_horizontal_bar_chart(data, selectedMonth) {
       selectedDay = d3.select(this).data()[0][0];
       create_beeswarm_chart(commute_counts_rpe_data);
       create_grouped_bar_chart(globalData);
+      // Update comparision chart
+      populatePersonSelector();
     })
     .attr("fill", function (d) {
       return color(d[1]);
     });
 
   create_tooltip(newBars, function (d) {
-    console.log("here");
     return "Day: " + d[0] + "</br>" + "Commutes: " + d[1];
   });
 
@@ -930,7 +937,6 @@ function create_bar_line_chart() {
 }
 
 function create_tooltip(selection, formatTooltip) {
-  console.log("here");
   var tooltip = d3.select("body").append("div").attr("class", "hovertooltip");
   selection
     .on("mouseover", function (event, d) {
