@@ -32,9 +32,12 @@ for month, weekdays in data.items():
                     if participant_id not in new_structure[month][weekday]:
                         new_structure[month][weekday][participant_id] = {}
                     if date not in new_structure[month][weekday][participant_id]:
-                        new_structure[month][weekday][participant_id][date] = {}
-                    if tod not in new_structure[month][weekday][participant_id][date]:
-                        new_structure[month][weekday][participant_id][date][tod] = []
+                            new_structure[month][weekday][participant_id][date] = {}
+                            new_structure[month][weekday][participant_id][date]["morning"] = []
+                            new_structure[month][weekday][participant_id][date]["afternoon"] = []
+                            new_structure[month][weekday][participant_id][date]["evening"] = []
+                            new_structure[month][weekday][participant_id][date]["night"] = []
+                        
                     # Create a new dictionary with only the desired properties
                     new_commute = {
                         'end': commute['end'],
@@ -48,13 +51,24 @@ for month, weekdays in data.items():
 
 for month, weekdays in new_structure.items():
     for weekday, participants in weekdays.items():
+        commute_counts = {}
+        for participant in participants:
+            commute_counts[participant] = 0
+            for date in participants[participant]:
+                for tod in participants[participant][date]:
+                    commute_counts[participant] += len(participants[participant][date][tod])
+                
         # Count the number of commutes for each participant
-        commute_counts = Counter({participant: sum(len(commutes) for commutes in tod.values()) for participant, dates  in participants.items() for dates, tod in dates.items()})
+        #commute_counts = Counter({participant: sum(len(commutes) for commutes in participants.values()) for participant, dates  in participants.items()})
         # Get the top 10 participants with the most commutes
-        top_participants = [participant for participant, _ in commute_counts.most_common(10)]
+        # top_participants = [participant for participant, _ in commute_counts.most_common(10)]
+        top_10_participants = dict(sorted(commute_counts.items(), key=lambda item: item[1], reverse=True)[:10])
+        new_structure[month][weekday] = {participant: dates for participant, dates  in participants.items() if participant in top_10_participants}
+
         # Filter the participants dictionary to only include the top participants
-        new_structure[month][weekday] = {participant: dates for participant, dates in participants.items() if participant in top_participants}
+        #new_structure[month][weekday]p = {participant: dates for participant, dates in participants.items() if participant in top_participants}
 # Print the new structure
 # print(json.dumps(new_structure, indent=4))
 with open('./parsedData/particpiantDayActivity.json', 'w') as f:
     json.dump(new_structure, f, indent=4)
+print("All done")

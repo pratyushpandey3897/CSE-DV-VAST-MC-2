@@ -186,6 +186,8 @@ function create_grouped_bar_chart(data) {
       console.log("Bar clicked");
       selectedTimeOfDay = d3.select(this).data()[0].key;
       create_beeswarm_chart(commute_counts_rpe_data);
+      // update comparision chart
+      updateComparisionChart()
     })
 
     let bars = barGroups.selectAll("rect")

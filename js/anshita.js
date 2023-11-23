@@ -119,14 +119,17 @@ function getEmoji(key){ let emojis = {
   function personChange(event) {
     var id = event.target.id;
     var select = document.getElementById(id)
-    var value = select.value;
+    selectedPersonValue = select.value;
     var chartName;
     if (id == "personSelect1") {
+        selectedPerson1 = select.value;
       chartName = "person1";
     } else {
+        
+        selectedPerson2 = select.value;
       chartName = "person2"
     }
-    getActivityData(value).then(result => {
+    getActivityData(selectedPersonValue).then(result => {
       createLineChart(result, chartName);
     }).catch(error => {
       console.error(error);
@@ -170,4 +173,18 @@ function getEmoji(key){ let emojis = {
           reject(error);
         });
     });
+  }
+
+  function updateComparisionChart(){
+    getActivityData(selectedPerson1).then(result => {
+        createLineChart(result, "person1");
+      }).catch(error => {
+        console.error(error);
+      });
+    
+      getActivityData(selectedPerson2).then(result => {
+        createLineChart(result, "person2");
+      }).catch(error => {
+        console.error(error);
+      });
   }
