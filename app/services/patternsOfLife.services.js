@@ -1,8 +1,53 @@
 import query from "./db.services.js";
 import dedent from "dedent";
 
+const weekdayMap = {
+    0: "Sunday",
+    1: "Monday",
+    2: "Tuesday",
+    3: "Wednesday",
+    4: "Thursday",
+    5: "Friday",
+    6: "Saturday"
+};
+
+const monthMap = {
+    "01": "January",
+    "02": "February",
+    "03": "March",
+    "04": "April",
+    "05": "May",
+    "06": "June",
+    "07": "July",
+    "08": "August",
+    "09": "September",
+    "10": "October",
+    "11": "November",
+    "12": "December"
+};
+
 export async function totalCommutesByMonth() {
-    return await query(`select month as Month, totalCommutes as 'Total Commutes' from TotalCommutesByMonth where year = '2022'`);
+    return await query(`select month, totalCommutes from TotalCommutesByMonth where year = '2022'`)
+        .then(data => data
+            .map(row => {
+                return {
+                    'Month': monthMap[row.month],
+                    'Total Commutes': row.totalCommutes
+                }
+            }));
+}
+
+export async function getTotalCommutesByWeekDay(year, month) {
+    console.log(year, month);
+    return await query(dedent`
+            select dayOfWeek, count(*) as totalCommutes from TravelJournalCombined where year = '${year}' and month = '${month}'
+            group by dayOfWeek
+        `)
+        .then(data => data
+            .reduce((acc, curr) => {
+                acc[weekdayMap[curr.dayOfWeek]] = curr.totalCommutes;
+                return acc;
+            }, {}))
 }
 
 export async function getTotalCommutesByLocationType(year, month, dayOfWeek) {
@@ -22,9 +67,9 @@ export async function getTotalCommutesByLocationType(year, month, dayOfWeek) {
             }));
 }
 
-export async function getTotalExpendituresByLocationId(year, month, dayOfWeek, timeOfDay) {
+export async function getTotalExpendituresByLocationId(year, month, dayOfWeek, timeOfDay, locationId) {
     return await query(dedent`
-            select participantId, travelEndLocationId, travelStartTime, (startingBalance - endingBalance) as expenditure, 
+            select participantId, travelEndLocationId, travelEndTime, abs(startingBalance - endingBalance) as expenditure, 
             b.maxOccupancy, endLocationType
             from TravelJournalCombined t
             join (
@@ -37,25 +82,20 @@ export async function getTotalExpendituresByLocationId(year, month, dayOfWeek, t
             and t.year = '${year}'
             and t.month = '${month}' and t.dayOfWeek='${dayOfWeek}'
             and t.timeOfDay = '${timeOfDay}'
+            and t.travelEndLocationId = ${locationId}
         `)
         .then(data => data
-            .map(function (row) {
+            .map(row => {
                 return {
-                    "participantId": row.participantId,
-                    "commercialId": row.travelEndLocationId,
-                    "start_time": row.travelStartTime,
-                    "month": row.month,
-                    "day_of_week": row.dayOfWeek,
-                    "portion_of_day": row.timeOfDay,
-                    "expenditures": row.expenditure,
-                    "occupancy": row.maxOccupancy,
-                    "buildingId": row.travelEndLocationId,
-                    "commercialType": row.endLocationType
-                }
+                    total_occupancy: row.maxOccupancy,
+                    total_expenditure: row.expenditure,
+                    time: row.travelEndTime
+                };
             }));
 }
 
 export async function getLocationsByTimeOfDay(year, month, dayOfWeek, timeOfDay) {
+
     return await query(dedent`
             select endLocationId as locationId, endLocation as location, endLocationType as locationType, count(*) as totalCommutes
             from TravelJournalCombined where year = '${year}'
@@ -68,9 +108,46 @@ export async function getLocationsByTimeOfDay(year, month, dayOfWeek, timeOfDay)
             .filter(row => row.location != null)
             .map(row => {
 
-                const coordinates = row.location.match(/([-+]?[0-9]*\.?[0-9]+) ([-+]?[0-9]*\.?[0-9]+)/g)?.map(pair => pair.split(' ').map(Number));
+                const coordinates = row.location
+                    .match(/([-+]?[0-9]*\.?[0-9]+) ([-+]?[0-9]*\.?[0-9]+)/g)    // parse coordinates from string
+                    ?.map(pair => pair.split(' ').map(Number));   // split into lat and long
 
-                // Create a GeoJSON feature for each item
+                return {
+                    type: "Feature",
+                    geometry: {
+                        type: "Point",
+                        coordinates: coordinates[0]
+                    },
+                    properties: {
+                        locationId: row.locationId,
+                        locationType: row.locationType,
+                        totalCommutes: row.totalCommutes
+                    }
+                };
+            }));
+}
+
+
+export async function getStartLocationsForEndLocationId(year, month, dayOfWeek, timeOfDay, endLocationId) {
+
+    return await query(dedent`
+            select startLocationId as locationId, startLocation as location, 
+            startLocationType as locationType, count(*) as totalCommutes
+            from TravelJournalCombined where year = '${year}'
+            and month = '${month}' and dayOfWeek='${dayOfWeek}'
+            and timeOfDay = '${timeOfDay}'
+            and endLocationId = ${endLocationId}
+            group by startLocationId
+            order by totalCommutes desc
+        `)
+        .then(data => data
+            .filter(row => row.location != null)
+            .map(row => {
+
+                const coordinates = row.location
+                    .match(/([-+]?[0-9]*\.?[0-9]+) ([-+]?[0-9]*\.?[0-9]+)/g)    // parse coordinates from string
+                    ?.map(pair => pair.split(' ').map(Number));   // split into lat and long
+
                 return {
                     type: "Feature",
                     geometry: {
@@ -92,6 +169,7 @@ export async function getTotalCommutesByLocationId(year, month, dayOfWeek, timeO
             from TravelJournalCombined where year = '${year}'
             and month = '${month}' and dayOfWeek='${dayOfWeek}'
             and timeOfDay = '${timeOfDay}'
+            and endLocationType in ('Restaurant', 'Pub', 'Workplace')
             group by endLocationType, endLocationId
         `)
         .then(data => data

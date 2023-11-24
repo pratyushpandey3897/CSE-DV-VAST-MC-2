@@ -32,8 +32,7 @@ CREATE TABLE Buildings (
 CREATE TABLE Employers (
     employerId INTEGER PRIMARY KEY,
     location POINT,
-    buildingId INTEGER,
-    maxOccupancy INTEGER,
+    buildingId INTEGER
 );
 
 -- Create the Jobs table

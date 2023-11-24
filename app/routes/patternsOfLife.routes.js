@@ -31,19 +31,25 @@ const router = express.Router()
     .get("/totalCommutesByMonth", async (_, res) => {
         res.json(await db.totalCommutesByMonth());
     })
-    .get("/totalCommutesByLocationType/:year/:month/:dayOfWeek", async(req, res) => {
+    .get("/totalCommutesByLocationType/:year/:month/:dayOfWeek", async (req, res) => {
         res.json(await db.getTotalCommutesByLocationType(req.params.year, monthMap[req.params.month], weekdayMap[req.params.dayOfWeek]));
     })
-    .get("/totalCommutesByLocationId/:year/:month/:dayOfWeek/:timeOfDay", async(req, res) => {
+    .get("/totalCommutesByLocationId/:year/:month/:dayOfWeek/:timeOfDay", async (req, res) => {
         res.json(await db.getTotalCommutesByLocationId(req.params.year, monthMap[req.params.month], weekdayMap[req.params.dayOfWeek], req.params.timeOfDay));
     })
-    .get("/totalExpendituresByLocationId/:year/:month/:dayOfWeek/:timeOfDay", async(req, res) => {
-        res.json(await db.getTotalExpendituresByLocationId(req.params.year, monthMap[req.params.month], weekdayMap[req.params.dayOfWeek], req.params.timeOfDay));
+    .get("/startLocationsByEndLocationId/:year/:month/:dayOfWeek/:timeOfDay/:endLocationId", async (req, res) => {
+        res.json(await db.getStartLocationsForEndLocationId(req.params.year, monthMap[req.params.month], weekdayMap[req.params.dayOfWeek], req.params.timeOfDay, req.params.endLocationId));
     })
-    .get("/locations/:year/:month/:dayOfWeek/:timeOfDay", async(req, res) => {
+    .get("/totalExpendituresByLocationId/:year/:month/:dayOfWeek/:timeOfDay/:locationId", async (req, res) => {
+        res.json(await db.getTotalExpendituresByLocationId(req.params.year, monthMap[req.params.month], weekdayMap[req.params.dayOfWeek], req.params.timeOfDay, req.params.locationId));
+    })
+    .get("/locations/:year/:month/:dayOfWeek/:timeOfDay", async (req, res) => {
         res.json(await db.getLocationsByTimeOfDay(req.params.year, monthMap[req.params.month], weekdayMap[req.params.dayOfWeek], req.params.timeOfDay));
     })
-    .get("/map", async(_, res) => {
+    .get("/totalCommutesByWeekDay/:year/:month", async (req, res) => {
+        res.json(await db.getTotalCommutesByWeekDay(req.params.year, monthMap[req.params.month]));
+    })
+    .get("/map", async (_, res) => {
         res.json(await db.getMapGeoJson());
     });
 

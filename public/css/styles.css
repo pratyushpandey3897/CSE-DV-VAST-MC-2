@@ -30,12 +30,12 @@ body {
     justify-content: space-between;
 }
 
-.jumbotron p,
-h1 {
+.jumbotron p, h1 {
     background-image: none;
 }
 
 #building-tooltip {
+    position: absolute;
     background-color: white;
     border-radius: 5px;
     border: solid 1px gray;

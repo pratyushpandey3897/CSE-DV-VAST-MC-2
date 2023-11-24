@@ -117,9 +117,9 @@ ALTER TABLE TravelJournal
 
 UPDATE TravelJournal
     SET timeOfDay = CASE
-        WHEN strftime('%H', travelStartTime) >= '05' AND strftime('%H', travelStartTime) < '12' THEN 'Morning'
-        WHEN strftime('%H', travelStartTime) >= '12' AND strftime('%H', travelStartTime) < '14' THEN 'Afternoon'
-        WHEN strftime('%H', travelStartTime) >= '14' AND strftime('%H', travelStartTime) < '18' THEN 'Evening'
+        WHEN strftime('%H', travelStartTime) >= '00' AND strftime('%H', travelStartTime) < '12' THEN 'Morning'
+        WHEN strftime('%H', travelStartTime) >= '12' AND strftime('%H', travelStartTime) < '16' THEN 'Afternoon'
+        WHEN strftime('%H', travelStartTime) >= '16' AND strftime('%H', travelStartTime) < '19' THEN 'Evening'
         ELSE 'Night'
     END;
 
