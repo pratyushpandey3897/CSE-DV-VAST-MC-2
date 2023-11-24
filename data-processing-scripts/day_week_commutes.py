@@ -11,7 +11,7 @@ def calculate_total_commutes(data, month, day):
     return total_commutes
 
 # Load the JSON file
-with open('../parsedData/commuteCounts.json') as f:
+with open('../parsedData/commute_counts.json') as f:
     data = json.load(f)
 
 # List of weekdays
