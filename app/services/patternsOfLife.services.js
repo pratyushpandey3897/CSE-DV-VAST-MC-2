@@ -251,11 +251,16 @@ export async function getTop10Participants(year, month, dayOfWeek) {
         acc[curr.participantId] = {};
       }
       if (!acc[curr.participantId][curr.date]) {
-        acc[curr.participantId][curr.date] = {};
+        acc[curr.participantId][curr.date] = {
+          Morning: [],
+          Afternoon: [],
+          Evening: [],
+          Night: [],
+        };
       }
-      if (!acc[curr.participantId][curr.date][curr.timeOfDay]) {
-        acc[curr.participantId][curr.date][curr.timeOfDay] = [];
-      }
+      // if (!acc[curr.participantId][curr.date][curr.timeOfDay]) {
+      //   acc[curr.participantId][curr.date][curr.timeOfDay] = [];
+      // }
       acc[curr.participantId][curr.date][curr.timeOfDay].push({
         end: {
           pointId: curr.endLocationId,

@@ -17,10 +17,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
   personSelect2.addEventListener("change", personChange);
 
   create_line_chart();
-  create_grouped_bar_chart();
-  initialize_horizontal_bar_chart();
-  create_beeswarm_chart();
-  create_bar_line_chart();
+  // create_grouped_bar_chart();
+  // initialize_horizontal_bar_chart();
+  // create_beeswarm_chart();
+  // create_bar_line_chart();
 
   drawComparisionChartLegend();
   // Populate person selector for comparison chart
@@ -136,8 +136,19 @@ async function create_grouped_bar_chart() {
           // Add style changes
           d3.selectAll(".bar-group").style("opacity", 0.5); // Reduce opacity for all bars
           d3.select(this).style("opacity", 1); // Increase opacity for the selected bar
+          updateComparisonChart();
         });
 
+      let randomIndex = Math.floor(Math.random() * groupedData.length);
+
+      // After the bars are created
+      barGroups.each(function (d, i) {
+        // If current index is the random index
+        if (i === randomIndex) {
+          // Trigger the click event
+          this.dispatchEvent(new Event("click"));
+        }
+      });
       let bars = barGroups
         .selectAll("rect")
         .data((d) => keys.map((key) => ({ key: key, value: d[key] }))) // Create a new array of objects with properties 'key' and 'value'
@@ -391,16 +402,29 @@ function create_line_chart() {
           d3.select("#bar-line-chart").selectAll("*").remove();
 
           initialize_horizontal_bar_chart();
-          create_grouped_bar_chart();
-          create_beeswarm_chart();
+          // create_grouped_bar_chart();
+          // create_beeswarm_chart();
           populatePersonSelector();
           document.dispatchEvent(new Event("RenderHeatmap"));
         });
+        // After the circles are created
+
         create_tooltip(circle, function () {
           return (
             "Month: " + d.Month + "</br>" + "Commutes: " + d["Total Commutes"]
           );
         });
+      });
+
+      let randomIndex = Math.floor(Math.random() * lineData.length);
+
+      svg.selectAll(".line-circles").each(function (d, i) {
+        // Only trigger click on a random circle once
+        if (i === randomIndex) {
+          console.log("circle selected..,");
+          // Trigger the click event
+          this.dispatchEvent(new Event("click"));
+        }
       });
     });
 }
@@ -503,7 +527,7 @@ function create_horizontal_bar_chart(data) {
 
       // Get clicked element value
       selectedDay = d3.select(this).data()[0][0];
-      create_beeswarm_chart();
+      // create_beeswarm_chart();
       create_grouped_bar_chart();
       d3.select("#bar-line-chart").selectAll("*").remove();
       populatePersonSelector();
@@ -543,7 +567,7 @@ function create_horizontal_bar_chart(data) {
 
       // Get clicked element value
       selectedDay = d3.select(this).data()[0][0];
-      create_beeswarm_chart(commute_counts_rpe_data);
+      // create_beeswarm_chart();
       create_grouped_bar_chart();
       populatePersonSelector();
       document.dispatchEvent(new Event("RenderHeatmap"));
@@ -555,6 +579,15 @@ function create_horizontal_bar_chart(data) {
 
   create_tooltip(newBars, function (d) {
     return "Day: " + d[0] + "</br>" + "Commutes: " + d[1];
+  });
+
+  let randomIndex = Math.floor(Math.random() * Object.entries(data).length);
+  newBars.each(function (d, i) {
+    if (i === randomIndex) {
+      console.log("bar clicked");
+      // Trigger the click event
+      this.dispatchEvent(new Event("click"));
+    }
   });
 
   // Remove old bars, if any
@@ -711,6 +744,17 @@ function create_beeswarm_chart() {
           .attr("cy", function (d) {
             return d.y;
           });
+      });
+      // Generate a random index
+      let randomIndex = Math.floor(Math.random() * chart_data.length);
+
+      // After the nodes are created
+      node.each(function (d, i) {
+        // If current index is the random index
+        if (i === randomIndex) {
+          // Trigger the click event
+          this.dispatchEvent(new Event("click"));
+        }
       });
     });
 

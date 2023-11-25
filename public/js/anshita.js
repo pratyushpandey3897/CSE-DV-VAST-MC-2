@@ -168,20 +168,35 @@ function populatePersonSelector() {
     .then((response) => response.json())
     .then((dayData) => {
       console.log("fetched person data ", dayData);
-
+      var el1, el2;
       if (dayData) {
         options = Object.keys(dayData);
         for (var i = 0; i < options.length; i++) {
           var opt = options[i];
-          var el = document.createElement("option");
-          el.textContent = opt;
-          el.value = opt;
-          personSelect1.appendChild(el);
+          el1 = document.createElement("option");
+          el1.textContent = opt;
+          el1.value = opt;
+          personSelect1.appendChild(el1);
           opt = options[i];
-          el = document.createElement("option");
-          el.textContent = opt;
-          el.value = opt;
-          personSelect2.appendChild(el);
+          el2 = document.createElement("option");
+          el2.textContent = opt;
+          el2.value = opt;
+          personSelect2.appendChild(el2);
+        }
+        // Select two people randomly
+        if (personSelect1.options.length > 1) {
+          let index1 = Math.floor(Math.random() * personSelect1.options.length);
+          let index2;
+          do {
+            index2 = Math.floor(Math.random() * personSelect2.options.length);
+          } while (index2 === index1); // Ensure the second person is different from the first
+
+          personSelect1.options[index1].selected = true;
+          personSelect2.options[index2].selected = true;
+
+          // Trigger the change event to draw the comparison charts
+          personChange({ target: personSelect1 });
+          personChange({ target: personSelect2 });
         }
       }
     })
