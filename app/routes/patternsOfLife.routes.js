@@ -51,6 +51,9 @@ const router = express.Router()
     })
     .get("/map", async (_, res) => {
         res.json(await db.getMapGeoJson());
+    })
+    .get("/top10Participants/:year/:month/:dayOfWeek", async (req, res) => {
+        res.json(await db.getTop10Participants(req.params.year, monthMap[req.params.month], weekdayMap[req.params.dayOfWeek]));
     });
 
 export default router;

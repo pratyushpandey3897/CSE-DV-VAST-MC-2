@@ -38,7 +38,6 @@ export async function totalCommutesByMonth() {
 }
 
 export async function getTotalCommutesByWeekDay(year, month) {
-    console.log(year, month);
     return await query(dedent`
             select dayOfWeek, count(*) as totalCommutes from TravelJournalCombined where year = '${year}' and month = '${month}'
             group by dayOfWeek
@@ -207,5 +206,46 @@ export async function getMapGeoJson() {
                     };
                 }
 
+            }));
+}
+
+export async function getTop10Participants(year, month, dayOfWeek) {
+    return await query(dedent`
+            select t.*, strftime('%Y-%m-%d', t.travelStartTime) as date
+            from TravelJournalCombined t
+            join (select participantId, count(*) as totalCommutes
+            from TravelJournalCombined where year = '${year}'
+            and month = '${month}' and dayOfWeek='${dayOfWeek}'
+            group by participantId
+            order by totalCommutes desc
+            limit 10) p on p.participantId = t.participantId
+            where t.year = '${year}'
+            and t.month = '${month}' and t.dayOfWeek='${dayOfWeek}'
+            order by t.participantId, t.travelStartTime
+        `)
+        .then(data => data
+            .reduce((acc, curr) => {
+                if (!acc[curr.participantId]) {
+                    acc[curr.participantId] = {};
+                }
+                if (!acc[curr.participantId][curr.date]) {
+                    acc[curr.participantId][curr.date] = {};
+                }
+                if (!acc[curr.participantId][curr.date][curr.timeOfDay]) {
+                    acc[curr.participantId][curr.date][curr.timeOfDay] = [];
+                }
+                acc[curr.participantId][curr.date][curr.timeOfDay].push({
+                    end: {
+                        pointId: curr.endLocationId,
+                        type: curr.endLocationType,
+                        hourlyCost: curr.hourlyCost,
+                        maxOccupancy: curr.maxOccupancy,
+                        location: curr.endLocation
+                    },
+                    moneydiff: curr.startingBalance - curr.endingBalance,
+                    starttime: curr.travelStartTime,
+                    endtime: curr.travelEndTime
+                });
+                return acc;
             }));
 }

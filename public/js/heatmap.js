@@ -163,7 +163,7 @@
             .reflectY(true)
             .translate([width / 2 + 30, height - 20]);
 
-        screenCoordinates = [];
+        const screenCoordinates = [];
         features.forEach(item => {
             screenCoordinates.push([...projection(item.geometry.coordinates), item.properties.totalCommutes]);
         });
