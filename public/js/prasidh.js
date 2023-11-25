@@ -637,6 +637,32 @@ function create_beeswarm_chart() {
       // Map the keys to the color scale
       z.domain(keys);
 
+      const legendRectSize = 11;
+      // Define the legend
+      let legend = svg
+        .selectAll(".legend")
+        .data(keys)
+        .enter()
+        .append("g")
+        .attr("class", "legend")
+        .attr("transform", function (d, i) {
+          return "translate(" + (width - 80) + "," + (i * 30 + 20) + ")";
+        });
+
+      // Draw legend rectangles
+      legend.append("circle").attr("r", legendRectSize).attr("fill", z);
+
+      // Draw legend text
+      legend
+        .append("text")
+        .attr("x", legendRectSize + 10) // Position the text to the right of the rectangle
+        .attr("y", legendRectSize / 2 - 5) // Vertically align the text with the rectangle
+        .attr("font-size", "12px") // Use the same font size as in your code
+        .attr("dy", "0.31em") // Vertically align the text with the rectangle
+        .text(function (d) {
+          return d;
+        });
+
       // Initialize the circle: all located at the center of the svg area
       var node = svg
         .append("g")
