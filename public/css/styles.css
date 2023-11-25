@@ -80,4 +80,13 @@ body {
   #legendArea {
     display: flex;
   }
+  .hovertooltip {
+    position: absolute;
+    background-color: white;
+    border: 2px solid;
+    font-size: 18px;
+    border-radius: 6px;
+    padding: 10px;
+    visibility: hidden;
+  }
   
