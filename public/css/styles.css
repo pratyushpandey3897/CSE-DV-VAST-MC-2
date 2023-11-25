@@ -42,3 +42,42 @@ body {
     padding: 5px;
     font-size: 10px;
 }
+
+
+.personActivity {
+    width:45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #activityDatePanel {
+    width: 10%;
+  }
+  
+  #lives-of-people{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+  }
+  
+  #lives-of-people svg {
+    display: block;
+  }
+  
+  .lopRow {
+    display: flex;
+    justify-content: space-around
+  }
+  
+  .material-icon {
+    font-family: 'Material Icons';
+    display: inline-block;
+    font-size: 24px;
+  }
+  
+  #legendArea {
+    display: flex;
+  }
+  
