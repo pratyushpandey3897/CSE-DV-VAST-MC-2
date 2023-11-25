@@ -3,6 +3,9 @@
 .DS_store
 test.txt
 /data-processing-scripts/output.json
+Datasets
+db
+node_modules
 /parsedData/
-.vscode/
+venv
 data/expense_occupancy.json

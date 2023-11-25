@@ -62,7 +62,7 @@ with open(os.getenv('TRAVEL_JOURNAL_DATA_PATH'), newline='') as csvfile:
         month = start_time.strftime('%B')
         day_of_week = start_time.strftime('%A')
         portion_of_day = 'Morning' if start_time.hour < 12 else (
-            'Afternoon' if start_time.hour < 16 else ('Evening' if start_time.hour < 19 else 'Night'))
+            'Afternoon' if start_time.hour < 14 else ('Evening' if start_time.hour < 18 else 'Night'))
         purpose = row['purpose']  # Get the purpose of the commute
         # Get the start building ID
         start_building_id = row['travelStartLocationId']
@@ -73,8 +73,7 @@ with open(os.getenv('TRAVEL_JOURNAL_DATA_PATH'), newline='') as csvfile:
         end_location_type = location_dict.get(end_building_id, 'Unknown')
 
         # Then, when incrementing the commute count:
-        if end_location_type != 'Home':
-            organized_data[month][day_of_week][portion_of_day][end_location_type] += 1
+        organized_data[month][day_of_week][portion_of_day][end_location_type] += 1
 
 # Write the organized data to a CSV file
 with open('../data/grouped_chart.csv', 'w', newline='') as csvfile:

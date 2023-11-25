@@ -63,12 +63,13 @@ for month, weekdays in new_structure.items():
         # Get the top 10 participants with the most commutes
         # top_participants = [participant for participant, _ in commute_counts.most_common(10)]
         top_10_participants = dict(sorted(commute_counts.items(), key=lambda item: item[1], reverse=True)[:10])
-        new_structure[month][weekday] = {participant: dates for participant, dates  in participants.items() if participant in top_10_participants}
+        print(top_10_participants)
+        # new_structure[month][weekday] = {participant: dates for participant, dates  in participants.items() if participant in top_10_participants}
 
         # Filter the participants dictionary to only include the top participants
         #new_structure[month][weekday]p = {participant: dates for participant, dates in participants.items() if participant in top_participants}
 # Print the new structure
 # print(json.dumps(new_structure, indent=4))
-with open('./parsedData/particpiantDayActivity.json', 'w') as f:
-    json.dump(new_structure, f, indent=4)
+# with open('./parsedData/particpiantDayActivity.json', 'w') as f:
+#     json.dump(new_structure, f, indent=4)
 print("All done")

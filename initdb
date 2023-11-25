@@ -1,0 +1,138 @@
+.read sqlite/schema.sql
+
+.mode csv
+.import --skip 1 Datasets/Attributes/Employers.csv Employers
+.import --skip 1 Datasets/Attributes/Participants.csv Participants
+.import --skip 1 Datasets/Attributes/Jobs.csv Jobs
+.import --skip 1 Datasets/Attributes/Buildings.csv Buildings
+
+.import --skip 1 Datasets/Attributes/Apartments.csv Apartments 
+.import --skip 1 Datasets/Attributes/Pubs.csv Pubs
+.import --skip 1 Datasets/Attributes/Restaurants.csv Restaurants
+.import --skip 1 Datasets/Attributes/Schools.csv Schools
+
+.import --skip 1 Datasets/Journals/CheckinJournal.csv CheckinJournal
+.import --skip 1 Datasets/Journals/FinancialJournal.csv FinancialJournal
+.import --skip 1 Datasets/Journals/SocialNetwork.csv SocialNetwork
+.import --skip 1 Datasets/Journals/TravelJournal.csv TravelJournal
+
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs1.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs3.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs2.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs4.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs5.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs6.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs7.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs8.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs9.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs10.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs11.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs12.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs13.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs14.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs15.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs16.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs17.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs18.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs19.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs20.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs21.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs22.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs23.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs24.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs25.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs26.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs27.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs28.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs29.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs30.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs31.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs32.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs33.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs34.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs35.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs36.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs37.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs38.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs39.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs40.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs41.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs42.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs43.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs44.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs45.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs46.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs47.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs48.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs49.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs50.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs51.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs52.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs53.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs54.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs55.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs56.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs57.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs58.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs59.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs60.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs61.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs62.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs63.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs64.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs65.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs66.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs67.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs68.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs69.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs70.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs71.csv" ParticipantStatusLogs
+.import --skip 1 "Datasets/Activity Logs/ParticipantStatusLogs72.csv" ParticipantStatusLogs
+
+-- Store all the location data in one table to quick lookup of locationType by locationId
+INSERT INTO Location(buildingId, location, buildingType)
+    SELECT p.pubId, b.location, 'Pub' FROM Pubs p join Buildings b on p.pubId = b.buildingId
+UNION ALL
+    SELECT s.schoolId, b.location, 'School' FROM Schools s join Buildings b on s.schoolId = b.buildingId
+UNION ALL
+    SELECT r.restaurantId, b.location, 'Restaurant' FROM Restaurants r join Buildings b on r.restaurantId = b.buildingId
+UNION ALL
+    SELECT a.apartmentId, b.location, 'Apartment' FROM Apartments a join Buildings b on a.apartmentId = b.buildingId
+UNION ALL
+    SELECT e.employerId, b.location, 'Workplace' FROM Employers e join Buildings b on e.employerId = b.buildingId;
+
+-- Add a derived column timeOfDay to help with some common query filtering usecases
+ALTER TABLE TravelJournal
+    ADD COLUMN timeOfDay TEXT;
+
+ALTER TABLE TravelJournal
+    ADD COLUMN year TEXT;
+    
+ALTER TABLE TravelJournal
+    ADD COLUMN month TEXT;
+
+ALTER TABLE TravelJournal
+    ADD COLUMN dayOfWeek TEXT;
+
+
+UPDATE TravelJournal
+    SET timeOfDay = CASE
+        WHEN strftime('%H', travelStartTime) >= '00' AND strftime('%H', travelStartTime) < '12' THEN 'Morning'
+        WHEN strftime('%H', travelStartTime) >= '12' AND strftime('%H', travelStartTime) < '16' THEN 'Afternoon'
+        WHEN strftime('%H', travelStartTime) >= '16' AND strftime('%H', travelStartTime) < '19' THEN 'Evening'
+        ELSE 'Night'
+    END;
+
+UPDATE TravelJournal SET year = strftime('%Y', travelStartTime);
+
+UPDATE TravelJournal SET month = strftime('%m', travelStartTime);
+
+UPDATE TravelJournal SET dayOfWeek = strftime('%w', travelStartTime);
+
+ALTER TABLE Employers
+    ADD COLUMN maxOccupancy INTEGER;
+
+UPDATE Employers SET maxOccupancy = (SELECT maxOccupancy FROM Buildings WHERE buildingId = Employers.employerId);
+
+.read sqlite/indexes.sql
+.read sqlite/views.sql
