@@ -129,6 +129,8 @@ async function create_grouped_bar_chart() {
         .attr("transform", (d) => "translate(" + x0(d.key) + ",0)")
         .on("click", function () {
           selectedTimeOfDay = d3.select(this).data()[0].key;
+          document.querySelector('#commutes-to-buildings').textContent = `Commutes to buildings on a ${selectedDay} ${selectedTimeOfDay} in ${selectedMonth}`;
+
           create_beeswarm_chart();
           document.dispatchEvent(new Event("RenderHeatmap"));
 
@@ -192,7 +194,7 @@ async function create_grouped_bar_chart() {
         .append("g")
         .attr("class", "legend-key")
         .attr("transform", function (d, i) {
-          return "translate(0," + i * 20 + ")";
+          return "translate(0," + i * 30 + ")";
         }); // Adjust spacing between legend items
 
       legendKeys
@@ -400,7 +402,7 @@ function create_line_chart() {
           }
           console.log("selecting month: ", d.Month);
           d3.select("#bar-line-chart").selectAll("*").remove();
-
+          document.querySelector('#monthly-commutes').textContent = `Commutes by Month`;
           initialize_horizontal_bar_chart();
           // create_grouped_bar_chart();
           // create_beeswarm_chart();
@@ -491,6 +493,7 @@ async function initialize_horizontal_bar_chart() {
 }
 
 function create_horizontal_bar_chart(data) {
+  document.querySelector('#weekday-commutes').textContent = `Commutes by Weekday in ${selectedMonth}`;
   console.log(Object.entries(data));
   let bars = g.selectAll(".bar").data(Object.entries(data));
 
@@ -528,6 +531,7 @@ function create_horizontal_bar_chart(data) {
       // Get clicked element value
       selectedDay = d3.select(this).data()[0][0];
       // create_beeswarm_chart();
+      document.querySelector('#portion-of-day-commutes').textContent = `Commutes on a ${selectedDay} in ${selectedMonth} by Portion of Day`;
       create_grouped_bar_chart();
       d3.select("#bar-line-chart").selectAll("*").remove();
       populatePersonSelector();
@@ -568,6 +572,7 @@ function create_horizontal_bar_chart(data) {
       // Get clicked element value
       selectedDay = d3.select(this).data()[0][0];
       // create_beeswarm_chart();
+      document.querySelector('#portion-of-day-commutes').textContent = `Commutes Grouped by Building Type on a ${selectedDay} in ${selectedMonth} by Portion of Day`;
       create_grouped_bar_chart();
       populatePersonSelector();
       document.dispatchEvent(new Event("RenderHeatmap"));
@@ -728,6 +733,7 @@ function create_beeswarm_chart() {
         selectedBubble = d3.select(this).data()[0]["name"];
         selectedBubbleCategory = d3.select(this).data()[0]["group"];
         console.log("selected bubble  is " + selectedBubbleCategory);
+        
         create_bar_line_chart();
       });
 
@@ -843,9 +849,9 @@ function create_bar_line_chart() {
   )
     .then((res) => res.json())
     .then((d) => {
-      document.getElementById(
-        "bar-line-chart-title"
-      ).textContent = `Bar+Line Chart for ${selectedBubbleCategory} ${selectedBubble} on ${selectedDay} ${selectedTimeOfDay} in ${selectedMonth}`;
+      document.querySelector('#bar-line-chart-title').textContent = `Comparison of Occupancy and ${selectedBubbleCategory === 'Workplace' ? 'Salary' : 'Expenditure'} at ${selectedBubbleCategory} ${selectedBubble} on a ${selectedDay} ${selectedTimeOfDay} in ${selectedMonth}`;      // document.getElementById(
+      //   "bar-line-chart-title"
+      // ).textContent = `Bar+Line Chart for ${selectedBubbleCategory} ${selectedBubble} on ${selectedDay} ${selectedTimeOfDay} in ${selectedMonth}`;
       groupAndAggregateData(d);
 
       d3.select("#bar-line-chart").selectAll("*").remove();
@@ -922,13 +928,13 @@ function create_bar_line_chart() {
         .attr("dy", "1em") // Shift the label down slightly
         .style("text-anchor", "middle")
         .text(
-          selectedBubbleCategory === "Work"
+          selectedBubbleCategory === "Workplace"
             ? "Total Salary"
             : "Total Expenditure"
         );
 
       let legendData =
-        selectedBubbleCategory === "Work"
+        selectedBubbleCategory === "Workplace"
           ? ["Total Occupancy", "Total Salary"]
           : ["Total Occupancy", "Total Expenditure"];
       let legend = svg

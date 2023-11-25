@@ -21,7 +21,7 @@
   </head>
 
   <body>
-    <div class="jumbotron mb-1">
+    <div class="jumbotron mb-3">
       <div class="text-center">
         <h1 class="display-4">VAST 2022 Challenge</h1>
       </div>
@@ -34,13 +34,13 @@
       <!-- ROW 1 -->
       <div class="row mt-1 mb-3">
         <div class="col-md-8">
-          <div>Travels by month</div>
+          <div id ="monthly-commutes">Loading...</div>
           <div class="chart-div">
             <svg id="line-chart" width="1000" height="300"></svg>
           </div>
         </div>
         <div class="col-md-4">
-          <div>Travels by Weekday</div>
+          <div id ="weekday-commutes">Loading...</div>
           <div class="chart-div">
             <svg id="horizontal-bar-chart" width="400" height="300"></svg>
           </div>
@@ -50,13 +50,13 @@
       <!-- ROW 2-->
       <div class="row mt-1 mb-3">
         <div class="col-md-6">
-          <div>Grouped Bar chart</div>
+          <div id ="portion-of-day-commutes">Loading...</div>
           <div class="chart-div">
             <svg id="grouped-bar-chart" width="650" height="700"></svg>
           </div>
         </div>
         <div class="col-md-6">
-          <div>Beeswarm Chart</div>
+          <div id ="commutes-to-buildings">Loading..</div>
           <div class="chart-div">
             <svg id="beeswarm-chart" width="650" height="700"></svg>
           </div>
@@ -66,14 +66,14 @@
       <!-- ROW 3 -->
       <div class="row mt-1 mb-3">
         <div class="col-md-6">
-          <div>Base map</div>
+          <div id="commute-heat">Loading...</div>
           <div class="chart-div">
             <svg id="map-svg-traffic" height="500"></svg>
             <div id="building-tooltip"></div>
           </div>
         </div>
         <div class="col-md-6">
-          <div id="bar-line-chart-title">Bar - Line chart</div>
+          <div id="bar-line-chart-title">Loading...</div>
           <div class="chart-div">
             <svg id="bar-line-chart" width="650" height="500"></svg>
           </div>
@@ -83,7 +83,7 @@
       <!-- ROW 4 -->
       <div class="row mt-1 mb-3">
         <div class="col-md-12">
-          <div>Comparing Lives of People</div>
+          <div>Comparing Lives of Participants</div>
           <div id="lives-of-people" class="chart-div">
             <div id="lopRow1" class="lopRow">
               <select id="personSelect1"></select>

@@ -25,6 +25,7 @@
   });
 
   async function drawBaseMap(features) {
+    document.querySelector('#commute-heat').textContent = `Heatmap of Commute Density on a ${selectedDay} ${selectedTimeOfDay} in ${selectedMonth}`;
     var color = d3
       .scaleOrdinal()
       .domain(["Restaurant", "Pub", "School", "Apartment"])

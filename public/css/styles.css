@@ -22,9 +22,9 @@ body {
             rgba(128, 128, 128, 0.4)),
         url("../images/banner4.jpeg");
     background-size: cover;
-    background-position: right;
+    background-position: bottom;
     color: white;
-    height: 40vh;
+    height: 25vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
