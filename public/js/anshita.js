@@ -166,6 +166,10 @@ async function populatePersonSelector() {
       d3.selectAll(".dateLabels").remove();
       
       console.log("fetched person data ", dayData);
+
+      personSelect1.options.length = 0;
+      personSelect2.options.length = 0;
+
       var el1, el2;
       if (dayData) {
         options = Object.keys(dayData);
