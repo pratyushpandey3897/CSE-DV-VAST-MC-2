@@ -884,6 +884,7 @@ function create_bar_line_chart() {
 
       let x = d3.scaleBand().rangeRound([0, width]).padding(0.4);
       let y = d3.scaleLinear().rangeRound([height, 0]);
+      let bandwidth = Math.min(x.bandwidth(), maxBarWidth);
       let yRight = d3.scaleLinear().rangeRound([height, 0]); // Define a new y-scale for the right axis
 
       x.domain(
@@ -1002,12 +1003,12 @@ function create_bar_line_chart() {
         .append("rect")
         .attr("class", "bar")
         .attr("x", function (d) {
-          return x(d.hour);
+          return x(d.hour) + (x.bandwidth() - bandwidth) / 2;
         })
         .attr("y", function (d) {
           return y(d.totalOccupancy);
         })
-        .attr("width", x.bandwidth())
+        .attr("width", bandwidth)
         .attr("height", function (d) {
           let barHeight = height - y(d.totalOccupancy);
           if (isNaN(barHeight)) {
@@ -1038,7 +1039,7 @@ function create_bar_line_chart() {
       let line = d3
         .line()
         .x(function (d) {
-          return x(d.hour) + x.bandwidth() / 2;
+          return x(d.hour) + (x.bandwidth() - bandwidth) / 2 + maxBarWidth / 2;
         }) // Center the line in the bars
         .y(function (d) {
           return yRight(d.expenditure);
@@ -1061,7 +1062,7 @@ function create_bar_line_chart() {
         .append("circle")
         .attr("class", "dot") // Assign a class for styling
         .attr("cx", function (d) {
-          return x(d.hour) + x.bandwidth() / 2;
+          return x(d.hour) + (x.bandwidth() - bandwidth) / 2 + maxBarWidth / 2;
         })
         .attr("cy", function (d) {
           return yRight(d.expenditure);
