@@ -77,15 +77,15 @@ export async function getTotalExpendituresByLocationId(
   locationId
 ) {
   return await query(dedent`
-            select participantId, travelEndLocationId, travelEndTime, abs(startingBalance - endingBalance) as expenditure, 
-            b.maxOccupancy, endLocationType
+            select participantId, travelEndLocationId, travelEndTime, 
+            abs(startingBalance - endingBalance) as expenditure, endLocationType
             from TravelJournalCombined t
             join (
-                select restaurantId as buildingId, maxOccupancy from Restaurants
+                select restaurantId as buildingId from Restaurants
                 union
-                select pubId as buildingId, maxOccupancy from Pubs
+                select pubId as buildingId  from Pubs
                 union
-                select employerId as buildingId, maxOccupancy from Employers
+                select employerId as buildingId  from Employers
             ) as b where b.buildingId = t.travelEndLocationId
             and t.year = '${year}'
             and t.month = '${month}' and t.dayOfWeek='${dayOfWeek}'
@@ -94,7 +94,6 @@ export async function getTotalExpendituresByLocationId(
         `).then((data) =>
     data.map((row) => {
       return {
-        total_occupancy: row.maxOccupancy,
         total_expenditure: row.expenditure,
         time: row.travelEndTime,
       };

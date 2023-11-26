@@ -819,7 +819,9 @@ function groupAndAggregateData(d) {
     let data = d[i];
 
     // Extract the hour from the timestamp
-    let hour = new Date(data.time).getHours();
+    let hour = new Date(data.time).getUTCHours();
+
+    console.log("timestamp is: ", data.time, " hour is " + hour, " timezone offset: ", new Date(data.time).getTimezoneOffset());
 
     // Initialize the hour group if it doesn't exist
     if (!barLineChartData[hour]) {
@@ -831,7 +833,7 @@ function groupAndAggregateData(d) {
     }
 
     // Aggregate the total occupancy and expenditure
-    barLineChartData[hour].totalOccupancy += +data.total_occupancy;
+    barLineChartData[hour].totalOccupancy += 1;
     barLineChartData[hour].expenditure += data.total_expenditure;
   }
 }
@@ -844,9 +846,7 @@ function formatHour(hour) {
 }
 
 function create_bar_line_chart() {
-  fetch(
-    `/patternsOfLife/totalExpendituresByLocationId/${selectedYear}/${selectedMonth}/${selectedDay}/${selectedTimeOfDay}/${selectedBubble}`
-  )
+  fetch(`/patternsOfLife/totalExpendituresByLocationId/${selectedYear}/${selectedMonth}/${selectedDay}/${selectedTimeOfDay}/${selectedBubble}`)
     .then((res) => res.json())
     .then((d) => {
       document.querySelector('#bar-line-chart-title').textContent = `Comparison of Occupancy and ${selectedBubbleCategory === 'Workplace' ? 'Salary' : 'Expenditure'} at ${selectedBubbleCategory} ${selectedBubble} on a ${selectedDay} ${selectedTimeOfDay} in ${selectedMonth}`;      // document.getElementById(

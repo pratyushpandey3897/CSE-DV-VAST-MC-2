@@ -27,9 +27,7 @@
   async function drawBaseMap(features) {
     document.querySelector('#commute-heat').textContent = `Heatmap of Commute Density on a ${selectedDay} ${selectedTimeOfDay} in ${selectedMonth}`;
     var color = d3
-      .scaleOrdinal()
-      .domain(["Restaurant", "Pub", "School", "Apartment"])
-      .range(["red", "orange", "blue", "gray"]);
+      .scaleOrdinal(colorScheme);
 
     const projection = d3
       .geoIdentity()
@@ -51,7 +49,7 @@
       .attr("class", "building")
       .attr("d", path)
       .style("fill", "none")
-      .style("stroke", (d) => color(d.properties.buildingType));
+      .style("stroke", (d) => d.properties.buildingType === 'Apartment' ? 'gray' : color(d.properties.buildingType));
 
     features.map((item) => {
       const [x, y] = projection(item.geometry.coordinates[0][0]);

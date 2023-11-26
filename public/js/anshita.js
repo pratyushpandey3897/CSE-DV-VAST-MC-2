@@ -148,12 +148,10 @@ function createLineChart(data, chartName) {
 }
 function populatePersonSelector() {
   //Remove existing options.
-  while (personSelect1.options.length > 0) {
-    personSelect1.remove(0);
-  }
-  while (personSelect2.options.length > 0) {
-    personSelect2.remove(0);
-  }
+  var personSelect1 = document.getElementById("personSelect1");   
+  var personSelect2 = document.getElementById("personSelect2");
+  personSelect1.options.length = 0;
+  personSelect2.options.length = 0;
 
   //Clear the comparision chart
 
@@ -162,9 +160,7 @@ function populatePersonSelector() {
   d3.selectAll(".dateLabels").remove();
 
   // Get list of 10 people
-  fetch(
-    `http://localhost:3000/patternsOfLife/top10Participants/${selectedYear}/${selectedMonth}/${selectedDay}`
-  )
+  fetch(`patternsOfLife/top10Participants/${selectedYear}/${selectedMonth}/${selectedDay}`)
     .then((response) => response.json())
     .then((dayData) => {
       console.log("fetched person data ", dayData);
