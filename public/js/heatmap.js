@@ -25,6 +25,12 @@
   });
 
   document.addEventListener("BubbleSelected", async () => {
+
+    document.querySelector(
+      "#commute-heat"
+    ).textContent = `Heatmap of Commute Density on a ${selectedDay} ${selectedTimeOfDay} in ${selectedMonth}`;
+
+    
     // trigger a click on the map to show the buildingId that is = selectedBubble
     if (selectedBubble && features) {
       const building = features.find(
@@ -46,9 +52,7 @@
   });
 
   async function drawBaseMap(features) {
-    document.querySelector(
-      "#commute-heat"
-    ).textContent = `Heatmap of Commute Density on a ${selectedDay} ${selectedTimeOfDay} in ${selectedMonth}`;
+
     var color = d3.scaleOrdinal(colorScheme);
 
     projection = d3
@@ -147,9 +151,9 @@
           .style("visibility", "visible")
           .html(
             location.properties.buildingType +
-              " (" +
-              location.properties.buildingId +
-              ")"
+            " (" +
+            location.properties.buildingId +
+            ")"
           );
       }
     });
@@ -261,6 +265,8 @@
         `rgba(255, 0, 0, 0.6)`,
       ]);
 
+    // create a gradient stroke from the linear color scale
+
     svg
       .selectAll("path.contour")
       .data(densityData)
@@ -272,5 +278,128 @@
       .attr("fill", function (d) {
         return color(d.value);
       });
+
+    // add a legend explaining the color scale
+    const legend = svg.append("g").attr("class", "legend");
+
+    svg
+      .append("defs")
+      .append("linearGradient")
+      .attr("id", "contour-gradient")
+      .attr("x1", "0%")
+      .attr("y1", "0%")
+      .attr("x2", "100%")
+      .attr("y2", "0%")
+      .selectAll("stop")
+      .data([
+        { offset: "0%", color: `rgba(0, 0, 255, 0.05)` },
+        { offset: "50%", color: `rgba(255, 0, 0, 0.3)` },
+        { offset: "100%", color: `rgba(255, 0, 0, 0.6)` },
+      ])
+      .enter()
+      .append("stop")
+      .attr("offset", function (d) {
+        return d.offset;
+      })
+      .attr("stop-color", function (d) {
+        return d.color;
+      });
+
+    legend
+      .append("rect")
+      .attr("x", width - 140)
+      .attr("y", 60)
+      .attr("width", 120)
+      .attr("height", 10)
+      .attr("fill", "url(#contour-gradient)");
+
+    legend
+      .append("line")
+      .attr("x1", width - 140)
+      .attr("y1", 60)
+      .attr("x2", width - 140)
+      .attr("y2", 70)
+      .attr("stroke", "black");
+
+    legend
+      .append("line")
+      .attr("x1", width - 20)
+      .attr("y1", 60)
+      .attr("x2", width - 20)
+      .attr("y2", 70)
+      .attr("stroke", "black");
+
+    legend
+      .append("text")
+      .attr("x", width - 140)
+      .attr("y", 50)
+      .attr("font-size", "10px")
+      .attr("text-anchor", "middle")
+      .text("Low");
+
+    legend
+      .append("text")
+      .attr("x", width - 20)
+      .attr("y", 50)
+      .attr("font-size", "10px")
+      .attr("text-anchor", "middle")
+      .text("High");
+
+    legend
+      .append("text")
+      .attr("x", width - 80)
+      .attr("y", 80)
+      .attr("font-size", "10px")
+      .attr("text-anchor", "middle")
+      .text("Traffic");
+
+    legend
+      .append("rect")
+      .attr("x", width - 140)
+      .attr("y", 120)
+      .attr("width", 120)
+      .attr("height", 10)
+      .attr("fill", "url(#gradient)");
+
+    legend
+      .append("line")
+      .attr("x1", width - 140)
+      .attr("y1", 120)
+      .attr("x2", width - 140)
+      .attr("y2", 130)
+      .attr("stroke", "black");
+
+    legend
+      .append("line")
+      .attr("x1", width - 20)
+      .attr("y1", 120)
+      .attr("x2", width - 20)
+      .attr("y2", 130)
+      .attr("stroke", "black");
+
+    legend
+      .append("text")
+      .attr("x", width - 140)
+      .attr("y", 110)
+      .attr("font-size", "10px")
+      .attr("text-anchor", "middle")
+      .text("High");
+
+    legend
+      .append("text")
+      .attr("x", width - 20)
+      .attr("y", 110)
+      .attr("font-size", "10px")
+      .attr("text-anchor", "middle")
+      .text("Low");
+
+    legend
+    .append("text")
+    .attr("x", width - 80)
+    .attr("y", 140)
+    .attr("font-size", "10px")
+    .attr("text-anchor", "middle")
+    .text("Distance to destination");
+
   }
 })();
