@@ -2,7 +2,6 @@
 /Answer Sheets/
 .DS_store
 test.txt
-/data-processing-scripts/output.json
 Datasets
 db
 node_modules

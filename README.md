@@ -4,7 +4,6 @@
 
 To install npm and Node.js, follow the instructions provided in the [official npm documentation](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
-
 ## 2. Install Node dependencies
 
 To install npm and the correct version of Node.js specified in the package.json file, follow these steps:
@@ -45,7 +44,8 @@ To initialize the database, follow these steps:
 
 1. Open your terminal or command prompt.
 2. Navigate to the root directory of your project.
-3. Run the following command to open the SQLite3 shell and run the following command to read and execute the `initdb` script:
+3. Create an empty directory named `db`.
+4. Run the following command to open the SQLite3 shell and run the following command to read and execute the `initdb` script:
 
    ```shell
    sqlite3 db/vast.2022.mc2 '.read initdb'
