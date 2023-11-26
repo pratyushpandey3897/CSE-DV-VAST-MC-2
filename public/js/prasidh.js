@@ -821,8 +821,6 @@ function groupAndAggregateData(d) {
     // Extract the hour from the timestamp
     let hour = new Date(data.time).getUTCHours();
 
-    console.log("timestamp is: ", data.time, " hour is " + hour, " timezone offset: ", new Date(data.time).getTimezoneOffset());
-
     // Initialize the hour group if it doesn't exist
     if (!barLineChartData[hour]) {
       barLineChartData[hour] = {
@@ -836,6 +834,8 @@ function groupAndAggregateData(d) {
     barLineChartData[hour].totalOccupancy += 1;
     barLineChartData[hour].expenditure += data.total_expenditure;
   }
+
+  console.log(barLineChartData);
 }
 
 function formatHour(hour) {
