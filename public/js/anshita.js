@@ -147,10 +147,10 @@ function createLineChart(data, chartName) {
   });
 }
 async function populatePersonSelector() {
-
-
   // Get list of 10 people
-  await fetch(`patternsOfLife/top10Participants/${selectedYear}/${selectedMonth}/${selectedDay}`)
+  await fetch(
+    `patternsOfLife/top10Participants/${selectedYear}/${selectedMonth}/${selectedDay}`
+  )
     .then((response) => response.json())
     .then((dayData) => {
       //Remove existing options.
@@ -164,7 +164,7 @@ async function populatePersonSelector() {
       d3.selectAll(`.person1Child`).remove();
       d3.selectAll(`.person2Child`).remove();
       d3.selectAll(".dateLabels").remove();
-      
+
       console.log("fetched person data ", dayData);
 
       personSelect1.options.length = 0;

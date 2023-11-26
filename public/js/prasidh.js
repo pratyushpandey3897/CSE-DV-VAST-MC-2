@@ -10,6 +10,9 @@ let colorScheme = d3.schemeCategory10;
 let personSelect1, personSelect2;
 
 document.addEventListener("DOMContentLoaded", (event) => {
+  $(document).ready(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
   // Select menus for comparing lives
   personSelect1 = document.getElementById("personSelect1");
   personSelect1.addEventListener("change", personChange);
@@ -863,7 +866,7 @@ function create_bar_line_chart() {
     .then((d) => {
       document.querySelector(
         "#bar-line-chart-title"
-      ).textContent = `Comparison of Occupancy and ${
+      ).textContent = `Occupancy and ${
         selectedBubbleCategory === "Workplace" ? "Salary" : "Expenditure"
       } at ${selectedBubbleCategory} ${selectedBubble} on a ${selectedDay} ${selectedTimeOfDay} in ${selectedMonth}`; // document.getElementById(
       //   "bar-line-chart-title"
