@@ -34,13 +34,35 @@
       <!-- ROW 1 -->
       <div class="row mt-1 mb-3">
         <div class="col-md-8">
-          <div id ="monthly-commutes">Loading...</div>
+          <div id="monthly-commutes" style="display: inline-block">
+            Loading...
+          </div>
+          <button
+            type="button"
+            class="info-button btn btn-info btn-sm"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="This chart shows the number of commutes people have made throughout the year aggregated by months"
+          >
+            i
+          </button>
           <div class="chart-div">
             <svg id="line-chart" width="1000" height="300"></svg>
           </div>
         </div>
         <div class="col-md-4">
-          <div id ="weekday-commutes">Loading...</div>
+          <div id="weekday-commutes" style="display: inline-block">
+            Loading...
+          </div>
+          <button
+            type="button"
+            class="info-button btn btn-info btn-sm"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="This chart shows the number of commutes people have made throughout the month aggregated by the day of the week"
+          >
+            i
+          </button>
           <div class="chart-div">
             <svg id="horizontal-bar-chart" width="400" height="300"></svg>
           </div>
@@ -50,15 +72,37 @@
       <!-- ROW 2-->
       <div class="row mt-1 mb-3">
         <div class="col-md-6">
-          <div id ="portion-of-day-commutes">Loading...</div>
+          <div id="portion-of-day-commutes" style="display: inline-block">
+            Loading...
+          </div>
+          <button
+            type="button"
+            class="info-button btn btn-info btn-sm"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="This chart shows travel trends for selected day of month, grouped by different times of the day"
+          >
+            i
+          </button>
           <div class="chart-div">
-            <svg id="grouped-bar-chart" width="650" height="700"></svg>
+            <svg id="grouped-bar-chart" width="650" height="600"></svg>
           </div>
         </div>
         <div class="col-md-6">
-          <div id ="commutes-to-buildings">Loading..</div>
+          <div id="commutes-to-buildings" style="display: inline-block">
+            Loading...
+          </div>
+          <button
+            type="button"
+            class="info-button btn btn-info btn-sm"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="This chart zooms in for a selected time of the day, for a given month and day of the week, and groups travels trends by type of the end location"
+          >
+            i
+          </button>
           <div class="chart-div">
-            <svg id="beeswarm-chart" width="650" height="700"></svg>
+            <svg id="beeswarm-chart" width="650" height="600"></svg>
           </div>
         </div>
       </div>
@@ -66,14 +110,34 @@
       <!-- ROW 3 -->
       <div class="row mt-1 mb-3">
         <div class="col-md-6">
-          <div id="commute-heat">Loading...</div>
+          <div id="commute-heat" style="display: inline-block">Loading...</div>
+          <button
+            type="button"
+            class="info-button btn btn-info btn-sm"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="This chart shows a heatmap of travels throughout the selected period, and on clicking a location it shows where did people travel from"
+          >
+            i
+          </button>
           <div class="chart-div">
             <svg id="map-svg-traffic" height="500"></svg>
             <div id="building-tooltip"></div>
           </div>
         </div>
         <div class="col-md-6">
-          <div id="bar-line-chart-title">Loading...</div>
+          <div id="bar-line-chart-title" style="display: inline-block">
+            Loading...
+          </div>
+          <button
+            type="button"
+            class="info-button btn btn-info btn-sm"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="This chart plots the current occupancy and expenditures for the selected building for current selected time, day, and month. For workplaces it shows salaries for the employer instead of expenditures"
+          >
+            i
+          </button>
           <div class="chart-div">
             <svg id="bar-line-chart" width="650" height="500"></svg>
           </div>
@@ -83,7 +147,18 @@
       <!-- ROW 4 -->
       <div class="row mt-1 mb-3">
         <div class="col-md-12">
-          <div>Comparing Lives of Participants</div>
+          <div style="display: inline-block">
+            Comparing Lives of Participants
+          </div>
+          <button
+            type="button"
+            class="info-button btn btn-info btn-sm"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="This chart populates the dropdown with the 10 most active people for the selected month and day, and draws their timelines for the selected time of the day"
+          >
+            i
+          </button>
           <div id="lives-of-people" class="chart-div">
             <div id="lopRow1" class="lopRow">
               <select id="personSelect1"></select>

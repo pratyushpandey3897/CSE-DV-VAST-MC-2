@@ -10,6 +10,9 @@ let colorScheme = d3.schemeCategory10;
 let personSelect1, personSelect2;
 
 document.addEventListener("DOMContentLoaded", (event) => {
+  $(document).ready(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
   // Select menus for comparing lives
   personSelect1 = document.getElementById("personSelect1");
   personSelect1.addEventListener("change", personChange);
@@ -862,7 +865,7 @@ async function create_bar_line_chart() {
     .then((d) => {
       document.querySelector(
         "#bar-line-chart-title"
-      ).textContent = `Comparison of Occupancy and ${
+      ).textContent = `Occupancy and ${
         selectedBubbleCategory === "Workplace" ? "Salary" : "Expenditure"
       } at ${selectedBubbleCategory} ${selectedBubble} on a ${selectedDay} ${selectedTimeOfDay} in ${selectedMonth}`; // document.getElementById(
       //   "bar-line-chart-title"
@@ -883,6 +886,7 @@ async function create_bar_line_chart() {
 
       let x = d3.scaleBand().rangeRound([0, width]).padding(0.4);
       let y = d3.scaleLinear().rangeRound([height, 0]);
+      let bandwidth = Math.min(x.bandwidth(), maxBarWidth);
       let yRight = d3.scaleLinear().rangeRound([height, 0]); // Define a new y-scale for the right axis
 
       x.domain(
@@ -1001,12 +1005,12 @@ async function create_bar_line_chart() {
         .append("rect")
         .attr("class", "bar")
         .attr("x", function (d) {
-          return x(d.hour);
+          return x(d.hour) + (x.bandwidth() - bandwidth) / 2;
         })
         .attr("y", function (d) {
           return y(d.totalOccupancy);
         })
-        .attr("width", x.bandwidth())
+        .attr("width", bandwidth)
         .attr("height", function (d) {
           let barHeight = height - y(d.totalOccupancy);
           if (isNaN(barHeight)) {
@@ -1037,7 +1041,7 @@ async function create_bar_line_chart() {
       let line = d3
         .line()
         .x(function (d) {
-          return x(d.hour) + x.bandwidth() / 2;
+          return x(d.hour) + (x.bandwidth() - bandwidth) / 2 + maxBarWidth / 2;
         }) // Center the line in the bars
         .y(function (d) {
           return yRight(d.expenditure);
@@ -1060,7 +1064,7 @@ async function create_bar_line_chart() {
         .append("circle")
         .attr("class", "dot") // Assign a class for styling
         .attr("cx", function (d) {
-          return x(d.hour) + x.bandwidth() / 2;
+          return x(d.hour) + (x.bandwidth() - bandwidth) / 2 + maxBarWidth / 2;
         })
         .attr("cy", function (d) {
           return yRight(d.expenditure);
