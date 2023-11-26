@@ -1023,8 +1023,8 @@ async function create_bar_line_chart() {
           d.totalOccupancy +
           "</br>" +
           (selectedBubbleCategory === "Work"
-            ? "Total Salary: "
-            : "Total Expenditure: ") +
+            ? "Total Salary: $"
+            : "Total Expenditure: $") +
           d.expenditure.toFixed(2)
         );
       });
