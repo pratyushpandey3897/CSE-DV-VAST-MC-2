@@ -37,10 +37,11 @@ body {
 #building-tooltip {
     position: absolute;
     background-color: white;
-    border-radius: 5px;
-    border: solid 1px gray;
-    padding: 5px;
-    font-size: 10px;
+    border: 2px solid;
+    font-size: 18px;
+    border-radius: 6px;
+    padding: 10px;
+    visibility: hidden;
 }
 
 

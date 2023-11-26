@@ -8,7 +8,6 @@ const emojis = {
 };
 
 function createLineChart(data, chartName) {
-  console.log("creating line chart with data: ", data);
 
   d3.selectAll(`.${chartName}Child`).remove();
   d3.selectAll(".dateLabels").remove();
@@ -25,7 +24,6 @@ function createLineChart(data, chartName) {
   }
 
   sortedDates.forEach((item) => {
-    // console.log("for date: ", item)
     let date = item;
     let places = data[date];
 
@@ -82,7 +80,6 @@ function createLineChart(data, chartName) {
       .attr("class", "symbol")
       .attr("x", function (d) {
         dt = x(new Date(d.endTime)) - 10;
-        console.log(dt);
         return dt;
       })
       .attr("y", height / 2)
@@ -227,9 +224,9 @@ function personChange(event) {
 }
 
 function getActivityData(id) {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     let visitedPlaces = [];
-    fetch(
+    await fetch(
       `http://localhost:3000/patternsOfLife/top10Participants/${selectedYear}/${selectedMonth}/${selectedDay}`
     )
       .then((response) => response.json())

@@ -22,17 +22,17 @@ document.addEventListener("DOMContentLoaded", (event) => {
   // create_beeswarm_chart();
   // create_bar_line_chart();
 
-  drawComparisionChartLegend();
-  // Populate person selector for comparison chart
+  // drawComparisionChartLegend();
+  // // Populate person selector for comparison chart
 
-  populatePersonSelector();
-  // trigger a new event RenderHeatmap
-  document.dispatchEvent(new Event("RenderHeatmap"));
+  // populatePersonSelector();
+  // // trigger a new event RenderHeatmap
+  document.dispatchEvent(new Event("DrawBaseMap"));
 });
 
 async function create_grouped_bar_chart() {
   d3.select("#grouped-bar-chart").selectAll("*").remove();
-  fetch(
+  await fetch(
     `/patternsOfLife/totalCommutesByLocationType/${selectedYear}/${selectedMonth}/${selectedDay}`
   )
     .then((res) => res.json())
@@ -134,7 +134,7 @@ async function create_grouped_bar_chart() {
           ).textContent = `Commutes to buildings on a ${selectedDay} ${selectedTimeOfDay} in ${selectedMonth}`;
 
           create_beeswarm_chart();
-          document.dispatchEvent(new Event("RenderHeatmap"));
+          document.dispatchEvent(new Event("OverlapHeatMap"));
 
           d3.select("#bar-line-chart").selectAll("*").remove();
           // Add style changes
@@ -260,8 +260,8 @@ async function create_grouped_bar_chart() {
     });
 }
 
-function create_line_chart() {
-  fetch("/patternsOfLife/totalCommutesByMonth")
+async function create_line_chart() {
+  await fetch("/patternsOfLife/totalCommutesByMonth")
     .then((res) => res.json())
     .then((lineData) => {
       let svg = d3.select("#line-chart");
@@ -500,7 +500,6 @@ function create_horizontal_bar_chart(data) {
   document.querySelector(
     "#weekday-commutes"
   ).textContent = `Commutes by Weekday in ${selectedMonth}`;
-  console.log(Object.entries(data));
   let bars = g.selectAll(".bar").data(Object.entries(data));
 
   let maxVal = d3.max(Object.values(data));
@@ -543,7 +542,7 @@ function create_horizontal_bar_chart(data) {
       create_grouped_bar_chart();
       d3.select("#bar-line-chart").selectAll("*").remove();
       populatePersonSelector();
-      document.dispatchEvent(new Event("RenderHeatmap"));
+      document.dispatchEvent(new Event("OverlayHeatMap"));
     })
     .attr("fill", function (d) {
       return color(d[1]);
@@ -611,8 +610,8 @@ function create_horizontal_bar_chart(data) {
 
 let simulation;
 
-function create_beeswarm_chart() {
-  fetch(
+async function create_beeswarm_chart() {
+  await fetch(
     `/patternsOfLife/totalCommutesByLocationId/${selectedYear}/${selectedMonth}/${selectedDay}/${selectedTimeOfDay}`
   )
     .then((res) => res.json())
@@ -745,6 +744,8 @@ function create_beeswarm_chart() {
         console.log("selected bubble  is " + selectedBubbleCategory);
 
         create_bar_line_chart();
+        console.log("dispatching event...")
+        document.dispatchEvent(new Event("BubbleSelected"));
       });
 
       // Features of the forces applied to the nodes:
@@ -844,8 +845,6 @@ function groupAndAggregateData(d) {
     barLineChartData[hour].totalOccupancy += 1;
     barLineChartData[hour].expenditure += data.total_expenditure;
   }
-
-  console.log(barLineChartData);
 }
 
 function formatHour(hour) {
@@ -855,8 +854,8 @@ function formatHour(hour) {
   return hour + " " + period;
 }
 
-function create_bar_line_chart() {
-  fetch(
+async function create_bar_line_chart() {
+  await fetch(
     `/patternsOfLife/totalExpendituresByLocationId/${selectedYear}/${selectedMonth}/${selectedDay}/${selectedTimeOfDay}/${selectedBubble}`
   )
     .then((res) => res.json())
