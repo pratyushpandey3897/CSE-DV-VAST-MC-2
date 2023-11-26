@@ -8,7 +8,6 @@ const emojis = {
 };
 
 function createLineChart(data, chartName) {
-  console.log("creating line chart with data: ", data);
 
   d3.selectAll(`.${chartName}Child`).remove();
   d3.selectAll(".dateLabels").remove();
@@ -25,7 +24,6 @@ function createLineChart(data, chartName) {
   }
 
   sortedDates.forEach((item) => {
-    // console.log("for date: ", item)
     let date = item;
     let places = data[date];
 
@@ -82,7 +80,6 @@ function createLineChart(data, chartName) {
       .attr("class", "symbol")
       .attr("x", function (d) {
         dt = x(new Date(d.endTime)) - 10;
-        console.log(dt);
         return dt;
       })
       .attr("y", height / 2)
@@ -146,42 +143,59 @@ function createLineChart(data, chartName) {
     return text;
   });
 }
-function populatePersonSelector() {
-  //Remove existing options.
-  while (personSelect1.options.length > 0) {
-    personSelect1.remove(0);
-  }
-  while (personSelect2.options.length > 0) {
-    personSelect2.remove(0);
-  }
-
-  //Clear the comparision chart
-
-  d3.selectAll(`.person1Child`).remove();
-  d3.selectAll(`.person2Child`).remove();
-  d3.selectAll(".dateLabels").remove();
-
+async function populatePersonSelector() {
   // Get list of 10 people
-  fetch(
-    `http://localhost:3000/patternsOfLife/top10Participants/${selectedYear}/${selectedMonth}/${selectedDay}`
+  await fetch(
+    `patternsOfLife/top10Participants/${selectedYear}/${selectedMonth}/${selectedDay}`
   )
     .then((response) => response.json())
     .then((dayData) => {
+      //Remove existing options.
+      var personSelect1 = document.getElementById("personSelect1");
+      var personSelect2 = document.getElementById("personSelect2");
+      personSelect1.options.length = 0;
+      personSelect2.options.length = 0;
+
+      //Clear the comparision chart
+
+      d3.selectAll(`.person1Child`).remove();
+      d3.selectAll(`.person2Child`).remove();
+      d3.selectAll(".dateLabels").remove();
+
       console.log("fetched person data ", dayData);
 
+      personSelect1.options.length = 0;
+      personSelect2.options.length = 0;
+
+      var el1, el2;
       if (dayData) {
         options = Object.keys(dayData);
         for (var i = 0; i < options.length; i++) {
           var opt = options[i];
-          var el = document.createElement("option");
-          el.textContent = opt;
-          el.value = opt;
-          personSelect1.appendChild(el);
+          el1 = document.createElement("option");
+          el1.textContent = opt;
+          el1.value = opt;
+          personSelect1.appendChild(el1);
           opt = options[i];
-          el = document.createElement("option");
-          el.textContent = opt;
-          el.value = opt;
-          personSelect2.appendChild(el);
+          el2 = document.createElement("option");
+          el2.textContent = opt;
+          el2.value = opt;
+          personSelect2.appendChild(el2);
+        }
+        // Select two people randomly
+        if (personSelect1.options.length > 1) {
+          let index1 = Math.floor(Math.random() * personSelect1.options.length);
+          let index2;
+          do {
+            index2 = Math.floor(Math.random() * personSelect2.options.length);
+          } while (index2 === index1); // Ensure the second person is different from the first
+
+          personSelect1.options[index1].selected = true;
+          personSelect2.options[index2].selected = true;
+
+          // Trigger the change event to draw the comparison charts
+          personChange({ target: personSelect1 });
+          personChange({ target: personSelect2 });
         }
       }
     })
@@ -210,9 +224,9 @@ function personChange(event) {
 }
 
 function getActivityData(id) {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     let visitedPlaces = [];
-    fetch(
+    await fetch(
       `http://localhost:3000/patternsOfLife/top10Participants/${selectedYear}/${selectedMonth}/${selectedDay}`
     )
       .then((response) => response.json())

@@ -77,15 +77,15 @@ export async function getTotalExpendituresByLocationId(
   locationId
 ) {
   return await query(dedent`
-            select participantId, travelEndLocationId, travelEndTime, abs(startingBalance - endingBalance) as expenditure, 
-            b.maxOccupancy, endLocationType
+            select participantId, travelEndLocationId, travelEndTime, 
+            abs(startingBalance - endingBalance) as expenditure, endLocationType
             from TravelJournalCombined t
             join (
-                select restaurantId as buildingId, maxOccupancy from Restaurants
+                select restaurantId as buildingId from Restaurants
                 union
-                select pubId as buildingId, maxOccupancy from Pubs
+                select pubId as buildingId  from Pubs
                 union
-                select employerId as buildingId, maxOccupancy from Employers
+                select employerId as buildingId  from Employers
             ) as b where b.buildingId = t.travelEndLocationId
             and t.year = '${year}'
             and t.month = '${month}' and t.dayOfWeek='${dayOfWeek}'
@@ -94,7 +94,6 @@ export async function getTotalExpendituresByLocationId(
         `).then((data) =>
     data.map((row) => {
       return {
-        total_occupancy: row.maxOccupancy,
         total_expenditure: row.expenditure,
         time: row.travelEndTime,
       };
@@ -239,6 +238,7 @@ export async function getTop10Participants(year, month, dayOfWeek) {
             join (select participantId, count(*) as totalCommutes
             from TravelJournalCombined where year = '${year}'
             and month = '${month}' and dayOfWeek='${dayOfWeek}'
+            and startLocationId is not null and endLocationId is not null 
             group by participantId
             order by totalCommutes desc
             limit 10) p on p.participantId = t.participantId
@@ -251,11 +251,16 @@ export async function getTop10Participants(year, month, dayOfWeek) {
         acc[curr.participantId] = {};
       }
       if (!acc[curr.participantId][curr.date]) {
-        acc[curr.participantId][curr.date] = {};
+        acc[curr.participantId][curr.date] = {
+          Morning: [],
+          Afternoon: [],
+          Evening: [],
+          Night: [],
+        };
       }
-      if (!acc[curr.participantId][curr.date][curr.timeOfDay]) {
-        acc[curr.participantId][curr.date][curr.timeOfDay] = [];
-      }
+      // if (!acc[curr.participantId][curr.date][curr.timeOfDay]) {
+      //   acc[curr.participantId][curr.date][curr.timeOfDay] = [];
+      // }
       acc[curr.participantId][curr.date][curr.timeOfDay].push({
         end: {
           pointId: curr.endLocationId,

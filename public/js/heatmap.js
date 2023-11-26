@@ -1,36 +1,58 @@
 (function () {
   const height = 500,
     width = 600;
-  let svg,
-    cityMap = {},
-    commutes = {};
 
-  document.addEventListener("RenderHeatmap", async () => {
-    cityMap = await fetch("/patternsOfLife/map").then((res) => res.json());
+  let svg, features;
 
-    commutes = await fetch(
-      `/patternsOfLife/locations/${selectedYear}/${selectedMonth}/${selectedDay}/${selectedTimeOfDay}`
-    ).then((res) => res.json());
-
+  document.addEventListener("DrawBaseMap", async () => {
     svg = d3
       .select("#map-svg-traffic")
       .attr("width", width)
       .attr("height", height);
 
     svg.selectAll("*").remove();
+    features = await fetch("/patternsOfLife/map")
+      .then((res) => res.json())
+    
+    await drawBaseMap(features);
+  });
 
-    drawBaseMap(cityMap);
+  document.addEventListener("OverlapHeatMap", async () => {
 
-    overlapHeatMap(commutes);
+    await fetch(`/patternsOfLife/locations/${selectedYear}/${selectedMonth}/${selectedDay}/${selectedTimeOfDay}`)
+      .then((res) => res.json())
+      .then((commutes) => overlapHeatMap(commutes));
+  });
+
+  document.addEventListener("BubbleSelected", async () => {
+
+    // trigger a click on the map to show the buildingId that is = selectedBubble
+    if (selectedBubble && features) {
+
+      const building = features.find(
+        (item) => item.properties.buildingId === +selectedBubble
+      );
+
+      if (building) {
+        const [x, y] = projection(building.geometry.coordinates[0][0]);
+        const event = new MouseEvent("click", {
+          bubbles: true,
+          cancelable: true,
+          // get the absolute coordinates of the click
+          clientX: x + svg.node().getBoundingClientRect().x,
+          clientY: y + svg.node().getBoundingClientRect().y,
+        });
+        svg.node().dispatchEvent(event);
+      }
+    }
   });
 
   async function drawBaseMap(features) {
+    document.querySelector('#commute-heat').textContent = `Heatmap of Commute Density on a ${selectedDay} ${selectedTimeOfDay} in ${selectedMonth}`;
     var color = d3
-      .scaleOrdinal()
-      .domain(["Restaurant", "Pub", "School", "Apartment"])
-      .range(["red", "orange", "blue", "gray"]);
+      .scaleOrdinal(colorScheme);
 
-    const projection = d3
+    projection = d3
       .geoIdentity()
       .fitSize([width - 60, height - 60], {
         type: "FeatureCollection",
@@ -50,7 +72,7 @@
       .attr("class", "building")
       .attr("d", path)
       .style("fill", "none")
-      .style("stroke", (d) => color(d.properties.buildingType));
+      .style("stroke", (d) => d.properties.buildingType === 'Apartment' ? 'gray' : color(d.properties.buildingType));
 
     features.map((item) => {
       const [x, y] = projection(item.geometry.coordinates[0][0]);
@@ -102,9 +124,9 @@
         return d.color;
       });
 
-    svg.on("mouseover", function (e) {
-      svg.selectAll("path.building").style("fill", "none");
+    svg.on("mousemove", function (e) {
 
+      svg.selectAll("path.building").style("fill", "none");
       d3.select("#building-tooltip").style("visibility", "hidden");
 
       const [x, y] = d3.pointer(e);
@@ -117,96 +139,91 @@
           .style("fill", color(location.properties.buildingType));
 
         d3.select("#building-tooltip")
-          .style("left", x + "px")
-          .style("top", y + "px")
+          .style("left", (x - 10) + "px")
+          .style("top", (y - 10) + "px")
           .style("visibility", "visible")
           .html(
             location.properties.buildingType +
-              " (" +
-              location.properties.buildingId +
-              ")"
+            " (" +
+            location.properties.buildingId +
+            ")"
           );
       }
     });
 
-    svg.on("click", function (e) {
-      d3.select("#building-tooltip").style("visibility", "hidden");
-      svg.selectAll("path.building").style("fill", "none");
-      svg.selectAll("g.arrow").remove();
-      svg.selectAll(".drop-pin").remove();
+    svg
+      .on("click", async function (e) {
 
-      const [x, y] = d3.pointer(e);
-      const index = delaunay.find(x, y);
-      const endLocation = commercialLocations[index];
+        d3.select("#building-tooltip").style("visibility", "hidden");
+        svg.selectAll("g.arrow").remove();
+        svg.selectAll(".drop-pin").remove();
 
-      fetch(
-        `/patternsOfLife/startLocationsByEndLocationId/${selectedYear}/${selectedMonth}/${selectedDay}/${selectedTimeOfDay}/${endLocation.properties.buildingId}`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          data.forEach((startLocation) => {
-            const startCoords = projection(startLocation.geometry.coordinates);
-            const endCoords = projection(
-              endLocation.geometry.coordinates[0][0]
-            );
-            const [x1, y1] = startCoords;
-            const [x2, y2] = endCoords;
+        const [x, y] = d3.pointer(e);
+        const index = delaunay.find(x, y);
+        const endLocation = commercialLocations[index];
 
-            const angle = (Math.atan2(y2 - y1, x2 - x1) * 180) / Math.PI;
-            const length = Math.sqrt(
-              Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)
-            );
+        await fetch(`/patternsOfLife/startLocationsByEndLocationId/${selectedYear}/${selectedMonth}/${selectedDay}/${selectedTimeOfDay}/${endLocation.properties.buildingId}`)
+          .then((res) => res.json())
+          .then((data) => {
+            data.forEach((startLocation) => {
+              const startCoords = projection(startLocation.geometry.coordinates);
+              const endCoords = projection(
+                endLocation.geometry.coordinates[0][0]
+              );
+              const [x1, y1] = startCoords;
+              const [x2, y2] = endCoords;
 
-            const arrow = svg
-              .append("g")
-              .attr("class", "arrow")
-              .attr("transform", `translate(${x1}, ${y1}) rotate(${angle})`);
+              const angle = (Math.atan2(y2 - y1, x2 - x1) * 180) / Math.PI;
+              const length = Math.sqrt(
+                Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)
+              );
 
-            const curve = d3.line().curve(d3.curveNatural);
-            arrow
-              .append("path")
+              const arrow = svg
+                .append("g")
+                .attr("class", "arrow")
+                .attr("transform", `translate(${x1}, ${y1}) rotate(${angle})`);
+
+              const curve = d3.line().curve(d3.curveNatural);
+              arrow
+                .append("path")
+                .attr(
+                  "d",
+                  curve([
+                    [0, 0],
+                    [length / 2, Math.abs(angle) < 90 ? -length / 6 : length / 6],
+                    [length, 0],
+                  ])
+                )
+                .attr("stroke", "url(#gradient)") // Apply the gradient here
+                .attr("stroke-width", 2)
+                .attr("fill", "none");
+            });
+
+            // add a dropped pin bootstrap on the building when clicked
+            svg
+              .append("svg:image")
               .attr(
-                "d",
-                curve([
-                  [0, 0],
-                  [length / 2, Math.abs(angle) < 90 ? -length / 6 : length / 6],
-                  [length, 0],
-                ])
+                "x",
+                projection(endLocation.geometry.coordinates[0][0])[0] - 12
               )
-              .attr("stroke", "url(#gradient)") // Apply the gradient here
-              .attr("stroke-width", 2)
-              .attr("fill", "none");
+              .attr(
+                "y",
+                projection(endLocation.geometry.coordinates[0][0])[1] - 24
+              )
+              .attr("z-index", 100)
+              .attr("class", "drop-pin")
+              .attr("width", 24)
+              .attr("height", 24)
+              .attr("xlink:href", "images/drop-pin.svg");
           });
-
-          // add a dropped pin bootstrap on the building when clicked
-          svg
-            .append("svg:image")
-            .attr(
-              "x",
-              projection(endLocation.geometry.coordinates[0][0])[0] - 12
-            )
-            .attr(
-              "y",
-              projection(endLocation.geometry.coordinates[0][0])[1] - 24
-            )
-            .attr("z-index", 100)
-            .attr("class", "drop-pin")
-            .attr("width", 24)
-            .attr("height", 24)
-            .attr("xlink:href", "images/drop-pin.svg");
-        });
-    });
+      })
+      .on("mouseout", function (e) {
+        svg.selectAll("path.building").style("fill", "none");
+        d3.select("#building-tooltip").style("visibility", "hidden");
+      });
   }
 
   function overlapHeatMap(features) {
-    const projection = d3
-      .geoIdentity()
-      .fitSize([width - 60, height - 60], {
-        type: "FeatureCollection",
-        features: features,
-      })
-      .reflectY(true)
-      .translate([width / 2 + 30, height - 20]);
 
     const screenCoordinates = [];
     features.forEach((item) => {

@@ -1,86 +1,43 @@
 body {
-    background-color: rgb(247, 247, 228);
+  background-color: rgb(247, 247, 228);
 }
 
 .chart-div {
-    background-color: rgb(247, 251, 228);
-    width: 100%;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-top: 20px;
-    border-radius: 10px;
+  background-color: rgb(247, 251, 228);
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 10px;
 }
 
 .right-side-banner {
-    display: flex;
-    flex-direction: column;
-    text-align: right;
+  display: flex;
+  flex-direction: column;
+  text-align: right;
 }
 
 .jumbotron {
-    background-image: linear-gradient(rgba(128, 128, 128, 0.1),
-            rgba(128, 128, 128, 0.4)),
-        url("../images/banner4.jpeg");
-    background-size: cover;
-    background-position: right;
-    color: white;
-    height: 40vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  background-image: linear-gradient(
+      rgba(128, 128, 128, 0.1),
+      rgba(128, 128, 128, 0.4)
+    ),
+    url("../images/banner2.jpeg");
+  background-size: cover;
+  background-position: bottom;
+  color: white;
+  height: 25vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.jumbotron p, h1 {
-    background-image: none;
+.jumbotron p,
+h1 {
+  background-image: none;
 }
 
 #building-tooltip {
-    position: absolute;
-    background-color: white;
-    border-radius: 5px;
-    border: solid 1px gray;
-    padding: 5px;
-    font-size: 10px;
-}
-
-
-.personActivity {
-    width:45%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  #activityDatePanel {
-    width: 10%;
-  }
-  
-  #lives-of-people{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    height: 500px;
-  }
-  
-  #lives-of-people svg {
-    display: block;
-  }
-  
-  .lopRow {
-    display: flex;
-    justify-content: space-around
-  }
-  
-  .material-icon {
-    font-family: 'Material Icons';
-    display: inline-block;
-    font-size: 24px;
-  }
-  
-  #legendArea {
-    display: flex;
-  }
-  .hovertooltip {
     position: absolute;
     background-color: white;
     border: 2px solid;
@@ -88,5 +45,72 @@ body {
     border-radius: 6px;
     padding: 10px;
     visibility: hidden;
-  }
-  
+}
+
+.personActivity {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#activityDatePanel {
+  width: 10%;
+}
+
+#lives-of-people {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+}
+
+#lives-of-people svg {
+  display: block;
+}
+
+.lopRow {
+  display: flex;
+  justify-content: space-around;
+}
+
+.material-icon {
+  font-family: "Material Icons";
+  display: inline-block;
+  font-size: 24px;
+}
+
+#legendArea {
+  display: flex;
+}
+.hovertooltip {
+  position: absolute;
+  background-color: white;
+  border: 2px solid;
+  font-size: 18px;
+  border-radius: 6px;
+  padding: 10px;
+  visibility: hidden;
+}
+
+.info-button {
+  opacity: 0.8;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.tooltip-inner {
+  background-color: white;
+  border-radius: 5px;
+  border: solid 1px gray;
+  padding: 5px;
+  font-size: 12px;
+  color: black;
+}

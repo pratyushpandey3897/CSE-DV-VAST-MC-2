@@ -10,6 +10,9 @@ let colorScheme = d3.schemeCategory10;
 let personSelect1, personSelect2;
 
 document.addEventListener("DOMContentLoaded", (event) => {
+  $(document).ready(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
   // Select menus for comparing lives
   personSelect1 = document.getElementById("personSelect1");
   personSelect1.addEventListener("change", personChange);
@@ -17,22 +20,22 @@ document.addEventListener("DOMContentLoaded", (event) => {
   personSelect2.addEventListener("change", personChange);
 
   create_line_chart();
-  create_grouped_bar_chart();
-  initialize_horizontal_bar_chart();
-  create_beeswarm_chart();
-  create_bar_line_chart();
+  // create_grouped_bar_chart();
+  // initialize_horizontal_bar_chart();
+  // create_beeswarm_chart();
+  // create_bar_line_chart();
 
-  drawComparisionChartLegend();
-  // Populate person selector for comparison chart
+  // drawComparisionChartLegend();
+  // // Populate person selector for comparison chart
 
-  populatePersonSelector();
-  // trigger a new event RenderHeatmap
-  document.dispatchEvent(new Event("RenderHeatmap"));
+  // populatePersonSelector();
+  // // trigger a new event RenderHeatmap
+  document.dispatchEvent(new Event("DrawBaseMap"));
 });
 
 async function create_grouped_bar_chart() {
   d3.select("#grouped-bar-chart").selectAll("*").remove();
-  fetch(
+  await fetch(
     `/patternsOfLife/totalCommutesByLocationType/${selectedYear}/${selectedMonth}/${selectedDay}`
   )
     .then((res) => res.json())
@@ -129,15 +132,30 @@ async function create_grouped_bar_chart() {
         .attr("transform", (d) => "translate(" + x0(d.key) + ",0)")
         .on("click", function () {
           selectedTimeOfDay = d3.select(this).data()[0].key;
+          document.querySelector(
+            "#commutes-to-buildings"
+          ).textContent = `Commutes to buildings on a ${selectedDay} ${selectedTimeOfDay} in ${selectedMonth}`;
+
           create_beeswarm_chart();
-          document.dispatchEvent(new Event("RenderHeatmap"));
+          document.dispatchEvent(new Event("OverlapHeatMap"));
 
           d3.select("#bar-line-chart").selectAll("*").remove();
           // Add style changes
           d3.selectAll(".bar-group").style("opacity", 0.5); // Reduce opacity for all bars
           d3.select(this).style("opacity", 1); // Increase opacity for the selected bar
+          updateComparisonChart();
         });
 
+      let randomIndex = Math.floor(Math.random() * groupedData.length);
+
+      // After the bars are created
+      barGroups.each(function (d, i) {
+        // If current index is the random index
+        if (i === randomIndex) {
+          // Trigger the click event
+          this.dispatchEvent(new Event("click"));
+        }
+      });
       let bars = barGroups
         .selectAll("rect")
         .data((d) => keys.map((key) => ({ key: key, value: d[key] }))) // Create a new array of objects with properties 'key' and 'value'
@@ -181,7 +199,7 @@ async function create_grouped_bar_chart() {
         .append("g")
         .attr("class", "legend-key")
         .attr("transform", function (d, i) {
-          return "translate(0," + i * 20 + ")";
+          return "translate(0," + i * 30 + ")";
         }); // Adjust spacing between legend items
 
       legendKeys
@@ -245,8 +263,8 @@ async function create_grouped_bar_chart() {
     });
 }
 
-function create_line_chart() {
-  fetch("/patternsOfLife/totalCommutesByMonth")
+async function create_line_chart() {
+  await fetch("/patternsOfLife/totalCommutesByMonth")
     .then((res) => res.json())
     .then((lineData) => {
       let svg = d3.select("#line-chart");
@@ -389,18 +407,33 @@ function create_line_chart() {
           }
           console.log("selecting month: ", d.Month);
           d3.select("#bar-line-chart").selectAll("*").remove();
-
+          document.querySelector(
+            "#monthly-commutes"
+          ).textContent = `Commutes by Month`;
           initialize_horizontal_bar_chart();
-          create_grouped_bar_chart();
-          create_beeswarm_chart();
+          // create_grouped_bar_chart();
+          // create_beeswarm_chart();
           populatePersonSelector();
           document.dispatchEvent(new Event("RenderHeatmap"));
         });
+        // After the circles are created
+
         create_tooltip(circle, function () {
           return (
             "Month: " + d.Month + "</br>" + "Commutes: " + d["Total Commutes"]
           );
         });
+      });
+
+      let randomIndex = Math.floor(Math.random() * lineData.length);
+
+      svg.selectAll(".line-circles").each(function (d, i) {
+        // Only trigger click on a random circle once
+        if (i === randomIndex) {
+          console.log("circle selected..,");
+          // Trigger the click event
+          this.dispatchEvent(new Event("click"));
+        }
       });
     });
 }
@@ -467,7 +500,9 @@ async function initialize_horizontal_bar_chart() {
 }
 
 function create_horizontal_bar_chart(data) {
-  console.log(Object.entries(data));
+  document.querySelector(
+    "#weekday-commutes"
+  ).textContent = `Commutes by Weekday in ${selectedMonth}`;
   let bars = g.selectAll(".bar").data(Object.entries(data));
 
   let maxVal = d3.max(Object.values(data));
@@ -503,11 +538,14 @@ function create_horizontal_bar_chart(data) {
 
       // Get clicked element value
       selectedDay = d3.select(this).data()[0][0];
-      create_beeswarm_chart();
+      // create_beeswarm_chart();
+      document.querySelector(
+        "#portion-of-day-commutes"
+      ).textContent = `Commutes on a ${selectedDay} in ${selectedMonth} by Portion of Day`;
       create_grouped_bar_chart();
       d3.select("#bar-line-chart").selectAll("*").remove();
       populatePersonSelector();
-      document.dispatchEvent(new Event("RenderHeatmap"));
+      document.dispatchEvent(new Event("OverlayHeatMap"));
     })
     .attr("fill", function (d) {
       return color(d[1]);
@@ -543,7 +581,10 @@ function create_horizontal_bar_chart(data) {
 
       // Get clicked element value
       selectedDay = d3.select(this).data()[0][0];
-      create_beeswarm_chart(commute_counts_rpe_data);
+      // create_beeswarm_chart();
+      document.querySelector(
+        "#portion-of-day-commutes"
+      ).textContent = `Commutes Grouped by Building Type on a ${selectedDay} in ${selectedMonth} by Portion of Day`;
       create_grouped_bar_chart();
       populatePersonSelector();
       document.dispatchEvent(new Event("RenderHeatmap"));
@@ -557,14 +598,23 @@ function create_horizontal_bar_chart(data) {
     return "Day: " + d[0] + "</br>" + "Commutes: " + d[1];
   });
 
+  let randomIndex = Math.floor(Math.random() * Object.entries(data).length);
+  newBars.each(function (d, i) {
+    if (i === randomIndex) {
+      console.log("bar clicked");
+      // Trigger the click event
+      this.dispatchEvent(new Event("click"));
+    }
+  });
+
   // Remove old bars, if any
   bars.exit().remove();
 }
 
 let simulation;
 
-function create_beeswarm_chart() {
-  fetch(
+async function create_beeswarm_chart() {
+  await fetch(
     `/patternsOfLife/totalCommutesByLocationId/${selectedYear}/${selectedMonth}/${selectedDay}/${selectedTimeOfDay}`
   )
     .then((res) => res.json())
@@ -603,6 +653,32 @@ function create_beeswarm_chart() {
 
       // Map the keys to the color scale
       z.domain(keys);
+
+      const legendRectSize = 11;
+      // Define the legend
+      let legend = svg
+        .selectAll(".legend")
+        .data(keys)
+        .enter()
+        .append("g")
+        .attr("class", "legend")
+        .attr("transform", function (d, i) {
+          return "translate(" + (width - 80) + "," + (i * 30 + 20) + ")";
+        });
+
+      // Draw legend rectangles
+      legend.append("circle").attr("r", legendRectSize).attr("fill", z);
+
+      // Draw legend text
+      legend
+        .append("text")
+        .attr("x", legendRectSize + 10) // Position the text to the right of the rectangle
+        .attr("y", legendRectSize / 2 - 5) // Vertically align the text with the rectangle
+        .attr("font-size", "12px") // Use the same font size as in your code
+        .attr("dy", "0.31em") // Vertically align the text with the rectangle
+        .text(function (d) {
+          return d;
+        });
 
       // Initialize the circle: all located at the center of the svg area
       var node = svg
@@ -669,7 +745,10 @@ function create_beeswarm_chart() {
         selectedBubble = d3.select(this).data()[0]["name"];
         selectedBubbleCategory = d3.select(this).data()[0]["group"];
         console.log("selected bubble  is " + selectedBubbleCategory);
+
         create_bar_line_chart();
+        console.log("dispatching event...")
+        document.dispatchEvent(new Event("BubbleSelected"));
       });
 
       // Features of the forces applied to the nodes:
@@ -712,6 +791,17 @@ function create_beeswarm_chart() {
             return d.y;
           });
       });
+      // Generate a random index
+      let randomIndex = Math.floor(Math.random() * chart_data.length);
+
+      // After the nodes are created
+      node.each(function (d, i) {
+        // If current index is the random index
+        if (i === randomIndex) {
+          // Trigger the click event
+          this.dispatchEvent(new Event("click"));
+        }
+      });
     });
 
   function dragstarted(event, d) {
@@ -743,7 +833,7 @@ function groupAndAggregateData(d) {
     let data = d[i];
 
     // Extract the hour from the timestamp
-    let hour = new Date(data.time).getHours();
+    let hour = new Date(data.time).getUTCHours();
 
     // Initialize the hour group if it doesn't exist
     if (!barLineChartData[hour]) {
@@ -755,7 +845,7 @@ function groupAndAggregateData(d) {
     }
 
     // Aggregate the total occupancy and expenditure
-    barLineChartData[hour].totalOccupancy += +data.total_occupancy;
+    barLineChartData[hour].totalOccupancy += 1;
     barLineChartData[hour].expenditure += data.total_expenditure;
   }
 }
@@ -767,15 +857,19 @@ function formatHour(hour) {
   return hour + " " + period;
 }
 
-function create_bar_line_chart() {
-  fetch(
+async function create_bar_line_chart() {
+  await fetch(
     `/patternsOfLife/totalExpendituresByLocationId/${selectedYear}/${selectedMonth}/${selectedDay}/${selectedTimeOfDay}/${selectedBubble}`
   )
     .then((res) => res.json())
     .then((d) => {
-      document.getElementById(
-        "bar-line-chart-title"
-      ).textContent = `Bar+Line Chart for ${selectedBubbleCategory} ${selectedBubble} on ${selectedDay} ${selectedTimeOfDay} in ${selectedMonth}`;
+      document.querySelector(
+        "#bar-line-chart-title"
+      ).textContent = `Occupancy and ${
+        selectedBubbleCategory === "Workplace" ? "Salary" : "Expenditure"
+      } at ${selectedBubbleCategory} ${selectedBubble} on a ${selectedDay} ${selectedTimeOfDay} in ${selectedMonth}`; // document.getElementById(
+      //   "bar-line-chart-title"
+      // ).textContent = `Bar+Line Chart for ${selectedBubbleCategory} ${selectedBubble} on ${selectedDay} ${selectedTimeOfDay} in ${selectedMonth}`;
       groupAndAggregateData(d);
 
       d3.select("#bar-line-chart").selectAll("*").remove();
@@ -792,6 +886,7 @@ function create_bar_line_chart() {
 
       let x = d3.scaleBand().rangeRound([0, width]).padding(0.4);
       let y = d3.scaleLinear().rangeRound([height, 0]);
+      let bandwidth = Math.min(x.bandwidth(), maxBarWidth);
       let yRight = d3.scaleLinear().rangeRound([height, 0]); // Define a new y-scale for the right axis
 
       x.domain(
@@ -852,13 +947,13 @@ function create_bar_line_chart() {
         .attr("dy", "1em") // Shift the label down slightly
         .style("text-anchor", "middle")
         .text(
-          selectedBubbleCategory === "Work"
+          selectedBubbleCategory === "Workplace"
             ? "Total Salary"
             : "Total Expenditure"
         );
 
       let legendData =
-        selectedBubbleCategory === "Work"
+        selectedBubbleCategory === "Workplace"
           ? ["Total Occupancy", "Total Salary"]
           : ["Total Occupancy", "Total Expenditure"];
       let legend = svg
@@ -910,12 +1005,12 @@ function create_bar_line_chart() {
         .append("rect")
         .attr("class", "bar")
         .attr("x", function (d) {
-          return x(d.hour);
+          return x(d.hour) + (x.bandwidth() - bandwidth) / 2;
         })
         .attr("y", function (d) {
           return y(d.totalOccupancy);
         })
-        .attr("width", x.bandwidth())
+        .attr("width", bandwidth)
         .attr("height", function (d) {
           let barHeight = height - y(d.totalOccupancy);
           if (isNaN(barHeight)) {
@@ -946,7 +1041,7 @@ function create_bar_line_chart() {
       let line = d3
         .line()
         .x(function (d) {
-          return x(d.hour) + x.bandwidth() / 2;
+          return x(d.hour) + (x.bandwidth() - bandwidth) / 2 + maxBarWidth / 2;
         }) // Center the line in the bars
         .y(function (d) {
           return yRight(d.expenditure);
@@ -958,20 +1053,20 @@ function create_bar_line_chart() {
         .datum(data)
         .attr("fill", "none")
         .attr("stroke", "black")
-        .attr("stroke-width", 1.5)
+        .attr("opacity", "0.8")
+        .attr("stroke-width", 1)
         .attr("d", line);
 
       chart
         .selectAll(".dot")
         .data(data)
         .enter()
-        .append("text") // Append text elements
-        .text(getEmoji("money")) // Use dollar sign
+        .append("circle")
         .attr("class", "dot") // Assign a class for styling
-        .attr("x", function (d) {
-          return x(d.hour) + x.bandwidth() / 2;
+        .attr("cx", function (d) {
+          return x(d.hour) + (x.bandwidth() - bandwidth) / 2 + maxBarWidth / 2;
         })
-        .attr("y", function (d) {
+        .attr("cy", function (d) {
           return yRight(d.expenditure);
         })
         .attr("r", 5) // Radius of circle
