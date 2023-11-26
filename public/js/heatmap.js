@@ -26,18 +26,12 @@
 
   document.addEventListener("BubbleSelected", async () => {
 
-    console.log('bubble selected event ', selectedBubble, features);
-
     // trigger a click on the map to show the buildingId that is = selectedBubble
     if (selectedBubble && features) {
-
-      console.log('heatmap click simulation');
 
       const building = features.find(
         (item) => item.properties.buildingId === +selectedBubble
       );
-
-      console.log("building: ", building);
 
       if (building) {
         const [x, y] = projection(building.geometry.coordinates[0][0]);
@@ -159,8 +153,6 @@
 
     svg
       .on("click", async function (e) {
-
-        console.log('heatmap clicked: ', e);
 
         d3.select("#building-tooltip").style("visibility", "hidden");
         svg.selectAll("g.arrow").remove();
