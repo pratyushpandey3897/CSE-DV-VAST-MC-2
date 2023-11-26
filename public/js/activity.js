@@ -79,7 +79,7 @@ function createLineChart(data, chartName) {
       .append("text")
       .attr("class", "symbol")
       .attr("x", function (d) {
-        dt = x(new Date(d.endTime)) - 10;
+        dt = x(new Date(d.startTime)) - 10;
         return dt;
       })
       .attr("y", height / 2)
