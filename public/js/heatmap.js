@@ -219,6 +219,7 @@
       })
       .on("mouseout", function (e) {
         svg.selectAll("path.building").style("fill", "none");
+        d3.select("#building-tooltip").style("visibility", "hidden");
       });
   }
 
