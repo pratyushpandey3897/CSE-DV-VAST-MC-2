@@ -11,24 +11,22 @@
       .attr("height", height);
 
     svg.selectAll("*").remove();
-    features = await fetch("/patternsOfLife/map")
-      .then((res) => res.json())
-    
+    features = await fetch("/patternsOfLife/map").then((res) => res.json());
+
     await drawBaseMap(features);
   });
 
   document.addEventListener("OverlapHeatMap", async () => {
-
-    await fetch(`/patternsOfLife/locations/${selectedYear}/${selectedMonth}/${selectedDay}/${selectedTimeOfDay}`)
+    await fetch(
+      `/patternsOfLife/locations/${selectedYear}/${selectedMonth}/${selectedDay}/${selectedTimeOfDay}`
+    )
       .then((res) => res.json())
       .then((commutes) => overlapHeatMap(commutes));
   });
 
   document.addEventListener("BubbleSelected", async () => {
-
     // trigger a click on the map to show the buildingId that is = selectedBubble
     if (selectedBubble && features) {
-
       const building = features.find(
         (item) => item.properties.buildingId === +selectedBubble
       );
@@ -48,9 +46,10 @@
   });
 
   async function drawBaseMap(features) {
-    document.querySelector('#commute-heat').textContent = `Heatmap of Commute Density on a ${selectedDay} ${selectedTimeOfDay} in ${selectedMonth}`;
-    var color = d3
-      .scaleOrdinal(colorScheme);
+    document.querySelector(
+      "#commute-heat"
+    ).textContent = `Heatmap of Commute Density on a ${selectedDay} ${selectedTimeOfDay} in ${selectedMonth}`;
+    var color = d3.scaleOrdinal(colorScheme);
 
     projection = d3
       .geoIdentity()
@@ -72,7 +71,11 @@
       .attr("class", "building")
       .attr("d", path)
       .style("fill", "none")
-      .style("stroke", (d) => d.properties.buildingType === 'Apartment' ? 'gray' : color(d.properties.buildingType));
+      .style("stroke", (d) =>
+        d.properties.buildingType === "Apartment"
+          ? "gray"
+          : color(d.properties.buildingType)
+      );
 
     features.map((item) => {
       const [x, y] = projection(item.geometry.coordinates[0][0]);
@@ -125,7 +128,6 @@
       });
 
     svg.on("mousemove", function (e) {
-
       svg.selectAll("path.building").style("fill", "none");
       d3.select("#building-tooltip").style("visibility", "hidden");
 
@@ -134,26 +136,26 @@
       const location = commercialLocations[index];
 
       if (location) {
+        d3.select(this).style("cursor", "pointer");
         svg
           .select("path#building-" + location.properties.buildingId)
           .style("fill", color(location.properties.buildingType));
 
         d3.select("#building-tooltip")
-          .style("left", (x - 10) + "px")
-          .style("top", (y - 10) + "px")
+          .style("left", x - 10 + "px")
+          .style("top", y - 10 + "px")
           .style("visibility", "visible")
           .html(
             location.properties.buildingType +
-            " (" +
-            location.properties.buildingId +
-            ")"
+              " (" +
+              location.properties.buildingId +
+              ")"
           );
       }
     });
 
     svg
       .on("click", async function (e) {
-
         d3.select("#building-tooltip").style("visibility", "hidden");
         svg.selectAll("g.arrow").remove();
         svg.selectAll(".drop-pin").remove();
@@ -162,11 +164,15 @@
         const index = delaunay.find(x, y);
         const endLocation = commercialLocations[index];
 
-        await fetch(`/patternsOfLife/startLocationsByEndLocationId/${selectedYear}/${selectedMonth}/${selectedDay}/${selectedTimeOfDay}/${endLocation.properties.buildingId}`)
+        await fetch(
+          `/patternsOfLife/startLocationsByEndLocationId/${selectedYear}/${selectedMonth}/${selectedDay}/${selectedTimeOfDay}/${endLocation.properties.buildingId}`
+        )
           .then((res) => res.json())
           .then((data) => {
             data.forEach((startLocation) => {
-              const startCoords = projection(startLocation.geometry.coordinates);
+              const startCoords = projection(
+                startLocation.geometry.coordinates
+              );
               const endCoords = projection(
                 endLocation.geometry.coordinates[0][0]
               );
@@ -190,7 +196,10 @@
                   "d",
                   curve([
                     [0, 0],
-                    [length / 2, Math.abs(angle) < 90 ? -length / 6 : length / 6],
+                    [
+                      length / 2,
+                      Math.abs(angle) < 90 ? -length / 6 : length / 6,
+                    ],
                     [length, 0],
                   ])
                 )
@@ -218,13 +227,13 @@
           });
       })
       .on("mouseout", function (e) {
+        d3.select(this).style("cursor", "default");
         svg.selectAll("path.building").style("fill", "none");
         d3.select("#building-tooltip").style("visibility", "hidden");
       });
   }
 
   function overlapHeatMap(features) {
-
     const screenCoordinates = [];
     features.forEach((item) => {
       screenCoordinates.push([
