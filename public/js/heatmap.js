@@ -25,6 +25,12 @@
   });
 
   document.addEventListener("BubbleSelected", async () => {
+
+    document.querySelector(
+      "#commute-heat"
+    ).textContent = `Heatmap of Commute Density on a ${selectedDay} ${selectedTimeOfDay} in ${selectedMonth}`;
+
+    
     // trigger a click on the map to show the buildingId that is = selectedBubble
     if (selectedBubble && features) {
       const building = features.find(
@@ -46,9 +52,7 @@
   });
 
   async function drawBaseMap(features) {
-    document.querySelector(
-      "#commute-heat"
-    ).textContent = `Heatmap of Commute Density on a ${selectedDay} ${selectedTimeOfDay} in ${selectedMonth}`;
+
     var color = d3.scaleOrdinal(colorScheme);
 
     projection = d3
