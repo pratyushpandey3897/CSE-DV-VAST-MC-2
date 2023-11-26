@@ -148,7 +148,7 @@ function createLineChart(data, chartName) {
 }
 function populatePersonSelector() {
   //Remove existing options.
-  var personSelect1 = document.getElementById("personSelect1");   
+  var personSelect1 = document.getElementById("personSelect1");
   var personSelect2 = document.getElementById("personSelect2");
   personSelect1.options.length = 0;
   personSelect2.options.length = 0;
@@ -160,10 +160,16 @@ function populatePersonSelector() {
   d3.selectAll(".dateLabels").remove();
 
   // Get list of 10 people
-  fetch(`patternsOfLife/top10Participants/${selectedYear}/${selectedMonth}/${selectedDay}`)
+  fetch(
+    `patternsOfLife/top10Participants/${selectedYear}/${selectedMonth}/${selectedDay}`
+  )
     .then((response) => response.json())
     .then((dayData) => {
       console.log("fetched person data ", dayData);
+
+      personSelect1.options.length = 0;
+      personSelect2.options.length = 0;
+
       var el1, el2;
       if (dayData) {
         options = Object.keys(dayData);
