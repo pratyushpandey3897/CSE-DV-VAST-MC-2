@@ -990,7 +990,7 @@ async function create_bar_line_chart() {
         });
 
       chart
-        .selectAll(".bar")
+        .selectAll(".line-bar")
         .data(data)
         .enter()
         .append("rect")
@@ -1014,7 +1014,7 @@ async function create_bar_line_chart() {
           return z(selectedBubbleCategory);
         });
 
-      create_tooltip(chart.selectAll(".bar"), function (d) {
+      create_tooltip(chart.selectAll(".line-bar"), function (d) {
         return (
           "Time: " +
           d.hour +
@@ -1084,6 +1084,13 @@ function create_tooltip(selection, formatTooltip) {
   var tooltip = d3.select("body").append("div").attr("class", "hovertooltip");
   selection
     .on("mouseover", function (event, d) {
+      console.log(selection);
+      if (
+        selection.node() !== d3.selectAll(".symbol").node() &&
+        selection.node() !== d3.selectAll(".line-bar").node()
+      ) {
+        d3.select(this).style("cursor", "pointer");
+      }
       tooltip.style("visibility", "visible").html(formatTooltip(d));
     })
     .on("mousemove", function (event) {
@@ -1092,6 +1099,7 @@ function create_tooltip(selection, formatTooltip) {
         .style("left", event.pageX + 20 + "px");
     })
     .on("mouseout", function () {
+      d3.select(this).style("cursor", "default");
       tooltip.style("visibility", "hidden");
     });
 }
