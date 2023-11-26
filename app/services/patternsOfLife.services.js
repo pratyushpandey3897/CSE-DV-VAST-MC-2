@@ -238,6 +238,7 @@ export async function getTop10Participants(year, month, dayOfWeek) {
             join (select participantId, count(*) as totalCommutes
             from TravelJournalCombined where year = '${year}'
             and month = '${month}' and dayOfWeek='${dayOfWeek}'
+            and startLocationId is not null and endLocationId is not null 
             group by participantId
             order by totalCommutes desc
             limit 10) p on p.participantId = t.participantId
