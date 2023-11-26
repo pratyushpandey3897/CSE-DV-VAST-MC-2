@@ -990,11 +990,11 @@ async function create_bar_line_chart() {
         });
 
       chart
-        .selectAll(".line-bar")
+        .selectAll(".bar")
         .data(data)
         .enter()
         .append("rect")
-        .attr("class", "bar")
+        .attr("class", "line-bar")
         .attr("x", function (d) {
           return x(d.hour) + (x.bandwidth() - bandwidth) / 2;
         })
@@ -1084,7 +1084,6 @@ function create_tooltip(selection, formatTooltip) {
   var tooltip = d3.select("body").append("div").attr("class", "hovertooltip");
   selection
     .on("mouseover", function (event, d) {
-      console.log(selection);
       if (
         selection.node() !== d3.selectAll(".symbol").node() &&
         selection.node() !== d3.selectAll(".line-bar").node()
