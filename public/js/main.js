@@ -345,7 +345,7 @@ async function create_line_chart() {
         .attr("dy", "1em")
         .style("text-anchor", "middle")
         .style("font-size", "14px")
-        .text("Total number of Commutes");
+        .text("Total Number of Commutes");
 
       let clicked = false;
 
