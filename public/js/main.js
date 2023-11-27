@@ -1022,7 +1022,7 @@ async function create_bar_line_chart() {
           "Total Occupancy: " +
           d.totalOccupancy +
           "</br>" +
-          (selectedBubbleCategory === "Work"
+          (selectedBubbleCategory === "Workplace"
             ? "Total Salary: $"
             : "Total Expenditure: $") +
           d.expenditure.toFixed(2)
