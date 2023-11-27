@@ -454,7 +454,7 @@ async function initialize_horizontal_bar_chart() {
           (a, b) => days.indexOf(b[0]) - days.indexOf(a[0])
         )
       );
-
+      
       let margin = { top: 60, right: 20, bottom: 50, left: 70 };
       let width =
         +horizontal_bar_svg.attr("width") - margin.left - margin.right;
@@ -475,7 +475,7 @@ async function initialize_horizontal_bar_chart() {
       x = d3
         .scaleLinear()
         .domain([0, maxVal + 2000])
-        .range([0, width - margin.left - margin.right]);
+        .range([0, width]);
 
       y = d3.scaleBand().domain(days).range([0, height]).padding(0.1);
 
@@ -484,6 +484,18 @@ async function initialize_horizontal_bar_chart() {
         .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(x).ticks(5));
 
+      g.append("text")
+        .attr(
+          "transform",
+          "translate(" +
+            width / 2 +
+            " ," +
+            (height + margin.top + margin.bottom - 70) +
+            ")"
+        )
+        .style("text-anchor", "middle")
+        .style("font-size", "14px")
+        .text("Total Number of Commutes");
       g.append("g").attr("class", "y axis").call(d3.axisLeft(y));
 
       create_horizontal_bar_chart(data);

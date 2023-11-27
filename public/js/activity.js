@@ -69,9 +69,9 @@ function createLineChart(data, chartName) {
       .tickFormat(d3.utcFormat("%I %p"));
 
     g.append("g")
-      .attr("transform", "translate(0," + height + ")")
+      .attr("transform", "translate(0," + height+ ")")
       .call(xAxis)
-      .attr("stroke-width", 0.5);
+      .attr("stroke-width", 0.9);
 
     g.selectAll(".symbol")
       .data(places)
@@ -82,9 +82,9 @@ function createLineChart(data, chartName) {
         dt = x(new Date(d.startTime)) - 10;
         return dt;
       })
-      .attr("y", height / 2)
+      .attr("y", height / 2 +25)
       .text((d) => emojis[d.place])
-      .attr("font-size", 16);
+      .attr("font-size", 25);
 
     let dateLabel = d3
       .select("#activityDatePanel")
