@@ -383,7 +383,7 @@
       .attr("y", 110)
       .attr("font-size", "10px")
       .attr("text-anchor", "middle")
-      .text("High");
+      .text("100%");
 
     legend
       .append("text")
@@ -391,7 +391,7 @@
       .attr("y", 110)
       .attr("font-size", "10px")
       .attr("text-anchor", "middle")
-      .text("Low");
+      .text("0%");
 
     legend
     .append("text")
@@ -399,7 +399,7 @@
     .attr("y", 140)
     .attr("font-size", "10px")
     .attr("text-anchor", "middle")
-    .text("Distance to destination");
+    .text("ETA");
 
   }
 })();
