@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   create_line_chart();
   drawComparisionChartLegend();
-  document.dispatchEvent(new Event("DrawBaseMap"));
 });
 
 async function create_grouped_bar_chart() {
@@ -128,7 +127,7 @@ async function create_grouped_bar_chart() {
           ).textContent = `Commutes to buildings on a ${selectedDay} ${selectedTimeOfDay} in ${selectedMonth}`;
 
           create_beeswarm_chart();
-          document.dispatchEvent(new Event("OverlapHeatMap"));
+          document.dispatchEvent(new Event("OverlayHeatMap"));
 
           d3.select("#bar-line-chart").selectAll("*").remove();
           // Add style changes
@@ -751,7 +750,7 @@ async function create_beeswarm_chart() {
 
         create_bar_line_chart();
         console.log("dispatching event...");
-        document.dispatchEvent(new Event("BubbleSelected"));
+        document.dispatchEvent(new Event("SelectedBuildingUpdated"));
       });
 
       // Features of the forces applied to the nodes:
