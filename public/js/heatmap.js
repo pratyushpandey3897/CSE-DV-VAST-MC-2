@@ -4,7 +4,7 @@
 
   let svg, features;
 
-  document.addEventListener("DrawBaseMap", async () => {
+  document.addEventListener("DOMContentLoaded", async () => {
     svg = d3
       .select("#map-svg-traffic")
       .attr("width", width)
@@ -16,15 +16,15 @@
     await drawBaseMap(features);
   });
 
-  document.addEventListener("OverlapHeatMap", async () => {
+  document.addEventListener("OverlayHeatMap", async () => {
     await fetch(
       `/patternsOfLife/locations/${selectedYear}/${selectedMonth}/${selectedDay}/${selectedTimeOfDay}`
     )
       .then((res) => res.json())
-      .then((commutes) => overlapHeatMap(commutes));
+      .then((commutes) => overlayHeatMap(commutes));
   });
 
-  document.addEventListener("BubbleSelected", async () => {
+  document.addEventListener("SelectedBuildingUpdated", async () => {
 
     document.querySelector(
       "#commute-heat"
@@ -237,7 +237,10 @@
       });
   }
 
-  function overlapHeatMap(features) {
+  function overlayHeatMap(features) {
+
+    svg.selectAll(".contour").remove();
+
     const screenCoordinates = [];
     features.forEach((item) => {
       screenCoordinates.push([
